@@ -1,0 +1,98 @@
+﻿body {
+    min-width: 600px;
+    background-color: #FAFAEF;
+}
+
+/*HEADER AND FOOTER START*/
+.mainHeader {
+    min-height: 15vh;
+    background-color: #222;
+    color: white;
+    text-align: center;
+}
+#logo {
+    background-image: url("../Images/logo.png");
+    width: 615px;
+    height: 90px;
+    display: block;
+    margin-left: calc(50% - 307px);
+    cursor: pointer;
+    background-position-y:-15px;
+}
+.mainHeader .nav {
+    width: 100%;
+}
+.mainHeader .nav a:hover {
+    background-color:#333!important;
+}
+.mainFooter {
+    height:30px;
+    width:100%;
+    position:relative;
+    bottom:0px;
+}
+.mainFooter .container {
+    height:100%;    
+    background-color: #222;
+    border-top-left-radius:50px;
+    border-top-right-radius:50px;
+    color:#fff;
+    text-align:center;
+    padding-top:5px;
+    border:1px solid #080808;
+    border-bottom:none;
+}
+/*HEADER AND FOOTER END*/
+
+/*DataTables Start*/
+.dataTableControl,
+.dataTableControl td{
+    background-color: #f9f9f9 !important;
+}
+.dataTableControl tr:hover td{
+    background-color:#f1f1f1!important
+}
+.scSelectedRow,
+.scSelectedItem {
+    color: red !important;
+}
+/*DataTables Start*/
+
+
+/*ActionMenu START*/
+.ActionMenu{
+    display:none;
+    width:200px;
+    position:absolute;
+    left:50%;
+    top:50%;
+    z-index:99999999999;
+    background-color:#222;
+}
+.ActionMenu ul{
+    list-style-type:none;
+    border:1px solid #9d9d9d;
+}
+
+.ActionMenu ul, .ActionMenu li{
+    width:100%;
+    padding:0px;
+    margin:0px;
+}
+.ActionMenu li{
+    min-height:30px;
+    padding-left:20px;
+    padding-right:20px;
+    padding-top:5px;
+    padding-bottom:5px;
+    color:#9d9d9d;
+    border:1px solid #9d9d9d; 
+}
+
+.ActionMenu li:hover{
+    color:white;
+    background-color:#333;
+    border:1px solid white;
+}
+
+/*ActionMenu END*/
