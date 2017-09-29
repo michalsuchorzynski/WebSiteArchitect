@@ -1,8 +1,49 @@
-﻿
+﻿@model WebSiteArchitect.WebModel.Base.WebPage
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<div class="col-md-12 col-lg-12 col-sm-12 mainContentPan">
+
+    @foreach (WebSiteArchitect.WebModel.Base.WebControl control in Model.Controls)
+    {
+        @CreateSimpleControl(control)
+    }
+    
+    @helper CreateSimpleControl(WebSiteArchitect.WebModel.Base.WebControl control)
+    {
+        <div id=@control.Id class=@control.ClassName>
+            @switch (control.Type)
+            {
+                case WebSiteArchitect.WebModel.Enums.WebControlType.emptySpace:
+                    {
+                        break;
+                    }
+                case WebSiteArchitect.WebModel.Enums.WebControlType.panel:
+                    {
+                        if (control.ChildrenControls != null)
+                        {
+                            for (int i = 0; i < control.ChildrenControls.Count; i++)
+                            {
+                                @CreateSimpleControl(control.ChildrenControls[i]);
+                            }
+                        }
+                        break;
+                    }
+                case WebSiteArchitect.WebModel.Enums.WebControlType.input:
+                    {
+                        @Html.TextBox(control.Name, control.Value);
+                        break;
+                    }
+                case WebSiteArchitect.WebModel.Enums.WebControlType.label:
+                    {
+                        @Html.Label(control.Value);
+                        break;
+                    }
+            }
+        </div>
+    }
+</div>
 

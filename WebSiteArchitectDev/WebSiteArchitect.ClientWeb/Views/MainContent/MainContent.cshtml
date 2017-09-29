@@ -1,0 +1,27 @@
+﻿@model WebSiteArchitect.WebModel.Base.WebPage
+
+@{
+    ViewBag.Title = "MainContent";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-md-12 col-lg-12 col-sm-12 mainContentPan">
+    
+    @foreach (WebSiteArchitect.WebModel.Base.WebControl control in Model.Controls)
+    {
+        <div class="form-control">
+            <div id="@control.Id" class="@control.ClassName" >
+                if (control.Type == WebSiteArchitect.WebModel.Enums.WebControlType.label)
+                {
+
+                @Html.Raw("<div></div>");
+                }
+            </div>
+        </div>
+
+    }
+    
+
+
+</div>
+
