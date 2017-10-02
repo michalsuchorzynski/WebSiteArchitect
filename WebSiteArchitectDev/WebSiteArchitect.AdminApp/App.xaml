@@ -1,0 +1,9 @@
+﻿<Application x:Class="WebSiteArchitect.AdminApp.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:WebSiteArchitect.AdminApp"
+             StartupUri="Views/Layout.xaml">
+    <Application.Resources>
+        <ResourceDictionary Source="Style/Theme.xaml"/>
+    </Application.Resources>
+</Application>

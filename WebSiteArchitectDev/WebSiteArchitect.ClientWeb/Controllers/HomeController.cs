@@ -15,7 +15,6 @@ namespace WebSiteArchitect.ClientWeb.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            
             WebControl controlEmptySpace = new WebControl(WebControlType.emptySpace);
             WebControl controlInput = new Input("testInput","testInput","testInput","TestInput");
             WebControl controlLabel = new Label("testLabel", "testLabel", "testLabel", "testLabel");
@@ -25,6 +24,7 @@ namespace WebSiteArchitect.ClientWeb.Controllers
             WebControl controlLabel2 = new Label("testLabel2", "testLabel2", "testLabel2", "testLabel2");
             WebControl controlSelect2 = new Select("testSelect2", "testSelect2", "testSelect2", "testSelect2");
             List<WebControl> elementsInPanel = new List<WebControl>();
+
             elementsInPanel.Add(controlInput2);
             elementsInPanel.Add(controlLabel2);
             elementsInPanel.Add(controlSelect2);
