@@ -6,20 +6,32 @@
              xmlns:local="clr-namespace:WebSiteArchitect.AdminApp.Controls.Layout"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <StackPanel>
-        <UniformGrid Rows="1" Columns="12" Background="Black">
-            <local:EmptySpace></local:EmptySpace>
-            <local:EmptySpace></local:EmptySpace>
-            <local:EmptySpace></local:EmptySpace>
-            <local:EmptySpace></local:EmptySpace>
-            <local:EmptySpace></local:EmptySpace>
-            <local:EmptySpace></local:EmptySpace>
-            <local:EmptySpace></local:EmptySpace>
-            <local:EmptySpace></local:EmptySpace>
-            <local:EmptySpace></local:EmptySpace>
-            <local:EmptySpace></local:EmptySpace>
-            <local:EmptySpace></local:EmptySpace>
-            <local:EmptySpace></local:EmptySpace>
-        </UniformGrid>
-    </StackPanel>
+        <Grid Background="Black">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+            <local:EmptySpace Grid.Column="0"></local:EmptySpace>
+            <local:EmptySpace Grid.Column="1"></local:EmptySpace>
+            <local:EmptySpace Grid.Column="2"></local:EmptySpace>
+            <local:EmptySpace Grid.Column="3"></local:EmptySpace>
+            <local:EmptySpace Grid.Column="4"></local:EmptySpace>
+            <local:EmptySpace Grid.Column="5"></local:EmptySpace>
+            <local:EmptySpace Grid.Column="6"></local:EmptySpace>
+            <local:EmptySpace Grid.Column="7"></local:EmptySpace>
+            <local:EmptySpace Grid.Column="8"></local:EmptySpace>
+            <local:EmptySpace Grid.Column="9"></local:EmptySpace>
+            <local:EmptySpace Grid.Column="10"></local:EmptySpace>
+            <local:EmptySpace Grid.Column="11"></local:EmptySpace>
+        </Grid>
 </UserControl>

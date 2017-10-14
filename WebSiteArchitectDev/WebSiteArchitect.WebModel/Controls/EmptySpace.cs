@@ -12,7 +12,7 @@ namespace WebSiteArchitect.WebModel.Controls
     {
         public EmptySpace()
         {
-
+            this.Type = WebControlType.emptySpace;
 
         }
         public EmptySpace(string id, string name, string value, string className) : base(id, name, WebControlType.emptySpace, value, className)

@@ -12,6 +12,7 @@ namespace WebSiteArchitect.WebModel.Controls
     {
         public Label()
         {
+            this.Type = WebControlType.label;
 
 
         }

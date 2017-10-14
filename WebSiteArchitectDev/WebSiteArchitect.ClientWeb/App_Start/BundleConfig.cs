@@ -24,7 +24,8 @@ namespace WebSiteArchitect.ClientWeb
                         "~/Content/Bootstrap/bootstrap.min.css",
                         "~/Content/Bootstrap/jquery.dataTables.min.css",
                         "~/Content/fonts/font-awesome.min.css",
-                        "~/Content/Style/Main.css"
+                        "~/Content/Style/Main.css",
+                        "~/Content/Style/Architect.css"
                       ));
 
         }

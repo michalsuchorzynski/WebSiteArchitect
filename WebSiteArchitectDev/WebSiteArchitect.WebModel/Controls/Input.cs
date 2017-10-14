@@ -12,6 +12,7 @@ namespace WebSiteArchitect.WebModel.Controls
     {
         public Input()
         {
+            this.Type = WebControlType.input;
 
 
         }

@@ -12,6 +12,7 @@ namespace WebSiteArchitect.WebModel.Controls
     {
         public Select()
         {
+            this.Type = WebControlType.select;
 
 
         }

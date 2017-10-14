@@ -3,7 +3,7 @@
                     xmlns:local="clr-namespace:WebSiteArchitect.AdminApp.Style">
     <Style x:Key="EmptySpaceStyle" TargetType="Rectangle">
         <Setter Property="Height" Value="50" />
-        <Setter Property="Fill" Value="Aqua" />
+        <Setter Property="Fill" Value="White" />
         <Setter Property="Stroke" Value="#FF000000" />
         <Setter Property="StrokeThickness" Value="1" />
         <Setter Property="StrokeDashArray" Value="4 4" />

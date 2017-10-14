@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WebSiteArchitect.AdminApp.Code;
 using WebSiteArchitect.AdminApp.ViewModels;
 
 namespace WebSiteArchitect.AdminApp.Views
@@ -28,6 +29,7 @@ namespace WebSiteArchitect.AdminApp.Views
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             StackPanel Page = (StackPanel)this.FindName("PageLayout");
-                }
+            Parser parser = new Parser(Page);
+        }
     }
 }
