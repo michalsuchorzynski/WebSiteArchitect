@@ -31,5 +31,12 @@ namespace WebSiteArchitect.AdminApp.Views
             StackPanel Page = (StackPanel)this.FindName("PageLayout");
             Parser parser = new Parser(Page);
         }
+
+        private void PageLayout_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            StackPanel Page = (StackPanel)this.FindName("PageLayout");
+            LayoutControler controler = new LayoutControler(Page);
+            controler.AddRowToPage();
+        }
     }
 }

@@ -54,7 +54,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Code\ControlHelper.cs" />
     <Compile Include="Code\DelegateCommand.cs" />
+    <Compile Include="Code\LayoutControler.cs" />
     <Compile Include="Code\Parser.cs" />
     <Compile Include="Controls\Layout\EmptySpace.xaml.cs">
       <DependentUpon>EmptySpace.xaml</DependentUpon>

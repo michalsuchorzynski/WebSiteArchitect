@@ -57,8 +57,8 @@ namespace WebSiteArchitect.AdminApp.Code
         }
         public WebControl GetSimpleControlFromXaml(UserControl control)
         {
-            WebControl newControl;
-            var type = control.GetType().FullName.Replace("WebSiteArchitect.AdminApp.Controls.Layout.", "");
+            WebControl newControl; ;
+            var type = ControlHelper.GetControlType(control);
             switch (type)
             {
                 case "EmptySpace":
@@ -66,6 +66,7 @@ namespace WebSiteArchitect.AdminApp.Code
                     break;
                 case "Label":
                     newControl = new WebSiteArchitect.WebModel.Controls.Label();
+                    newControl.Value = "text";
                     break;
                 case "Panel":
                 case "Row":
@@ -85,16 +86,14 @@ namespace WebSiteArchitect.AdminApp.Code
         private void ApplyClass(UserControl control, WebControl newControl, string type)
         {
             string newClass = "";
-            System.Windows.FrameworkElement parent = control.Parent as System.Windows.FrameworkElement;
-            var parentControlWidth = parent.ActualWidth;
-            var colsize = (parentControlWidth / control.ActualWidth)/12;
-            if (colsize < 12)
+            if (type != "Row")
             {
-                newClass += "col-md-" + colsize.ToString()+" ";
+                var columnSize = ControlHelper.GetControlSize(control);
+                if (columnSize <= 12)
+                {
+                    newClass += "col-md-" + columnSize.ToString() + " ";
+                }
             }
-
-
-
             newClass += GenerateCustomClass(newControl.Type.Description());
             switch (type)
             {

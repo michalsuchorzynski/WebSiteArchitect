@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:WebSiteArchitect.AdminApp.Controls.Layout"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-            
+    <Grid Style="{StaticResource Label}">
+        <Label Content="Text"></Label>
     </Grid>
 </UserControl>

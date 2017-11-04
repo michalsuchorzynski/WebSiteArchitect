@@ -8,8 +8,9 @@
         mc:Ignorable="d"
         Title="Layout" Height="1000" Width="1000"
         Closing="Window_Closing">
-    <StackPanel Name="PageLayout">
+    <StackPanel Name="PageLayout" MouseRightButtonDown="PageLayout_MouseRightButtonDown">
         <layout:Row x:Name="Row1"></layout:Row>
         <layout:Row x:Name="Row2"></layout:Row>
     </StackPanel>
+    
 </Window>

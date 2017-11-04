@@ -9,6 +9,10 @@
         <Setter Property="StrokeDashArray" Value="4 4" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
     </Style>
+    <Style x:Key="Label" TargetType="Grid">
+        <Setter Property="Height" Value="50" />
+        <Setter Property="Background" Value="White" />
+    </Style>
     <Style x:Key="ImgButtonStyle" TargetType="Button">
         <Setter Property="BorderBrush" Value="DarkGray" />
         <Setter Property="Background" Value="#EEE" />

@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WebSiteArchitect.AdminApp.Code;
+using Controls = WebSiteArchitect.AdminApp.Controls;
 
 namespace WebSiteArchitect.AdminApp.Controls.Layout
 {
@@ -23,6 +25,16 @@ namespace WebSiteArchitect.AdminApp.Controls.Layout
         public EmptySpace()
         {
             InitializeComponent();
+        }
+
+
+        private void EmptySpace_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            LayoutControler controler = new LayoutControler(null);
+            Controls.Layout.Label label = new Controls.Layout.Label();
+            controler.AddControl(label, sender as UserControl);
+            ControlHelper.SetControlSize(label, 3);
+            ControlHelper.SetControlSize(label, 2);
         }
     }
 }
