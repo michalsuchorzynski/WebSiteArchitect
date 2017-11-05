@@ -4,9 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WebSiteArchitect.AdminApp.Views"
-        mc:Ignorable="d"
-        Title="Controls" Height="300" Width="300">
-    <Grid>
-        
-    </Grid>
+        mc:Ignorable="d"        
+        Title="Controls" Height="600" Width="300">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel>
+            <Button Content="Input"  Height="35" Command="{Binding SelectButtonCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Content="Label"  Height="35" Command="{Binding SelectButtonCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Content="Panel"  Height="35" Command="{Binding SelectButtonCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Content="Select"  Height="35" Command="{Binding SelectButtonCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+        </StackPanel>
+    </ScrollViewer>
 </Window>

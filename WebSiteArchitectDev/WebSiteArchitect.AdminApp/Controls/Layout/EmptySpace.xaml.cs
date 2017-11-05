@@ -30,11 +30,8 @@ namespace WebSiteArchitect.AdminApp.Controls.Layout
 
         private void EmptySpace_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
         {
-            LayoutControler controler = new LayoutControler(null);
-            Controls.Layout.Label label = new Controls.Layout.Label();
-            controler.AddControl(label, sender as UserControl);
-            ControlHelper.SetControlSize(label, 3);
-            ControlHelper.SetControlSize(label, 2);
+            Views.Layout layoutView = (Views.Layout)Window.GetWindow(this);
+            layoutView.layoutVM.AddControl(sender);
         }
     }
 }

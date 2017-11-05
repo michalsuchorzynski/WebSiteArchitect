@@ -55,9 +55,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Code\ControlHelper.cs" />
-    <Compile Include="Code\DelegateCommand.cs" />
     <Compile Include="Code\LayoutControler.cs" />
     <Compile Include="Code\Parser.cs" />
+    <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="Controls\Layout\EmptySpace.xaml.cs">
       <DependentUpon>EmptySpace.xaml</DependentUpon>
     </Compile>
@@ -70,10 +70,9 @@
     <Compile Include="Controls\Layout\Row.xaml.cs">
       <DependentUpon>Row.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Property\ImageButton.xaml.cs">
-      <DependentUpon>ImageButton.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="ViewModels\ControlsViewModel.cs" />
     <Compile Include="ViewModels\LayoutViewModel.cs" />
+    <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="Views\Controls.xaml.cs">
       <DependentUpon>Controls.xaml</DependentUpon>
     </Compile>
@@ -99,10 +98,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\Layout\Row.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\Property\ImageButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

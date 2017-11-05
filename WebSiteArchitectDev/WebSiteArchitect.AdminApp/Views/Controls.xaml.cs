@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WebSiteArchitect.AdminApp.ViewModels;
 
 namespace WebSiteArchitect.AdminApp.Views
 {
@@ -19,9 +20,17 @@ namespace WebSiteArchitect.AdminApp.Views
     /// </summary>
     public partial class Controls : Window
     {
+        public ControlsViewModel controlVM;
+
         public Controls()
         {
             InitializeComponent();
+            
+        }
+        public Controls(MainWindowViewModel mainWindowVM):this()
+        {
+            controlVM = new ControlsViewModel(mainWindowVM);
+            this.DataContext = controlVM;
         }
     }
 }

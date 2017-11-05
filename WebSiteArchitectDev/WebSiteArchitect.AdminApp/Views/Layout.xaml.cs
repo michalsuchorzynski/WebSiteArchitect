@@ -21,22 +21,24 @@ namespace WebSiteArchitect.AdminApp.Views
     /// </summary>
     public partial class Layout : Window
     {
+        public LayoutViewModel layoutVM;
+        private MainWindowViewModel mainWindowVM;
+
         public Layout()
         {
             InitializeComponent();
+        }
+        public Layout(MainWindowViewModel mainWindowVM):this()
+        {
+            StackPanel page = (StackPanel)this.FindName("PageLayout");
+            layoutVM = new LayoutViewModel(mainWindowVM, page);
+            this.mainWindowVM = mainWindowVM;
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             StackPanel Page = (StackPanel)this.FindName("PageLayout");
             Parser parser = new Parser(Page);
-        }
-
-        private void PageLayout_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            StackPanel Page = (StackPanel)this.FindName("PageLayout");
-            LayoutControler controler = new LayoutControler(Page);
-            controler.AddRowToPage();
-        }
+        }               
     }
 }
