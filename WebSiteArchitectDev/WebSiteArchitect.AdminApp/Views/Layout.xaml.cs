@@ -33,12 +33,13 @@ namespace WebSiteArchitect.AdminApp.Views
             StackPanel page = (StackPanel)this.FindName("PageLayout");
             layoutVM = new LayoutViewModel(mainWindowVM, page);
             this.mainWindowVM = mainWindowVM;
+            this.DataContext = layoutVM.Controler;
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             StackPanel Page = (StackPanel)this.FindName("PageLayout");
-            Parser parser = new Parser(Page);
+            Translator parser = new Translator(Page);
         }               
     }
 }

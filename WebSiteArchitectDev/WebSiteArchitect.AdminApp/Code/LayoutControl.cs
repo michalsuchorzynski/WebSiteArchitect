@@ -9,19 +9,23 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using WebSiteArchitect.WebModel.Enums;
 
+
 namespace WebSiteArchitect.AdminApp.Code
 {
     public class LayoutControl : INotifyPropertyChanged
     {
         private UserControl _control;
-        public event PropertyChangedEventHandler PropertyChanged;
+       
 
         private WebControlType _controlType;
         private string _controlTypeName;
         private int _size;
+        private object _content;
         private Grid _parentControl;
         private int _childIndex;
         private string _value;
+        private Color? _backgroundColor;
+        private Color? _fontColor;
 
         public UserControl Control
         {
@@ -67,6 +71,17 @@ namespace WebSiteArchitect.AdminApp.Code
                 OnPropertyChanged("Size");
             }
         }
+        public object Content
+        {
+            get
+            {
+                return _content;
+            }
+            set
+            {
+                _content = value;
+            }
+        }
         public Grid ParentControl
         {
             get
@@ -100,7 +115,7 @@ namespace WebSiteArchitect.AdminApp.Code
                 switch (this.ControlType)
                 {
                     case WebControlType.label:
-                        (((_control.Content as Grid).Children[0] as Label).Content as AccessText).Text = value;
+                        (_content as AccessText).Text = value;
                         break;
                         
                 }
@@ -108,9 +123,76 @@ namespace WebSiteArchitect.AdminApp.Code
                 OnPropertyChanged("Value");
             }
         }
+        public Color? BackgroundColor
+        {
+            get
+            {
+                return _backgroundColor;
+            }
+            set
+            {
+                var converter = new System.Windows.Media.BrushConverter();
+                switch (this.ControlTypeName)
+                {
+                    case "emptySpace":
+                        break;
+                    case "input":
+                        (_content as TextBox).Background = (Brush)converter.ConvertFromString(value.ToString());
+                        break;
+                    case "label":
+                        (_control.Content as Grid).Background = (Brush)converter.ConvertFromString(value.ToString());
+                        break;
+                    case "panel":
+                        break;
+                    case "select":
+                        (_content as ComboBox).Background = (Brush)converter.ConvertFromString(value.ToString());
+                        break;
+                    case "row":
+                        break;
+                    default:
+                        break;
+                }
+                _backgroundColor = value;
+                OnPropertyChanged("BackgroundColor");
+            }
+        }
+        public Color? FontColor
+        {
+            get
+            {
+                return _fontColor;
+            }
+            set
+            {
+                var converter = new System.Windows.Media.BrushConverter();
+                switch (this.ControlTypeName)
+                {
+                    case "emptySpace":
+                        break;
+                    case "input":
+                        (_content as TextBox).Foreground = (Brush)converter.ConvertFromString(value.ToString());
+                        break;
+                    case "label":
+                        (_content as AccessText).Foreground = (Brush)converter.ConvertFromString(value.ToString());
+                        break;
+                    case "panel":
+                        break;
+                    case "select":
+                        (_content as ComboBox).Foreground = (Brush)converter.ConvertFromString(value.ToString());
+                        break;
+                    case "row":
+                        break;
+                    default:
+                        break;
+                }
+                _fontColor = value;
+                OnPropertyChanged("FontColor");
+            }
+        }
 
         public LayoutControl()
         {
+           
         }
         public LayoutControl(UserControl control):this()
         {
@@ -151,45 +233,46 @@ namespace WebSiteArchitect.AdminApp.Code
                     _parentControl.ColumnDefinitions[i].Width = new GridLength(1, GridUnitType.Star);
                 }
             }
-            //this.Size = newSize;
             return true;
-        }
-
-        
-
-
-        public void ChangeControlProperty(PropertyType type, object value)
-        {
-            var controlToChange = (Label)(_control.Content as Grid).Children[0];
-            switch (type)
-            {
-                case PropertyType.backgroundColor:
-                    controlToChange.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom(value));
-                    break;
-                case PropertyType.color:
-                    controlToChange.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom(value));
-                    break;
-            }
-        }
-        
+        }      
+                      
         private void ReadControlPropertFromXaml()
         {
+            SolidColorBrush newBrush;
             switch (_control.GetType().FullName.Replace("WebSiteArchitect.AdminApp.Controls.Layout.", "").ToLower())
             {
                 case "emptySpace":
                     this._controlType = WebControlType.emptySpace;
+                    _controlType = WebControlType.label;
+                    _content = ((_control.Content as Grid).Children[0] as Label).Content;                    
                     break;
                 case "input":
                     _controlType = WebControlType.input;
+                    _content = ((_control.Content as Grid).Children[0] as TextBox);
+                    newBrush = (SolidColorBrush)((_content as TextBox).Background);
+                    _backgroundColor = newBrush.Color;
+                    newBrush = (SolidColorBrush)((_content as TextBox).Foreground);
+                    _fontColor = newBrush.Color;
                     break;
                 case "label":
                     _controlType = WebControlType.label;
+                    _content = ((_control.Content as Grid).Children[0] as Label).Content;
+                    newBrush = (SolidColorBrush)((_control.Content as Grid).Background);
+                    _backgroundColor = newBrush.Color;
+                    newBrush = (SolidColorBrush)((_content as AccessText).Foreground);
+                    _fontColor = newBrush.Color;
+                    this.Value = (_content as AccessText).Text.ToString();
                     break;
                 case "panel":
-                    _controlType = WebControlType.panel;
+                    _controlType = WebControlType.panel;                    
                     break;
                 case "select":
                     _controlType = WebControlType.select;
+                    _content = ((_control.Content as Grid).Children[0] as ComboBox);
+                    newBrush = (SolidColorBrush)((_content as ComboBox).Background);
+                    _backgroundColor = newBrush.Color;
+                    newBrush = (SolidColorBrush)((_content as ComboBox).Foreground);
+                    _fontColor = newBrush.Color;
                     break;
                 case "row":
                     _controlType = WebControlType.row;
@@ -207,19 +290,12 @@ namespace WebSiteArchitect.AdminApp.Code
             {
                 _childIndex = _parentControl.Children.IndexOf(_control);
                 _size = Convert.ToInt32(_parentControl.ColumnDefinitions[_childIndex].Width.Value);
-            }
-            switch (this.ControlType)
-            {
-                case WebControlType.label:
-                    this.Value = (((_control.Content as Grid).Children[0] as Label).Content as AccessText).Text.ToString();
-                    break;
-
-            }
+            }           
             
 
         }
 
-
+        public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string name)
         {
             PropertyChangedEventHandler handler = PropertyChanged;

@@ -17,15 +17,14 @@ using WebSiteArchitect.AdminApp.Code;
 namespace WebSiteArchitect.AdminApp.Controls.Layout
 {
     /// <summary>
-    /// Interaction logic for Label.xaml
+    /// Interaction logic for Select.xaml
     /// </summary>
-    public partial class Label : UserControl
+    public partial class Select : UserControl
     {
-        public Label()
+        public Select()
         {
             InitializeComponent();
-        }        
-
+        }
         private void LayoutControl_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
         {
 
@@ -34,7 +33,6 @@ namespace WebSiteArchitect.AdminApp.Controls.Layout
         {
             Views.Layout layoutView = (Views.Layout)Window.GetWindow(this);
             layoutView.layoutVM.LayoutControl_MouseLeftButtonDown(sender);
-
         }
     }
 }

@@ -15,10 +15,38 @@ namespace WebSiteArchitect.AdminApp.ViewModels
         private LayoutControler _controler;
         private MainWindowViewModel _mainWindowVM;
 
+        public LayoutControler Controler
+        {
+            get
+            {
+                return _controler;
+            }
+            set
+            {
+                _controler = value;
+            }
+        }
+
         public LayoutViewModel(MainWindowViewModel mainWindowVM, StackPanel page)
         {
             _mainWindowVM = mainWindowVM;
-            _controler = new LayoutControler(page);
+            _controler = new LayoutControler(page, mainWindowVM);
+        }
+
+        public void LayoutControl_MouseLeftButtonDown(object sender)
+        {
+            switch (_controler.EditMode)
+            {
+                case 0:
+                    AddControl(sender);
+                    break;
+                case 1:
+                    DeleteControl(sender);
+                    break;
+                case 4:
+                    _mainWindowVM.PropertWindow.propertyVM.SelectedControl = new LayoutControl(sender as UserControl);
+                    break;
+            }
         }
         public void AddControl(object sender)
         {
@@ -31,7 +59,7 @@ namespace WebSiteArchitect.AdminApp.ViewModels
             switch (typeOfNewControl)
             {
                 case "Input":
-                    //controlToAdd = new Input();
+                    controlToAdd = new LayoutControls.Input();
                     break;
                 case "Label":
                     controlToAdd = new LayoutControls.Label();
@@ -40,7 +68,7 @@ namespace WebSiteArchitect.AdminApp.ViewModels
                     controlToAdd = new LayoutControls.Panel();
                     break;
                 case "Select":
-                    //controlToAdd = new Select();
+                    controlToAdd = new LayoutControls.Select();
                     break;
                 default:
                     controlToAdd = new LayoutControls.EmptySpace();

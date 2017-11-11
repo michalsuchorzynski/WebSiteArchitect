@@ -1,20 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using WebSiteArchitect.AdminApp.Controls.Layout;
+using WebSiteArchitect.AdminApp.ViewModels;
 using WebSiteArchitect.WebModel;
 using WebSiteArchitect.WebModel.Base;
 using WebSiteArchitect.WebModel.Controls;
 
 namespace WebSiteArchitect.AdminApp.Code
 {
-    public class LayoutControler
+    public class LayoutControler : INotifyPropertyChanged
     {
+        private MainWindowViewModel _mainWindowVM;
         private LayoutControl _selectedControl;
         private StackPanel _xamlPage;
+        private int _editMode;
+
         public StackPanel XamlPage
         {
             get
@@ -26,10 +31,59 @@ namespace WebSiteArchitect.AdminApp.Code
                 _xamlPage = value;
             }
         }
-        
-        public LayoutControler(StackPanel xamlPage)
+        public int EditMode
+        {
+            get
+            {
+                return _editMode;
+            }
+            set
+            {
+                _editMode = value;
+                OnEditModeChange();
+                OnPropertyChanged("EditMode");
+            }
+        }
+
+        public LayoutControler(StackPanel xamlPage,MainWindowViewModel mainWindowVM)
         {
             this.XamlPage = xamlPage;
+            this._mainWindowVM = mainWindowVM;
+            this.EditMode = -1;
+        }
+
+        public void OnEditModeChange()
+        {
+            switch (_editMode)
+            {
+                case -1:
+                    if (_mainWindowVM.ControlsWindow != null)
+                        _mainWindowVM.ControlsWindow.Hide();
+                    if (_mainWindowVM.PropertWindow != null)
+                        _mainWindowVM.PropertWindow.Hide();
+                    break;
+                case 0:
+                    _mainWindowVM.ControlsWindow.Show();
+                    _mainWindowVM.PropertWindow.Hide();
+                    break;
+                case 1:
+                    _mainWindowVM.ControlsWindow.Hide();
+                    _mainWindowVM.PropertWindow.Hide();
+                    break;
+                case 2:
+                    _mainWindowVM.ControlsWindow.Hide();
+                    _mainWindowVM.PropertWindow.Hide();
+                    AddRowToPage();
+                    break;
+                case 3:
+                    _mainWindowVM.ControlsWindow.Hide();
+                    _mainWindowVM.PropertWindow.Hide();
+                    break;
+                case 4:
+                    _mainWindowVM.ControlsWindow.Hide();
+                    _mainWindowVM.PropertWindow.Show();
+                    break;
+            }
         }
 
         public void AddRowToPage()
@@ -86,6 +140,16 @@ namespace WebSiteArchitect.AdminApp.Code
         {
             AddControl(newPosition, oldPosition);
             DeleteControl(oldPosition);
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged(string name)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(name));
+            }
         }
     }
 }

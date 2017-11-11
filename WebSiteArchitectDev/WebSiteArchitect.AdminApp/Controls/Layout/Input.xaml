@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="WebSiteArchitect.AdminApp.Controls.Layout.Label"
+﻿<UserControl x:Class="WebSiteArchitect.AdminApp.Controls.Layout.Input"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -8,11 +8,10 @@
              d:DesignHeight="300" d:DesignWidth="300"
              MouseRightButtonDown="LayoutControl_MouseRightButtonDown"
              MouseLeftButtonDown="LayoutControl_MouseLeftButtonDown">
-    <Grid Style="{StaticResource Label}">
-        <Label>
-            <Label.Content>
-                <AccessText TextWrapping="Wrap" Text="Domyślny tekst"/>
-            </Label.Content>
-        </Label>
+    <Grid>
+        <TextBox IsEnabled="False" Margin="10,10,10,10" Text="Domyślny tekst">
+            
+        </TextBox>
+            
     </Grid>
 </UserControl>

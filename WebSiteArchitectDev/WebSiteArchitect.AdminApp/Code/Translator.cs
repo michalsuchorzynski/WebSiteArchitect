@@ -11,7 +11,7 @@ using WebSiteArchitect.WebModel.Controls;
 
 namespace WebSiteArchitect.AdminApp.Code
 {
-    public class Parser
+    public class Translator
     {
         private StackPanel _xamlPage;
         private WebPage _page;
@@ -50,7 +50,7 @@ namespace WebSiteArchitect.AdminApp.Code
                 _currentControl = value;
             }
         }
-        public Parser(StackPanel xamlPage)
+        public Translator(StackPanel xamlPage)
         {
             this.XamlPage = xamlPage;
             var mainPanel = xamlPage.Children[0];
@@ -80,7 +80,7 @@ namespace WebSiteArchitect.AdminApp.Code
                     break;
                 case "label":
                     newControl = new WebSiteArchitect.WebModel.Controls.Label();
-                    newControl.Value = "text";
+                    newControl.Value = _currentControl.Value;
                     break;
                 case "panel":
                 case "row":
@@ -92,6 +92,14 @@ namespace WebSiteArchitect.AdminApp.Code
                         newControl.ChildrenControls.Add(GetSimpleControlFromXaml());
                         _currentControl = tempCurrentControl;
                     }
+                    break;
+                case "input":
+                    newControl = new WebSiteArchitect.WebModel.Controls.Input();
+                    newControl.Value = _currentControl.Value;
+                    break;
+                case "select":
+                    newControl = new WebSiteArchitect.WebModel.Controls.Select();
+                    newControl.Value = _currentControl.Value;
                     break;
                 default:
                     return null;
@@ -124,6 +132,7 @@ namespace WebSiteArchitect.AdminApp.Code
 
         private string GenerateCustomClass(string className)
         {
+            className = className[0].ToString().ToUpper() + className.Substring(1);
             return "wsa" + className;
         }
     }

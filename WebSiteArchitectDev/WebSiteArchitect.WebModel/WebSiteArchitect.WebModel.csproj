@@ -51,7 +51,6 @@
     <Compile Include="Controls\Panel.cs" />
     <Compile Include="Controls\Select.cs" />
     <Compile Include="Creator\Parser.cs" />
-    <Compile Include="Enums\PropertyType.cs" />
     <Compile Include="Enums\WebControlType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Base\WebControl.cs" />

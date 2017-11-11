@@ -92,8 +92,8 @@ namespace WebSiteArchitect.AdminApp.ViewModels
             ControlsWindow = new Views.Controls(this);
             PropertWindow = new Views.Property(this);
             LayoutWindow.Show();
-            ControlsWindow.Show();
-            PropertWindow.Show();
+            ControlsWindow.Hide();
+            PropertWindow.Hide();
         }
         public void ChangeCanExecute(object obj)
         {
