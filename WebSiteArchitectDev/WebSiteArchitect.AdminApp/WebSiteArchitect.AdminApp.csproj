@@ -54,7 +54,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Code\ControlHelper.cs" />
+    <Compile Include="Code\LayoutControl.cs" />
     <Compile Include="Code\LayoutControler.cs" />
     <Compile Include="Code\Parser.cs" />
     <Compile Include="Commands\RelayCommand.cs" />
@@ -73,6 +73,7 @@
     <Compile Include="ViewModels\ControlsViewModel.cs" />
     <Compile Include="ViewModels\LayoutViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
+    <Compile Include="ViewModels\PropertyViewModel.cs" />
     <Compile Include="Views\Controls.xaml.cs">
       <DependentUpon>Controls.xaml</DependentUpon>
     </Compile>

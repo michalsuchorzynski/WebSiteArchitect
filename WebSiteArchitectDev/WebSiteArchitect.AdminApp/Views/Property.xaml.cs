@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WebSiteArchitect.AdminApp.ViewModels;
+
 
 namespace WebSiteArchitect.AdminApp.Views
 {
@@ -19,9 +21,15 @@ namespace WebSiteArchitect.AdminApp.Views
     /// </summary>
     public partial class Property : Window
     {
+        public PropertyViewModel propertyVM;
         public Property()
         {
             InitializeComponent();
         }
+        public Property(MainWindowViewModel mainWindowVM) : this()
+        {
+            propertyVM = new PropertyViewModel(mainWindowVM);
+        }
+
     }
 }

@@ -22,7 +22,7 @@ namespace WebSiteArchitect.AdminApp.Views
     public partial class Layout : Window
     {
         public LayoutViewModel layoutVM;
-        private MainWindowViewModel mainWindowVM;
+        public MainWindowViewModel mainWindowVM;
 
         public Layout()
         {

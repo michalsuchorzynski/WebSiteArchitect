@@ -15,6 +15,8 @@ namespace WebSiteArchitect.AdminApp.Code
     {
         private StackPanel _xamlPage;
         private WebPage _page;
+        private LayoutControl _currentControl;
+
         public StackPanel XamlPage
         {
             get
@@ -37,6 +39,17 @@ namespace WebSiteArchitect.AdminApp.Code
                 _page = value;
             }
         }
+        public LayoutControl CurrentControl
+        {
+            get
+            {
+                return _currentControl;
+            }
+            set
+            {
+                _currentControl = value;
+            }
+        }
         public Parser(StackPanel xamlPage)
         {
             this.XamlPage = xamlPage;
@@ -49,56 +62,60 @@ namespace WebSiteArchitect.AdminApp.Code
             
             foreach (UserControl childControl in XamlPage.Children)
             {
-                Page.Controls.Add(GetSimpleControlFromXaml(childControl));
+                _currentControl = new LayoutControl(childControl);
+                Page.Controls.Add(GetSimpleControlFromXaml());
             }
             Settings.ConvertToJson(Page, "C:\\Users\\Michał\\Desktop\\Prac" +
                 "a Inzynierska\\Test\\Json.txt");
             return Page;
         }
-        public WebControl GetSimpleControlFromXaml(UserControl control)
+        public WebControl GetSimpleControlFromXaml()
         {
-            WebControl newControl; ;
-            var type = ControlHelper.GetControlType(control);
-            switch (type)
+            WebControl newControl;
+            
+            switch (_currentControl.ControlTypeName)
             {
-                case "EmptySpace":
+                case "emptyspace":
                     newControl = new WebSiteArchitect.WebModel.Controls.EmptySpace();
                     break;
-                case "Label":
+                case "label":
                     newControl = new WebSiteArchitect.WebModel.Controls.Label();
                     newControl.Value = "text";
                     break;
-                case "Panel":
-                case "Row":
+                case "panel":
+                case "row":
                     newControl = new WebSiteArchitect.WebModel.Controls.Panel();
-                    foreach (UserControl childControl in ((System.Windows.Controls.Panel)control.Content).Children)
+                    foreach (UserControl childControl in ((System.Windows.Controls.Panel)_currentControl.Control.Content).Children)
                     {
-                        newControl.ChildrenControls.Add(GetSimpleControlFromXaml(childControl));
+                        var tempCurrentControl = _currentControl;
+                        _currentControl = new LayoutControl(childControl);
+                        newControl.ChildrenControls.Add(GetSimpleControlFromXaml());
+                        _currentControl = tempCurrentControl;
                     }
                     break;
                 default:
                     return null;
             }
-            ApplyClass(control, newControl, type);
+            ApplyClass(newControl);
             return newControl;
         }
 
-        private void ApplyClass(UserControl control, WebControl newControl, string type)
+        private void ApplyClass(WebControl newControl)
         {
             string newClass = "";
-            if (type != "Row")
+            if (_currentControl.ControlTypeName != "row")
             {
-                var columnSize = ControlHelper.GetControlSize(control);
+                var columnSize = _currentControl.Size;
                 if (columnSize <= 12)
                 {
                     newClass += "col-md-" + columnSize.ToString() + " ";
                 }
             }
             newClass += GenerateCustomClass(newControl.Type.Description());
-            switch (type)
+            switch (_currentControl.ControlTypeName)
             {
-                case "Row":
-                    newClass = type.ToLower();
+                case "row":
+                    newClass = _currentControl.ControlTypeName;
                     break;
             }
             newControl.ClassName = newClass;

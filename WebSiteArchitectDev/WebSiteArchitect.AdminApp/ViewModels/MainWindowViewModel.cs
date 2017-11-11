@@ -14,6 +14,7 @@ namespace WebSiteArchitect.AdminApp.ViewModels
     {
         private Views.Layout _layoutWindow;
         private Views.Controls _controlsWindow;
+        private Views.Property _propertyWindow;
 
         private ICommand _newProjectCommand;
         private bool _canExecute = true;
@@ -38,6 +39,17 @@ namespace WebSiteArchitect.AdminApp.ViewModels
             set
             {
                 this._controlsWindow = value;
+            }
+        }
+        public Views.Property PropertWindow
+        {
+            get
+            {
+                return _propertyWindow;
+            }
+            set
+            {
+                _propertyWindow = value;
             }
         }
 
@@ -78,8 +90,10 @@ namespace WebSiteArchitect.AdminApp.ViewModels
         {
             LayoutWindow = new Views.Layout(this);
             ControlsWindow = new Views.Controls(this);
+            PropertWindow = new Views.Property(this);
             LayoutWindow.Show();
             ControlsWindow.Show();
+            PropertWindow.Show();
         }
         public void ChangeCanExecute(object obj)
         {

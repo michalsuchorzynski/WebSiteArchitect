@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WebSiteArchitect.AdminApp.Code;
 
 namespace WebSiteArchitect.AdminApp.Controls.Layout
 {
@@ -23,6 +24,16 @@ namespace WebSiteArchitect.AdminApp.Controls.Layout
         public Label()
         {
             InitializeComponent();
+        }        
+
+        private void LayoutControl_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+        private void LayoutControl_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Views.Layout layoutView = (Views.Layout)Window.GetWindow(this);
+            layoutView.mainWindowVM.PropertWindow.propertyVM.SelectedControl = new LayoutControl(sender as UserControl);
         }
     }
 }

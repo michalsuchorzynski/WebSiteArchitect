@@ -27,11 +27,15 @@ namespace WebSiteArchitect.AdminApp.Controls.Layout
             InitializeComponent();
         }
 
-
-        private void EmptySpace_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        private void LayoutControl_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
         {
             Views.Layout layoutView = (Views.Layout)Window.GetWindow(this);
             layoutView.layoutVM.AddControl(sender);
+        }
+        private void LayoutControl_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Views.Layout layoutView = (Views.Layout)Window.GetWindow(this);
+            layoutView.mainWindowVM.PropertWindow.propertyVM.SelectedControl = new LayoutControl(sender as UserControl);
         }
     }
 }

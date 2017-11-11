@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using WebSiteArchitect.AdminApp.Code;
+using WebSiteArchitect.WebModel.Enums;
 using LayoutControls = WebSiteArchitect.AdminApp.Controls.Layout;
 
 namespace WebSiteArchitect.AdminApp.ViewModels
@@ -46,6 +47,11 @@ namespace WebSiteArchitect.AdminApp.ViewModels
                     break;
             }
             _controler.AddControl(controlToAdd as UserControl, sender as UserControl);
+        }
+
+        public void DeleteControl(object sender)
+        {
+            _controler.DeleteControl(sender as UserControl);
         }
     }
 }

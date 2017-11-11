@@ -6,7 +6,8 @@
              xmlns:local="clr-namespace:WebSiteArchitect.AdminApp.Controls.Layout"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300"
-             MouseRightButtonDown="EmptySpace_MouseRightButtonDown">
+             MouseRightButtonDown="LayoutControl_MouseRightButtonDown"
+             MouseLeftButtonDown="LayoutControl_MouseLeftButtonDown">
     <Rectangle Style="{StaticResource EmptySpaceStyle}">         
     </Rectangle>
 </UserControl>

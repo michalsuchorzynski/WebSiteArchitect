@@ -22,7 +22,10 @@ namespace WebSiteArchitect.WebModel.Enums
         select,
 
         [Description("Panel")]
-        panel
+        panel,
+
+        [Description("Row")]
+        row
 
     }
 }

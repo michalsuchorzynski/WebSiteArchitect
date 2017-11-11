@@ -5,10 +5,42 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WebSiteArchitect.AdminApp.Views"
         mc:Ignorable="d"
-        ResizeMode="NoResize"
-        Title="Property" Height="600" Width="300">
-    <ScrollViewer VerticalScrollBarVisibility="Auto">
-        <StackPanel>
-        </StackPanel>
-    </ScrollViewer>
+        Title="Property" Height="600" Width="600">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width ="1*"></ColumnDefinition>
+            <ColumnDefinition Width ="2*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="300"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Background="AliceBlue"></Grid>
+            <Grid Grid.Row="1" Background="Aqua">
+                <ListBox  ItemsSource="{Binding ControlsType}"></ListBox>
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition Height="20"></RowDefinition>
+                <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition Height="20"></RowDefinition>
+                <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition Height="20"></RowDefinition>
+                <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition Height="20"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" Content="Wartość" ></Label>
+            <TextBox Grid.Row="1" Text="{Binding Value, Mode=TwoWay}"></TextBox>
+            <Label Grid.Row="2" Content="Rozmiar" ></Label>
+            <TextBox Grid.Row="3" Text="{Binding Size, Mode=TwoWay}"></TextBox>
+            <Label Grid.Row="4" Content="Label" ></Label>
+            <TextBox Grid.Row="5"></TextBox>
+            
+        </Grid>
+
+    </Grid>
 </Window>

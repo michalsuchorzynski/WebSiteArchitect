@@ -13,6 +13,7 @@ namespace WebSiteArchitect.AdminApp.Code
 {
     public class LayoutControler
     {
+        private LayoutControl _selectedControl;
         private StackPanel _xamlPage;
         public StackPanel XamlPage
         {
@@ -56,17 +57,18 @@ namespace WebSiteArchitect.AdminApp.Code
             Grid.SetColumn(toAdd, controlIndexOf);
         }
 
-        public bool DeleteControl(UserControl selected)
+        public bool DeleteControl(UserControl notSelected = null)
         {
-            var type = ControlHelper.GetControlType(selected);
-            switch (type)
+            if (notSelected != null)
+                _selectedControl = new LayoutControl(notSelected);
+            switch (_selectedControl.ControlTypeName)
             {
                 case "EmptySpace":
                     return false;
                 case "Row":
-                    foreach(UserControl childControl in ((System.Windows.Controls.Panel)selected.Content).Children)
+                    foreach(UserControl childControl in ((System.Windows.Controls.Panel)_selectedControl.Control.Content).Children)
                     {
-                        if (ControlHelper.GetControlType(childControl) != "EmptySpace")
+                        if (_selectedControl.ControlTypeName != "EmptySpace")
                         {
                             return false;
                         }
@@ -75,8 +77,8 @@ namespace WebSiteArchitect.AdminApp.Code
                 case "Panel":
                     break;
             }
-            ControlHelper.SetControlSize(selected, 1);
-            AddControl(new Controls.Layout.EmptySpace(), selected);
+            _selectedControl.SetControlSize(1);
+            AddControl(new Controls.Layout.EmptySpace(), _selectedControl.Control);
             return true;
         }
 
