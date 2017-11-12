@@ -1,5 +1,7 @@
-﻿.wsaEmptySpace{
-    height:50px;
-    background-color:aqua;
-    border:1px solid black;
+﻿col-md-0{
+    display:none!important;
+} 
+
+.wsaEmptySpace {
+    height: 50px;
 }

@@ -114,10 +114,22 @@ namespace WebSiteArchitect.AdminApp.Code
             {
                 switch (this.ControlType)
                 {
+                    case WebControlType.emptySpace:
+                        break;
+                    case WebControlType.input:
+                        (_content as TextBox).Text = value;
+                        break;
                     case WebControlType.label:
                         (_content as AccessText).Text = value;
                         break;
-                        
+                    case WebControlType.panel:
+                        break;
+                    case WebControlType.select:
+                        break;
+                    case WebControlType.row:
+                        break;
+                    default:
+                        break;
                 }
                 _value = value;
                 OnPropertyChanged("Value");
@@ -132,22 +144,22 @@ namespace WebSiteArchitect.AdminApp.Code
             set
             {
                 var converter = new System.Windows.Media.BrushConverter();
-                switch (this.ControlTypeName)
+                switch (this.ControlType)
                 {
-                    case "emptySpace":
+                    case WebControlType.emptySpace:
                         break;
-                    case "input":
+                    case WebControlType.input:
                         (_content as TextBox).Background = (Brush)converter.ConvertFromString(value.ToString());
                         break;
-                    case "label":
+                    case WebControlType.label:
                         (_control.Content as Grid).Background = (Brush)converter.ConvertFromString(value.ToString());
                         break;
-                    case "panel":
+                    case WebControlType.panel:
                         break;
-                    case "select":
+                    case WebControlType.select:
                         (_content as ComboBox).Background = (Brush)converter.ConvertFromString(value.ToString());
                         break;
-                    case "row":
+                    case WebControlType.row:
                         break;
                     default:
                         break;
@@ -165,22 +177,22 @@ namespace WebSiteArchitect.AdminApp.Code
             set
             {
                 var converter = new System.Windows.Media.BrushConverter();
-                switch (this.ControlTypeName)
+                switch (this.ControlType)
                 {
-                    case "emptySpace":
+                    case WebControlType.emptySpace:
                         break;
-                    case "input":
+                    case WebControlType.input:
                         (_content as TextBox).Foreground = (Brush)converter.ConvertFromString(value.ToString());
                         break;
-                    case "label":
+                    case WebControlType.label:
                         (_content as AccessText).Foreground = (Brush)converter.ConvertFromString(value.ToString());
                         break;
-                    case "panel":
+                    case WebControlType.panel:
                         break;
-                    case "select":
+                    case WebControlType.select:
                         (_content as ComboBox).Foreground = (Brush)converter.ConvertFromString(value.ToString());
                         break;
-                    case "row":
+                    case WebControlType.row:
                         break;
                     default:
                         break;
@@ -253,6 +265,7 @@ namespace WebSiteArchitect.AdminApp.Code
                     _backgroundColor = newBrush.Color;
                     newBrush = (SolidColorBrush)((_content as TextBox).Foreground);
                     _fontColor = newBrush.Color;
+                    this.Value = (_content as TextBox).Text.ToString();
                     break;
                 case "label":
                     _controlType = WebControlType.label;

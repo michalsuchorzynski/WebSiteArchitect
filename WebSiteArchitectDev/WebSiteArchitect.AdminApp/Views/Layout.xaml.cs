@@ -35,11 +35,5 @@ namespace WebSiteArchitect.AdminApp.Views
             this.mainWindowVM = mainWindowVM;
             this.DataContext = layoutVM.Controler;
         }
-
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            StackPanel Page = (StackPanel)this.FindName("PageLayout");
-            Translator parser = new Translator(Page);
-        }               
     }
 }

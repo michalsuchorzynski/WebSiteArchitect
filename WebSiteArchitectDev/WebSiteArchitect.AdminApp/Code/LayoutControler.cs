@@ -83,6 +83,12 @@ namespace WebSiteArchitect.AdminApp.Code
                     _mainWindowVM.ControlsWindow.Hide();
                     _mainWindowVM.PropertWindow.Show();
                     break;
+                case 5:
+                    _mainWindowVM.ControlsWindow.Hide();
+                    _mainWindowVM.PropertWindow.Hide();
+                    StackPanel Page = (StackPanel)_mainWindowVM.LayoutWindow.FindName("PageLayout");
+                    Translator parser = new Translator(Page);
+                    break;
             }
         }
 

@@ -50,6 +50,7 @@ namespace WebSiteArchitect.AdminApp.Code
                 _currentControl = value;
             }
         }
+
         public Translator(StackPanel xamlPage)
         {
             this.XamlPage = xamlPage;
@@ -80,6 +81,7 @@ namespace WebSiteArchitect.AdminApp.Code
                     break;
                 case "label":
                     newControl = new WebSiteArchitect.WebModel.Controls.Label();
+                    newControl.Name = _currentControl.ControlTypeName + ControlCounter.LabelCount.ToString();
                     newControl.Value = _currentControl.Value;
                     break;
                 case "panel":
@@ -95,10 +97,13 @@ namespace WebSiteArchitect.AdminApp.Code
                     break;
                 case "input":
                     newControl = new WebSiteArchitect.WebModel.Controls.Input();
+                    newControl.Name = _currentControl.ControlTypeName + ControlCounter.InputCount.ToString();
                     newControl.Value = _currentControl.Value;
+
                     break;
                 case "select":
                     newControl = new WebSiteArchitect.WebModel.Controls.Select();
+                    newControl.Name = _currentControl.ControlTypeName + ControlCounter.SelectCount.ToString();
                     newControl.Value = _currentControl.Value;
                     break;
                 default:

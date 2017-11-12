@@ -8,18 +8,49 @@
         Title="WebSiteArchitect"
         
         >
-    <DockPanel>
-        <Menu DockPanel.Dock="Top">
-            <MenuItem Header="New" Command="{Binding NewProjectCommand}">
-            </MenuItem>
-            <MenuItem Header="Edit">
-            </MenuItem>
-            <MenuItem Header="View">
-            </MenuItem>
-            <MenuItem Header="Project">
-            </MenuItem>
-        </Menu>
-        <TextBox AcceptsReturn="True" />
-    </DockPanel>
-    
+    <Grid>
+        <DockPanel>
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="New" Command="{Binding NewProjectCommand}">
+                </MenuItem>
+                <MenuItem Header="Edit">
+                </MenuItem>
+                <MenuItem Header="View">
+                </MenuItem>
+                <MenuItem Header="Project">
+                </MenuItem>
+            </Menu>
+            <TextBox AcceptsReturn="True" />
+        </DockPanel>
+        <Grid Margin="0,20,0,0 ">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Expander IsExpanded="True" Header="Zawartość systemu">
+                    <TreeView  x:Name="WebSiteTreeView" SelectedItemChanged="TreeView_SelectedItemChanged" >
+                        <TreeViewItem Header="WebSite1">
+                            <TreeViewItem Header="WebPages1">
+                                <TreeViewItem Header="WebPage"></TreeViewItem>
+                                <TreeViewItem Header="WebPage"></TreeViewItem>
+                            </TreeViewItem>
+                            <TreeViewItem Header="Menu1"></TreeViewItem>
+                        </TreeViewItem>
+                        <TreeViewItem Header="WebSite2">
+                            <TreeViewItem Header="WebPages2">
+                                <TreeViewItem Header="WebPage"></TreeViewItem>
+                                <TreeViewItem Header="WebPage"></TreeViewItem>
+                            </TreeViewItem>
+                            <TreeViewItem Header="Menu2"></TreeViewItem>
+                        </TreeViewItem>
+                    </TreeView>
+                </Expander>
+            </Grid>
+                
+            <Grid Grid.Column="1">
+                
+            </Grid>
+        </Grid>
+    </Grid>
 </Window>

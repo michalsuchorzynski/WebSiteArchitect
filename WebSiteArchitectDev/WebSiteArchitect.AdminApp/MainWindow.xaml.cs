@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WebSiteArchitect.AdminApp.ViewModels;
+using WebSiteArchitect.WebModel.Helpers;
 
 namespace WebSiteArchitect.AdminApp
 {
@@ -21,12 +22,31 @@ namespace WebSiteArchitect.AdminApp
     /// </summary>
     public partial class MainWindow : Window
     {
-       
+        private MainWindowViewModel _mainWindowVM;
+
+
+        public MainWindowViewModel mainWindowVM
+        {
+            get
+            {
+                return _mainWindowVM;
+            }
+            set
+            {
+                _mainWindowVM = value;
+            }
+
+        }
         public MainWindow()
         {
             InitializeComponent();
-            this.DataContext = new MainWindowViewModel();
+            this.mainWindowVM = new MainWindowViewModel();
+            this.DataContext = mainWindowVM;
         }
-       
+
+        private void TreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        {
+            mainWindowVM.SelectedPagePath = new PathHelper(this.WebSiteTreeView.SelectedItem as TreeViewItem);
+        }
     }
 }

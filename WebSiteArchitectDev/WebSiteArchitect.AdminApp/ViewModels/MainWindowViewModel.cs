@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using WebSiteArchitect.AdminApp.Commands;
+using WebSiteArchitect.WebModel.Helpers;
 using Views = WebSiteArchitect.AdminApp.Views;
 
 namespace WebSiteArchitect.AdminApp.ViewModels
@@ -18,6 +21,8 @@ namespace WebSiteArchitect.AdminApp.ViewModels
 
         private ICommand _newProjectCommand;
         private bool _canExecute = true;
+
+        private PathHelper _selectedPagePath;
 
         public Views.Layout LayoutWindow
         {
@@ -82,6 +87,18 @@ namespace WebSiteArchitect.AdminApp.ViewModels
             }
         }
 
+        public PathHelper SelectedPagePath
+        {
+            get
+            {
+                return _selectedPagePath;
+            }
+            set
+            {
+                _selectedPagePath = value;
+            }
+        }
+
         public MainWindowViewModel()
         {
             _newProjectCommand = new RelayCommand(OpenWindows, param => this._canExecute);
@@ -98,6 +115,6 @@ namespace WebSiteArchitect.AdminApp.ViewModels
         public void ChangeCanExecute(object obj)
         {
             _canExecute = !_canExecute;
-        }
+        }        
     }
 }

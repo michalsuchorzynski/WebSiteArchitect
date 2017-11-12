@@ -72,6 +72,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Code\ControlCounter.cs" />
     <Compile Include="Code\LayoutControl.cs" />
     <Compile Include="Code\LayoutControler.cs" />
     <Compile Include="Code\Translator.cs" />

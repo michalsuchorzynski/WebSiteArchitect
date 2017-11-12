@@ -48,6 +48,7 @@ namespace WebSiteArchitect.AdminApp.ViewModels
                     break;
             }
         }
+
         public void AddControl(object sender)
         {
             if(_mainWindowVM.ControlsWindow.controlVM.SelectedButton == null)
@@ -76,7 +77,6 @@ namespace WebSiteArchitect.AdminApp.ViewModels
             }
             _controler.AddControl(controlToAdd as UserControl, sender as UserControl);
         }
-
         public void DeleteControl(object sender)
         {
             _controler.DeleteControl(sender as UserControl);
