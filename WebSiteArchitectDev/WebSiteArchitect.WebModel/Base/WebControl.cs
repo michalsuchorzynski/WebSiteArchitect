@@ -11,7 +11,7 @@ namespace WebSiteArchitect.WebModel.Base
     {
         private string _id;
         private string _name;
-        private WebControlType _type;
+        private WebControlTypeEnum _type;
         private string _value;
         private string _className;
         private List<WebControl> _childrenControls;
@@ -39,7 +39,7 @@ namespace WebSiteArchitect.WebModel.Base
                 _name = value;
             }
         }
-        public WebControlType Type
+        public WebControlTypeEnum Type
         {
             get
             {
@@ -94,7 +94,7 @@ namespace WebSiteArchitect.WebModel.Base
         {
 
         }
-        public WebControl(string id, string name, WebControlType type, string value, string className)
+        public WebControl(string id, string name, WebControlTypeEnum type, string value, string className)
         {
             this.Id = id;
             this.Name = name;
@@ -103,7 +103,7 @@ namespace WebSiteArchitect.WebModel.Base
             this.ClassName = className;
         }
 
-        public WebControl(string id, string name, WebControlType type, string value, string className, List<WebControl> childrenControls)
+        public WebControl(string id, string name, WebControlTypeEnum type, string value, string className, List<WebControl> childrenControls)
         {
             this.Id = id;
             this.Name = name;
@@ -112,7 +112,7 @@ namespace WebSiteArchitect.WebModel.Base
             this.ClassName = className;
             this._childrenControls = childrenControls;
         }
-        public WebControl(WebControlType type)
+        public WebControl(WebControlTypeEnum type)
         {
             this.Type = type;
         }

@@ -12,11 +12,11 @@ namespace WebSiteArchitect.WebModel.Controls
     {
         public Select()
         {
-            this.Type = WebControlType.select;
+            this.Type = WebControlTypeEnum.select;
 
 
         }
-        public Select(string id, string name, string value, string className) : base(id, name, WebControlType.select, value, className)
+        public Select(string id, string name, string value, string className) : base(id, name, WebControlTypeEnum.select, value, className)
         { }
 
     }

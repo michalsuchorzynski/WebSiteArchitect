@@ -15,9 +15,8 @@ namespace WebSiteArchitect.AdminApp.Code
     public class LayoutControl : INotifyPropertyChanged
     {
         private UserControl _control;
-       
 
-        private WebControlType _controlType;
+        private WebControlTypeEnum _controlType;
         private string _controlTypeName;
         private int _size;
         private object _content;
@@ -26,6 +25,7 @@ namespace WebSiteArchitect.AdminApp.Code
         private string _value;
         private Color? _backgroundColor;
         private Color? _fontColor;
+        private TextAlignment _textAlign;
 
         public UserControl Control
         {
@@ -38,7 +38,7 @@ namespace WebSiteArchitect.AdminApp.Code
                 _control = value;
             }
         }
-        public WebControlType ControlType
+        public WebControlTypeEnum ControlType
         {
             get
             {
@@ -114,19 +114,19 @@ namespace WebSiteArchitect.AdminApp.Code
             {
                 switch (this.ControlType)
                 {
-                    case WebControlType.emptySpace:
+                    case WebControlTypeEnum.emptySpace:
                         break;
-                    case WebControlType.input:
+                    case WebControlTypeEnum.input:
                         (_content as TextBox).Text = value;
                         break;
-                    case WebControlType.label:
+                    case WebControlTypeEnum.label:
                         (_content as AccessText).Text = value;
                         break;
-                    case WebControlType.panel:
+                    case WebControlTypeEnum.panel:
                         break;
-                    case WebControlType.select:
+                    case WebControlTypeEnum.select:
                         break;
-                    case WebControlType.row:
+                    case WebControlTypeEnum.row:
                         break;
                     default:
                         break;
@@ -146,20 +146,20 @@ namespace WebSiteArchitect.AdminApp.Code
                 var converter = new System.Windows.Media.BrushConverter();
                 switch (this.ControlType)
                 {
-                    case WebControlType.emptySpace:
+                    case WebControlTypeEnum.emptySpace:
                         break;
-                    case WebControlType.input:
+                    case WebControlTypeEnum.input:
                         (_content as TextBox).Background = (Brush)converter.ConvertFromString(value.ToString());
                         break;
-                    case WebControlType.label:
+                    case WebControlTypeEnum.label:
                         (_control.Content as Grid).Background = (Brush)converter.ConvertFromString(value.ToString());
                         break;
-                    case WebControlType.panel:
+                    case WebControlTypeEnum.panel:
                         break;
-                    case WebControlType.select:
+                    case WebControlTypeEnum.select:
                         (_content as ComboBox).Background = (Brush)converter.ConvertFromString(value.ToString());
                         break;
-                    case WebControlType.row:
+                    case WebControlTypeEnum.row:
                         break;
                     default:
                         break;
@@ -179,26 +179,48 @@ namespace WebSiteArchitect.AdminApp.Code
                 var converter = new System.Windows.Media.BrushConverter();
                 switch (this.ControlType)
                 {
-                    case WebControlType.emptySpace:
+                    case WebControlTypeEnum.emptySpace:
                         break;
-                    case WebControlType.input:
+                    case WebControlTypeEnum.input:
                         (_content as TextBox).Foreground = (Brush)converter.ConvertFromString(value.ToString());
                         break;
-                    case WebControlType.label:
+                    case WebControlTypeEnum.label:
                         (_content as AccessText).Foreground = (Brush)converter.ConvertFromString(value.ToString());
                         break;
-                    case WebControlType.panel:
+                    case WebControlTypeEnum.panel:
                         break;
-                    case WebControlType.select:
+                    case WebControlTypeEnum.select:
                         (_content as ComboBox).Foreground = (Brush)converter.ConvertFromString(value.ToString());
                         break;
-                    case WebControlType.row:
+                    case WebControlTypeEnum.row:
                         break;
                     default:
                         break;
                 }
                 _fontColor = value;
                 OnPropertyChanged("FontColor");
+            }
+        }
+        public TextAlignment TextAlign
+        {
+            get
+            {
+                return _textAlign;
+            }
+            set
+            {
+                switch (this.ControlType)
+                {
+
+                    case WebControlTypeEnum.input:
+                        (_content as TextBox).TextAlignment = value;
+                        break;
+                    case WebControlTypeEnum.label:
+                        (_content as AccessText).TextAlignment = value;
+                        break;
+                }
+                _textAlign = value;
+                OnPropertyChanged("TextAlign");
             }
         }
 
@@ -216,7 +238,7 @@ namespace WebSiteArchitect.AdminApp.Code
         {
             if (_control == null || newSize <= 0 || newSize == this.Size)
                 return false;
-            if (this.ControlType == WebControlType.row)
+            if (this.ControlType == WebControlTypeEnum.row)
                 return false;
             if (newSize > this.Size)
             {
@@ -225,7 +247,7 @@ namespace WebSiteArchitect.AdminApp.Code
                 for (int i = this.ChildIndex + 1; i < this.ChildIndex + newSize; i++)
                 {
                     LayoutControl child = new LayoutControl(_parentControl.Children[i] as UserControl);
-                    if (child.ControlType != WebControlType.emptySpace)
+                    if (child.ControlType != WebControlTypeEnum.emptySpace)
                     {
                         return false;
                     }
@@ -254,33 +276,35 @@ namespace WebSiteArchitect.AdminApp.Code
             switch (_control.GetType().FullName.Replace("WebSiteArchitect.AdminApp.Controls.Layout.", "").ToLower())
             {
                 case "emptySpace":
-                    this._controlType = WebControlType.emptySpace;
-                    _controlType = WebControlType.label;
+                    this._controlType = WebControlTypeEnum.emptySpace;
+                    _controlType = WebControlTypeEnum.label;
                     _content = ((_control.Content as Grid).Children[0] as Label).Content;                    
                     break;
                 case "input":
-                    _controlType = WebControlType.input;
+                    _controlType = WebControlTypeEnum.input;
                     _content = ((_control.Content as Grid).Children[0] as TextBox);
                     newBrush = (SolidColorBrush)((_content as TextBox).Background);
                     _backgroundColor = newBrush.Color;
                     newBrush = (SolidColorBrush)((_content as TextBox).Foreground);
                     _fontColor = newBrush.Color;
                     this.Value = (_content as TextBox).Text.ToString();
+                    _textAlign = (_content as TextBox).TextAlignment;
                     break;
                 case "label":
-                    _controlType = WebControlType.label;
+                    _controlType = WebControlTypeEnum.label;
                     _content = ((_control.Content as Grid).Children[0] as Label).Content;
                     newBrush = (SolidColorBrush)((_control.Content as Grid).Background);
                     _backgroundColor = newBrush.Color;
                     newBrush = (SolidColorBrush)((_content as AccessText).Foreground);
                     _fontColor = newBrush.Color;
                     this.Value = (_content as AccessText).Text.ToString();
+                    _textAlign = (_content as AccessText).TextAlignment;
                     break;
                 case "panel":
-                    _controlType = WebControlType.panel;                    
+                    _controlType = WebControlTypeEnum.panel;                    
                     break;
                 case "select":
-                    _controlType = WebControlType.select;
+                    _controlType = WebControlTypeEnum.select;
                     _content = ((_control.Content as Grid).Children[0] as ComboBox);
                     newBrush = (SolidColorBrush)((_content as ComboBox).Background);
                     _backgroundColor = newBrush.Color;
@@ -288,10 +312,10 @@ namespace WebSiteArchitect.AdminApp.Code
                     _fontColor = newBrush.Color;
                     break;
                 case "row":
-                    _controlType = WebControlType.row;
+                    _controlType = WebControlTypeEnum.row;
                     break;
                 default:
-                    _controlType = WebControlType.emptySpace;
+                    _controlType = WebControlTypeEnum.emptySpace;
                     break;
             }
 

@@ -11,7 +11,7 @@ namespace WebSiteArchitect.WebModel.Base
     {
         string Id { get; set; }
         string Name { get; set; }
-        WebControlType Type { get; set; }
+        WebControlTypeEnum Type { get; set; }
         string Value { get; set; }
         string ClassName { get; set; }
         List<WebControl> ChildrenControls { get; set; }

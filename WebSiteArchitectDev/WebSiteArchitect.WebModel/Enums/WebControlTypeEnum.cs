@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace WebSiteArchitect.WebModel.Enums
 {
-    public enum WebControlType
+    public enum WebControlTypeEnum
     {
         [Description("EmptySpace")]
         emptySpace,

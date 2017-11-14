@@ -12,11 +12,11 @@ namespace WebSiteArchitect.WebModel.Controls
     {
         public Input()
         {
-            this.Type = WebControlType.input;
+            this.Type = WebControlTypeEnum.input;
 
 
         }
-        public Input(string id, string name, string value, string className) : base(id, name, WebControlType.input, value, className)
+        public Input(string id, string name, string value, string className) : base(id, name, WebControlTypeEnum.input, value, className)
         { }
 
     }

@@ -43,6 +43,8 @@
             <wpfTool:ColorPicker  Grid.Row="5" DisplayColorAndName="True" SelectedColor="{Binding Path=BackgroundColor, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             <Label Grid.Row="6" Content="Kolor czcionki" ></Label>
             <wpfTool:ColorPicker  Grid.Row="7" DisplayColorAndName="True" SelectedColor="{Binding Path=FontColor, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <Label Grid.Row="8" Content="Tekst w poziomie" ></Label>
+            <ComboBox x:Name="combox_textAlign" Grid.Row="9" SelectedItem="{Binding TextAlign, Mode=TwoWay}"></ComboBox>
             
             
         </Grid>

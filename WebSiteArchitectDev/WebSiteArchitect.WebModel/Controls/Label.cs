@@ -12,11 +12,11 @@ namespace WebSiteArchitect.WebModel.Controls
     {
         public Label()
         {
-            this.Type = WebControlType.label;
+            this.Type = WebControlTypeEnum.label;
 
 
         }
-        public Label(string id, string name, string value, string className) : base(id, name, WebControlType.label, value, className)
+        public Label(string id, string name, string value, string className) : base(id, name, WebControlTypeEnum.label, value, className)
         { }
 
     }

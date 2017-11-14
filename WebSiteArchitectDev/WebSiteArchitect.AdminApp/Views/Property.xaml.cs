@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using WebSiteArchitect.AdminApp.ViewModels;
-
+using WebSiteArchitect.WebModel.Enums;
 
 namespace WebSiteArchitect.AdminApp.Views
 {
@@ -25,6 +25,7 @@ namespace WebSiteArchitect.AdminApp.Views
         public Property()
         {
             InitializeComponent();
+            this.combox_textAlign.ItemsSource = Enum.GetValues(typeof(TextAlignment));
         }
         public Property(MainWindowViewModel mainWindowVM) : this()
         {

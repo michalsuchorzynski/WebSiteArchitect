@@ -9,7 +9,7 @@
              MouseRightButtonDown="LayoutControl_MouseRightButtonDown"
              MouseLeftButtonDown="LayoutControl_MouseLeftButtonDown">
     <Grid Style="{StaticResource Label}">
-        <Label>
+        <Label HorizontalContentAlignment="Stretch">
             <Label.Content>
                 <AccessText TextWrapping="Wrap" Text="Domyślny tekst"/>
             </Label.Content>

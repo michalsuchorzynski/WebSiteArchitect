@@ -13,9 +13,9 @@ namespace WebSiteArchitect.WebModel.Controls
         public Panel()
         {
             this.ChildrenControls = new List<WebControl>();
-            this.Type = WebControlType.panel;
+            this.Type = WebControlTypeEnum.panel;
         }
-        public Panel(string id, string name, string value, string className, List<WebControl> childrenControls) : base(id, name, WebControlType.panel, value, className)
+        public Panel(string id, string name, string value, string className, List<WebControl> childrenControls) : base(id, name, WebControlTypeEnum.panel, value, className)
         {
             this.ChildrenControls = childrenControls;
 
