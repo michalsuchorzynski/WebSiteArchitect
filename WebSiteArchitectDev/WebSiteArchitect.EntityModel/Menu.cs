@@ -2,17 +2,16 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace WebSiteArchitect.DataModel
+namespace WebSiteArchitect.EntityModel
 {
-    public class Page
+    public class Menu
     {
         [Key]
-        public int PageId { get; set; }
-
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int MenuId { get; set; }
         public Site Site { get; set; }
+
     }
 }

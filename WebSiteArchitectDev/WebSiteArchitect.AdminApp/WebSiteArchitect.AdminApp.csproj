@@ -206,10 +206,6 @@
     <Folder Include="Style\Images\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WebSiteArchitect.DataModel\WebSiteArchitect.DataModel.csproj">
-      <Project>{EFEE1CF9-A86D-4E2A-83C4-38201933A56F}</Project>
-      <Name>WebSiteArchitect.DataModel</Name>
-    </ProjectReference>
     <ProjectReference Include="..\WebSiteArchitect.WebModel\WebSiteArchitect.WebModel.csproj">
       <Project>{5C01F526-DD07-4D01-A76A-763E4ADD704E}</Project>
       <Name>WebSiteArchitect.WebModel</Name>
