@@ -7,6 +7,9 @@ using System.IO;
 using WebSiteArchitect.WebModel.Base;
 using Newtonsoft.Json;
 using System.ComponentModel;
+using System.Windows.Markup;
+using System.Windows.Controls;
+using System.Xml;
 
 namespace WebSiteArchitect.WebModel
 {
@@ -44,14 +47,22 @@ namespace WebSiteArchitect.WebModel
             StreamReader sr = new StreamReader(source);
             return sr.ReadToEnd();
         }
-
+        public static string XamlToSring(StackPanel xaml)
+        {
+            return XamlWriter.Save(xaml);
+        }
+        public static StackPanel StringToXaml(string xaml)
+        {
+            StringReader stringReader = new StringReader(xaml);
+            XmlReader xmlReader = XmlReader.Create(stringReader);
+            return (StackPanel)XamlReader.Load(xmlReader);
+        }
         public static string GetCustomDescription(object objEnum)
         {
             var fi = objEnum.GetType().GetField(objEnum.ToString());
             var attributes = (DescriptionAttribute[])fi.GetCustomAttributes(typeof(DescriptionAttribute), false);
             return (attributes.Length > 0) ? attributes[0].Description : objEnum.ToString();
         }
-
         public static string Description(this Enum value)
         {
             return GetCustomDescription(value);

@@ -55,11 +55,13 @@ namespace WebSiteArchitect.AdminApp.Code
         {
             this.XamlPage = xamlPage;
             var mainPanel = xamlPage.Children[0];
+            Page = new WebPage();
+
             ConvertToWebPage();
         }
         public WebPage ConvertToWebPage()
         {
-            Page = new WebPage();
+            
             
             foreach (UserControl childControl in XamlPage.Children)
             {

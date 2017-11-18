@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WebSiteArchitect.AdminApp.ViewModels;
+using WebSiteArchitect.DataModel;
 using WebSiteArchitect.WebModel.Helpers;
 
 namespace WebSiteArchitect.AdminApp
@@ -42,6 +43,10 @@ namespace WebSiteArchitect.AdminApp
             InitializeComponent();
             this.mainWindowVM = new MainWindowViewModel();
             this.DataContext = mainWindowVM;
+            using (var db = new DataContext())
+            {
+                db.SaveChanges();
+            }
         }
 
         private void TreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)

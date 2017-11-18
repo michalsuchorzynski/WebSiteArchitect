@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSiteArchitect.WebModel",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSiteArchitect.AdminApp", "WebSiteArchitect.AdminApp\WebSiteArchitect.AdminApp.csproj", "{A2D303D9-D21B-4C5F-A516-61EB6C1907B8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSiteArchitect.DataModel", "WebSiteArchitect.DataModel\WebSiteArchitect.DataModel.csproj", "{EFEE1CF9-A86D-4E2A-83C4-38201933A56F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{A2D303D9-D21B-4C5F-A516-61EB6C1907B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A2D303D9-D21B-4C5F-A516-61EB6C1907B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A2D303D9-D21B-4C5F-A516-61EB6C1907B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EFEE1CF9-A86D-4E2A-83C4-38201933A56F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFEE1CF9-A86D-4E2A-83C4-38201933A56F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFEE1CF9-A86D-4E2A-83C4-38201933A56F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFEE1CF9-A86D-4E2A-83C4-38201933A56F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
