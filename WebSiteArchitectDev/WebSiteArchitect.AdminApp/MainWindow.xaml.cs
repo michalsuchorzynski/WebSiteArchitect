@@ -40,13 +40,29 @@ namespace WebSiteArchitect.AdminApp
         public MainWindow()
         {
             InitializeComponent();
-            this.mainWindowVM = new MainWindowViewModel();
+            this.mainWindowVM = new MainWindowViewModel(this);
             this.DataContext = mainWindowVM;
         }
 
         private void TreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
-            mainWindowVM.SelectedPagePath = new PathHelper(this.WebSiteTreeView.SelectedItem as TreeViewItem);
+            TreeView_SelectedItemChangedAsync(sender, e);
+        }
+        private async void TreeView_SelectedItemChangedAsync(object sender, RoutedPropertyChangedEventArgs<object> e)
+        {
+            if (this.WebSiteTreeView.SelectedItem != null)
+            {
+                var newPath = new PathHelper(this.WebSiteTreeView.SelectedItem as TreeViewItem);
+                if (mainWindowVM.SelectedSite == null || mainWindowVM.SelectedSite.Name != newPath.Root)
+                    mainWindowVM.SelectedSite = await mainWindowVM.Consumer.GetSiteByNameAsync(newPath.Root);
+
+                mainWindowVM.SelectedPagePath = newPath;
+            }
+            else
+            {
+                mainWindowVM.SelectedSite = null;
+                mainWindowVM.SelectedPagePath = null;
+            }
         }
     }
 }

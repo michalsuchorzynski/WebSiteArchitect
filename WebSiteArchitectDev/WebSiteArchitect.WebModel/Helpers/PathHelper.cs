@@ -14,6 +14,7 @@ namespace WebSiteArchitect.WebModel.Helpers
         public string Folder { get; set;}
         public string Item { get; set; }
         public string Path { get; set; }
+        public int Type { get; set; }
 
         public PathHelper(TreeViewItem item)
         {
@@ -22,18 +23,21 @@ namespace WebSiteArchitect.WebModel.Helpers
                 Root = ((item.Parent as TreeViewItem).Parent as TreeViewItem).Header.ToString();
                 Folder = (item.Parent as TreeViewItem).Header.ToString();
                 Item = (item as TreeViewItem).Header.ToString();
+                Type = 0;
             } 
             else if (item.Parent != null && item.Parent is TreeViewItem)
             {
                 Item = string.Empty;
                 Root = (item.Parent as TreeViewItem).Header.ToString();
                 Folder = (item as TreeViewItem).Header.ToString();
+                Type = 1;
             }
             else
             {
                 Item = string.Empty;
                 Folder = string.Empty;
                 Root = (item as TreeViewItem).Header.ToString();
+                Type = 2;
             }
             Path = Root + "/" + Folder + "/" + Item;
             if (Path.EndsWith("//"))

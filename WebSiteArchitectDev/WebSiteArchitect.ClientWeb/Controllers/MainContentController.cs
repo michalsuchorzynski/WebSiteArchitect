@@ -13,10 +13,7 @@ namespace ServerControler.ClientWeb.Controllers
         // GET: MainContent
         public ActionResult Index()
         {
-            WebControl control = new WebControl(WebControlTypeEnum.label);
-            WebPage page = new WebPage();
-            page.Controls.Add(control);
-            return View(page);
+            return View();
         }
     }
 }

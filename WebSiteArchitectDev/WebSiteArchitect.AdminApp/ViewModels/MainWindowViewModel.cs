@@ -7,7 +7,9 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using WebSiteArchitect.AdminApp.Code;
 using WebSiteArchitect.AdminApp.Commands;
+using WebSiteArchitect.AdminApp.Views;
 using WebSiteArchitect.WebModel.Helpers;
 using Views = WebSiteArchitect.AdminApp.Views;
 
@@ -15,15 +17,41 @@ namespace WebSiteArchitect.AdminApp.ViewModels
 {
     public class MainWindowViewModel
     {
+        #region Property
+        private AdminAPIConsumer _consumer;
+
+        private MainWindow _mainWindow;
         private Views.Layout _layoutWindow;
         private Views.Controls _controlsWindow;
         private Views.Property _propertyWindow;
 
+        private IEnumerable<Site> _sites;
+        private IEnumerable<Menu> _menus;
+        private IEnumerable<Page> _pages;
+
         private ICommand _newProjectCommand;
+        private ICommand _newPageCommand;
+        private ICommand _newMenuCommand;
+        private ICommand _deleteCommand;
         private bool _canExecute = true;
 
         private PathHelper _selectedPagePath;
+        private Site _selectedSite;
+        private Page _selectedPage;
+        private Menu _selectedMenu;
 
+
+        public AdminAPIConsumer Consumer
+        {
+            get
+            {
+                return _consumer;
+            }
+            set
+            {
+                _consumer = value;
+            }
+        }
         public Views.Layout LayoutWindow
         {
             get
@@ -86,6 +114,39 @@ namespace WebSiteArchitect.AdminApp.ViewModels
                 _newProjectCommand = value;
             }
         }
+        public ICommand NewPageCommand
+        {
+            get
+            {
+                return _newPageCommand;
+            }
+            set
+            {
+                _newPageCommand = value;
+            }
+        }
+        public ICommand NewMenuCommand
+        {
+            get
+            {
+                return _newMenuCommand;
+            }
+            set
+            {
+                _newMenuCommand = value;
+            }
+        }
+        public ICommand DeleteCommand
+        {
+            get
+            {
+                return _deleteCommand;
+            }
+            set
+            {
+                _deleteCommand = value;
+            }
+        }
 
         public PathHelper SelectedPagePath
         {
@@ -98,12 +159,77 @@ namespace WebSiteArchitect.AdminApp.ViewModels
                 _selectedPagePath = value;
             }
         }
-
-        public MainWindowViewModel()
+        public Site SelectedSite
         {
-            _newProjectCommand = new RelayCommand(OpenWindows, param => this._canExecute);
+            get
+            {
+                return _selectedSite;
+            }
+            set
+            {
+                _selectedSite = value;
+            }
         }
-        public void OpenWindows(object obj)
+        public Page SelectedPage
+        {
+            get
+            {
+                return _selectedPage;
+            }
+            set
+            {
+                _selectedPage = value;
+            }
+        }
+        public Menu SelectedMenu
+        {
+            get
+            {
+                return _selectedMenu;
+            }
+            set
+            {
+                _selectedMenu = value;
+            }
+        }
+
+        #endregion
+        public MainWindowViewModel(MainWindow mainWindow)
+        {
+            _mainWindow = mainWindow;
+            _consumer = new AdminAPIConsumer();
+            _newProjectCommand = new RelayCommand(AddNewProjectAsync);
+            _newPageCommand = new RelayCommand(AddNewPage);
+            _newMenuCommand = new RelayCommand(AddNewMenu);
+            _deleteCommand = new RelayCommand(Delete);
+            ConstructTreeView();
+        }
+
+        public async void  AddNewProjectAsync(object obj)
+        {
+            Site newSite = new Site();
+            AddWindow add = new AddWindow(newSite, Consumer,this);
+            add.Show();           
+        }
+        public async void AddNewPage(object obj)
+        {
+            Page newPage = new Page();
+            newPage.SiteId = SelectedSite.SiteId;
+            AddWindow add = new AddWindow(newPage, Consumer,this);
+            add.Show();
+        }
+        public async void AddNewMenu(object obj)
+        {
+            Menu newMenu = new Menu();
+            newMenu.SiteId = SelectedSite.SiteId;
+            AddWindow add = new AddWindow(newMenu, Consumer,this);
+            add.Show();
+        }
+        public async void Delete(object obj)
+        {
+
+        }
+        public async void OpenWindows(object obj)
         {
             LayoutWindow = new Views.Layout(this);
             ControlsWindow = new Views.Controls(this);
@@ -112,6 +238,46 @@ namespace WebSiteArchitect.AdminApp.ViewModels
             ControlsWindow.Hide();
             PropertWindow.Hide();
         }
+
+        public void ConstructTreeView()
+        {
+            this._mainWindow.WebSiteTreeView.Items.Clear();
+           
+            _sites = _consumer.GetSites("api/site", null);
+            _menus = _consumer.GetMenu("api/menu", null);
+            _pages = _consumer.GetPages("api/page", null);
+            foreach (var site in _sites)
+            {
+                var siteItem = new TreeViewItem()
+                {
+                    Header = site.Name
+                };
+                var siteMenus = _menus.Where(x => x.SiteId == site.SiteId);
+                foreach (var menu in siteMenus)
+                {
+                    siteItem.Items.Add(new TreeViewItem()
+                    {
+                        Header = menu.Name
+                    });
+                }
+                var pageFolder = new TreeViewItem()
+                {
+                    Header = "Pages"
+                };
+                var sitePages = _pages.Where(x => x.SiteId == site.SiteId);
+                foreach (var page in sitePages)
+                {
+                    pageFolder.Items.Add(new TreeViewItem()
+                    {
+                        Header = page.Name
+                    });
+                }
+                siteItem.Items.Add(pageFolder);
+                this._mainWindow.WebSiteTreeView.Items.Add(siteItem);
+                SelectedPagePath = null;
+            }         
+        }
+
         public void ChangeCanExecute(object obj)
         {
             _canExecute = !_canExecute;

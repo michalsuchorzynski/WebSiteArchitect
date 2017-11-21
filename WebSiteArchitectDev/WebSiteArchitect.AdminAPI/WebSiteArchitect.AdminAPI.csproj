@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Model\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
 
@@ -18,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\WebSiteArchitect.EntityModel\WebSiteArchitect.EntityModel.csproj" />
+    <ProjectReference Include="..\WebSiteArchitect.WebModel\WebSiteArchitect.WebModel.csproj" />
   </ItemGroup>
 
 </Project>

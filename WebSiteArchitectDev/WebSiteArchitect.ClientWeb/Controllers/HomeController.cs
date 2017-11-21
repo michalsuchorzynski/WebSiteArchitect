@@ -37,11 +37,11 @@ namespace WebSiteArchitect.ClientWeb.Controllers
             //page.Controls.Add(controlSelect);
             //page.Controls.Add(controlPanel);
             //page.Controls.Add(controlPanel2);
-#endregion
+            #endregion
 
-            WebPage page = Settings.ConvertFromJson("C:\\Users\\Michał\\Desktop\\Praca Inzynierska\\Test\\Json.txt");
+            //DataModel.Page page = new DataModel.Page();
 
-            return View(page);
+            return View();
         }
     }
 }

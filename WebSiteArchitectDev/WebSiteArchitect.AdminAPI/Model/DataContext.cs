@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace WebSiteArchitect.EntityModel
+namespace WebSiteArchitect.AdminAPI.Model
 {
     public class DataContext : DbContext
     {

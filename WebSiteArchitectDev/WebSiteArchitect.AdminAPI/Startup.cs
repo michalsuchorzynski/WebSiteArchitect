@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using WebSiteArchitect.EntityModel;
+using WebSiteArchitect.AdminAPI.Model;
 
 namespace WebSiteArchitect.AdminAPI
 {
@@ -37,8 +37,11 @@ namespace WebSiteArchitect.AdminAPI
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute("default", "{controller=Home}/{action=Index}/{id?}");
+            });
 
-            app.UseMvc();
         }
     }
 }

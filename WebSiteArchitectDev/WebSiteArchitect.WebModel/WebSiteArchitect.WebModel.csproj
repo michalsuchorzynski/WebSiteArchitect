@@ -49,9 +49,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base\IWebControl.cs" />
-    <Compile Include="Base\WebMenu.cs" />
-    <Compile Include="Base\WebPage.cs" />
-    <Compile Include="Base\WebSite.cs" />
     <Compile Include="Controls\EmptySpace.cs" />
     <Compile Include="Controls\Input.cs" />
     <Compile Include="Controls\Label.cs" />

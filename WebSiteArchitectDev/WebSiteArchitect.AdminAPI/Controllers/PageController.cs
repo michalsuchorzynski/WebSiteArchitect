@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using WebSiteArchitect.EntityModel;
+using WebSiteArchitect.AdminAPI.Model;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -18,11 +18,6 @@ namespace WebSiteArchitect.AdminAPI.Controllers
         {
             _context = context;
 
-            if (_context.Pages.Count() == 0)
-            {
-                _context.Pages.Add(new Page());
-                _context.SaveChanges();
-            }
         }
 
         [HttpGet]
@@ -40,6 +35,19 @@ namespace WebSiteArchitect.AdminAPI.Controllers
                 return NotFound();
             }
             return new ObjectResult(item);
+        }
+
+        [HttpPost]
+        public IActionResult Create([FromBody] Page item)
+        {
+            if (item == null)
+            {
+                return BadRequest();
+            }
+            _context.Pages.Add(item);
+            _context.SaveChanges();
+
+            return null;// CreatedAtRoute("GetPage", new { id = item.PageId }, item);
         }
     }
 }

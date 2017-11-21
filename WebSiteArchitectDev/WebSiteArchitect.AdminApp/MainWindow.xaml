@@ -11,7 +11,7 @@
     <Grid>
         <DockPanel>
             <Menu DockPanel.Dock="Top">
-                <MenuItem Header="New" Command="{Binding NewProjectCommand}">
+                <MenuItem Header="New">
                 </MenuItem>
                 <MenuItem Header="Edit">
                 </MenuItem>
@@ -28,24 +28,26 @@
                 <ColumnDefinition Width="1*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="0">
-                <Expander IsExpanded="True" Header="Zawartość systemu">
-                    <TreeView  x:Name="WebSiteTreeView" SelectedItemChanged="TreeView_SelectedItemChanged" >
-                        <TreeViewItem Header="WebSite1">
-                            <TreeViewItem Header="WebPages1">
-                                <TreeViewItem Header="WebPage"></TreeViewItem>
-                                <TreeViewItem Header="WebPage"></TreeViewItem>
-                            </TreeViewItem>
-                            <TreeViewItem Header="Menu1"></TreeViewItem>
-                        </TreeViewItem>
-                        <TreeViewItem Header="WebSite2">
-                            <TreeViewItem Header="WebPages2">
-                                <TreeViewItem Header="WebPage"></TreeViewItem>
-                                <TreeViewItem Header="WebPage"></TreeViewItem>
-                            </TreeViewItem>
-                            <TreeViewItem Header="Menu2"></TreeViewItem>
-                        </TreeViewItem>
-                    </TreeView>
-                </Expander>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"></RowDefinition>
+                    <RowDefinition Height="100"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Expander IsExpanded="True" Header="Zawartość systemu">
+                        <TreeView  x:Name="WebSiteTreeView" SelectedItemChanged="TreeView_SelectedItemChanged" >
+                            
+                        </TreeView>
+                    </Expander>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <StackPanel>
+                        <Button Command="{Binding NewProjectCommand}" Content="Dodaj nowy projekt"></Button>
+                        <Button Command="{Binding NewPageCommand}" Content="Dodaj nową stronę"></Button>
+                        <Button Command="{Binding NewMenuCommand}" Content="Dodaj nowe menu"></Button>
+                        <Button Command="{Binding DeleteCommand}" Content="Usuń"></Button>
+                        <Button Content="Zmień nazwe"></Button>
+                    </StackPanel>
+                </Grid>
             </Grid>
                 
             <Grid Grid.Column="1">
