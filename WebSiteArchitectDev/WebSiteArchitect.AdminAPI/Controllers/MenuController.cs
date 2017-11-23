@@ -36,6 +36,13 @@ namespace WebSiteArchitect.AdminAPI.Controllers
             return new ObjectResult(item);
         }
 
+        [HttpGet("{name}", Name = "GetMenusByName")]
+        [Route("byName/{name}")]
+        public IEnumerable<Menu> GetByName(string name)
+        {
+            return _context.Menus.Where(m => m.Name == name).ToList();
+        }
+
         [HttpPost]
         public IActionResult Create([FromBody] Menu item)
         {

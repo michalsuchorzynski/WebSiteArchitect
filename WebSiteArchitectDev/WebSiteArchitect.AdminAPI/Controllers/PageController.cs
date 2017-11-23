@@ -37,6 +37,14 @@ namespace WebSiteArchitect.AdminAPI.Controllers
             return new ObjectResult(item);
         }
 
+        [HttpGet("{name}", Name = "GetPagesByName")]
+        [Route("byName/{name}")]
+        public IEnumerable<Page> GetByName(string name)
+        {
+            return _context.Pages.Where(p => p.Name == name).ToList();
+        }
+
+
         [HttpPost]
         public IActionResult Create([FromBody] Page item)
         {
@@ -47,7 +55,30 @@ namespace WebSiteArchitect.AdminAPI.Controllers
             _context.Pages.Add(item);
             _context.SaveChanges();
 
-            return null;// CreatedAtRoute("GetPage", new { id = item.PageId }, item);
+            return CreatedAtRoute("GetPage", new { id = item.PageId }, item);
+        }
+
+        [HttpPut]
+        public IActionResult Update([FromBody] Page item)
+        {
+            if (item == null)
+            {
+                return BadRequest();
+            }
+
+            var page = _context.Pages.FirstOrDefault(p => p.PageId == item.PageId);
+            if (page == null)
+            {
+                return NotFound();
+            }
+            page.Name = item.Name;
+            page.ModDate = DateTime.Now;
+            page.ControlsJson = item.ControlsJson;
+            page.XamlPageString = item.XamlPageString;
+
+            _context.Pages.Update(page);
+            _context.SaveChanges();
+            return new NoContentResult();
         }
     }
 }

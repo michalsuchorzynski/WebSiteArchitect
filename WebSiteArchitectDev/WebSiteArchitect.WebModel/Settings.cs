@@ -14,6 +14,16 @@ namespace WebSiteArchitect.WebModel
 {
     public static class Settings
     {
+        public static string XamlToSring(StackPanel xaml)
+        {            
+            return XamlWriter.Save(xaml);
+        }
+        public static StackPanel StringToXaml(string xaml)
+        {
+            StringReader stringReader = new StringReader(xaml);
+            XmlReader xmlReader = XmlReader.Create(stringReader);
+            return (StackPanel)XamlReader.Load(xmlReader);
+        }
         public static string GetCustomDescription(object objEnum)
         {
             var fi = objEnum.GetType().GetField(objEnum.ToString());

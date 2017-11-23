@@ -41,6 +41,7 @@ namespace WebSiteArchitect.AdminAPI.Controllers
             }
             return new ObjectResult(item);
         }
+
         [HttpGet("{name}", Name = "GetSiteByName")]
         [Route("byName/{name}")]
         public IActionResult GetByName(string name)
@@ -52,6 +53,7 @@ namespace WebSiteArchitect.AdminAPI.Controllers
             }
             return new ObjectResult(item);
         }
+
         [HttpPost]
         public IActionResult Create([FromBody] Site item)
         {

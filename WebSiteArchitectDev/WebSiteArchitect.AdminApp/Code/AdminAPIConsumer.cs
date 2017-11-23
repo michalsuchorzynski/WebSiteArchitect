@@ -37,6 +37,21 @@ namespace WebSiteArchitect.AdminApp.Code
                 return false;
             }
         }
+        public async Task<bool> UpdateAsync(string request, object param)
+        {
+            var response = await client.PutAsJsonAsync(request, param);
+            if (response.IsSuccessStatusCode)
+            {
+                this.Error = string.Empty;
+                return true;
+
+            }
+            else
+            {
+                this.Error = "Error Code" + response.StatusCode + " : Message - " + response.ReasonPhrase;
+                return false;
+            }
+        }
 
         public IEnumerable<Site> GetSites(string request, object param)
         {
@@ -86,10 +101,47 @@ namespace WebSiteArchitect.AdminApp.Code
                 return null;
             }
         }
+
+        public IEnumerable<Menu> GetMenuByName(string name, Site selectedSite)
+        {
+            HttpResponseMessage response = client.GetAsync("api/menu/byname/" + name).Result;
+            var menus = response.Content.ReadAsAsync<IEnumerable<Menu>>().Result;
+            menus = menus.Where(m=>m.SiteId==selectedSite.SiteId);
+            if (response.IsSuccessStatusCode)
+            {
+                this.Error = string.Empty;
+                return menus;
+
+            }
+            else
+            {
+                this.Error = "Error Code" + response.StatusCode + " : Message - " + response.ReasonPhrase;
+                return null;
+            }
+        }
+
         public IEnumerable<Page> GetPages(string request, object param)
         {
             HttpResponseMessage response = client.GetAsync("api/page").Result;
             var pages = response.Content.ReadAsAsync<IEnumerable<Page>>().Result;
+            if (response.IsSuccessStatusCode)
+            {
+                this.Error = string.Empty;
+                return pages;
+
+            }
+            else
+            {
+                this.Error = "Error Code" + response.StatusCode + " : Message - " + response.ReasonPhrase;
+                return null;
+            }
+        }
+
+        public IEnumerable<Page> GetPageByName(string name, Site selectedSite)
+        {
+            HttpResponseMessage response = client.GetAsync("api/page/byname/" + name).Result;
+            var pages = response.Content.ReadAsAsync<IEnumerable<Page>>().Result;
+            pages = pages.Where(p => p.SiteId == selectedSite.SiteId);
             if (response.IsSuccessStatusCode)
             {
                 this.Error = string.Empty;

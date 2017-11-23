@@ -11,8 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSiteArchitect.AdminApp",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebSiteArchitect.AdminAPI", "WebSiteArchitect.AdminAPI\WebSiteArchitect.AdminAPI.csproj", "{5A4525FC-F75E-4B98-8555-23EC04821872}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSiteArchitect.DataModel", "WebSiteArchitect.DataModel\WebSiteArchitect.DataModel.csproj", "{1B2E1D2E-122F-4C3C-ABB7-DE48967EC5CF}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,10 +33,6 @@ Global
 		{5A4525FC-F75E-4B98-8555-23EC04821872}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5A4525FC-F75E-4B98-8555-23EC04821872}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5A4525FC-F75E-4B98-8555-23EC04821872}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1B2E1D2E-122F-4C3C-ABB7-DE48967EC5CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1B2E1D2E-122F-4C3C-ABB7-DE48967EC5CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1B2E1D2E-122F-4C3C-ABB7-DE48967EC5CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1B2E1D2E-122F-4C3C-ABB7-DE48967EC5CF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

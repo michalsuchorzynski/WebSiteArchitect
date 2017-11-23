@@ -14,7 +14,7 @@ namespace WebSiteArchitect.AdminApp.Code
     public class Translator
     {
         private StackPanel _xamlPage;
-        private List<WebControl> _controls;
+        private List<IWebControl> _controls;
         private LayoutControl _currentControl;
 
         public StackPanel XamlPage
@@ -28,7 +28,7 @@ namespace WebSiteArchitect.AdminApp.Code
                 _xamlPage = value;
             }
         }
-        public List<WebControl> Controls
+        public List<IWebControl> Controls
         {
             get
             {
@@ -55,11 +55,11 @@ namespace WebSiteArchitect.AdminApp.Code
         {
             this.XamlPage = xamlPage;
             var mainPanel = xamlPage.Children[0];
-            _controls = new List<WebControl>();
+            _controls = new List<IWebControl>();
 
             ConvertToWebPage();
         }
-        public List<WebControl> ConvertToWebPage()
+        public List<IWebControl> ConvertToWebPage()
         {
             
             
