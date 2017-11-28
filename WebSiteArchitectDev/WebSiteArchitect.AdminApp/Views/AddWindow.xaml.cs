@@ -82,7 +82,7 @@ namespace WebSiteArchitect.AdminApp.Views
                         await consumer.AddAsync("api/menu", menu);
 
                         break;
-                    }
+                    }                
             }
             this.mainWindowVM.ConstructTreeView();
             this.Close();

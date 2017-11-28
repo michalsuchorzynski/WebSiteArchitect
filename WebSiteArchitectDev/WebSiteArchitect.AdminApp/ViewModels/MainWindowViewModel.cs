@@ -10,6 +10,7 @@ using System.Windows.Input;
 using WebSiteArchitect.AdminApp.Code;
 using WebSiteArchitect.AdminApp.Commands;
 using WebSiteArchitect.AdminApp.Views;
+using WebSiteArchitect.WebModel;
 using WebSiteArchitect.WebModel.Helpers;
 using Views = WebSiteArchitect.AdminApp.Views;
 
@@ -201,37 +202,61 @@ namespace WebSiteArchitect.AdminApp.ViewModels
             _newProjectCommand = new RelayCommand(AddNewProjectAsync);
             _newPageCommand = new RelayCommand(AddNewPage);
             _newMenuCommand = new RelayCommand(AddNewMenu);
-            _deleteCommand = new RelayCommand(Delete);
+            _deleteCommand = new RelayCommand(DeleteAsync);
             ConstructTreeView();
         }
 
-        public async void  AddNewProjectAsync(object obj)
+        public void  AddNewProjectAsync(object obj)
         {
             Site newSite = new Site();
             AddWindow add = new AddWindow(newSite, Consumer,this);
             add.Show();           
         }
-        public async void AddNewPage(object obj)
+        public void AddNewPage(object obj)
         {
             Page newPage = new Page();
+            LayoutWindow = new Views.Layout(this);            
             newPage.SiteId = SelectedSite.SiteId;
-            AddWindow add = new AddWindow(newPage, Consumer,this);
+            newPage.XamlPageString = Settings.XamlToSring((StackPanel)LayoutWindow.FindName("PageLayout"));
+            AddWindow add = new AddWindow(newPage, Consumer, this);
             add.Show();
         }
-        public async void AddNewMenu(object obj)
+        public void AddNewMenu(object obj)
         {
             Menu newMenu = new Menu();
             newMenu.SiteId = SelectedSite.SiteId;
             AddWindow add = new AddWindow(newMenu, Consumer,this);
             add.Show();
         }
-        public async void Delete(object obj)
+        public async void DeleteAsync(object obj)
         {
-
+            if (SelectedSite != null)
+            {
+                if (SelectedMenu != null)
+                {
+                    await _consumer.DeleteAsync("api/menu", SelectedMenu.MenuId);
+                }
+                else if (SelectedPage != null)
+                {
+                    await _consumer.DeleteAsync("api/page", SelectedPage.PageId);
+                }
+                else
+                {
+                    await _consumer.DeleteAsync("api/site", SelectedSite.SiteId);
+                }
+            }
+            _mainWindow.mainWindowVM.ConstructTreeView();
         }
-        public async void OpenWindows(object obj)
+
+        public void OpenWindows()
         {
             LayoutWindow = new Views.Layout(this);
+
+            this._layoutWindow.layoutVM.Controler.XamlPage = (StackPanel)this.LayoutWindow.FindName("PageLayout");
+            this._layoutWindow.layoutVM.Controler.XamlPage = Settings.StringToXaml(this.SelectedPage.XamlPageString);
+            (this._layoutWindow.FindName("PageLayoutParent") as Grid).Children.Clear();
+            (this._layoutWindow.FindName("PageLayoutParent") as Grid).Children.Add(this._layoutWindow.layoutVM.Controler.XamlPage);
+
             ControlsWindow = new Views.Controls(this);
             PropertWindow = new Views.Property(this);
             LayoutWindow.Show();
@@ -248,34 +273,37 @@ namespace WebSiteArchitect.AdminApp.ViewModels
             _pages = _consumer.GetPages("api/page", null);
             foreach (var site in _sites)
             {
-                var siteItem = new TreeViewItem()
+                if (!string.IsNullOrEmpty(site.Name))
                 {
-                    Header = site.Name
-                };
-                var siteMenus = _menus.Where(x => x.SiteId == site.SiteId);
-                foreach (var menu in siteMenus)
-                {
-                    siteItem.Items.Add(new TreeViewItem()
+                    var siteItem = new TreeViewItem()
                     {
-                        Header = menu.Name
-                    });
-                }
-                var pageFolder = new TreeViewItem()
-                {
-                    Header = "Pages"
-                };
-                var sitePages = _pages.Where(x => x.SiteId == site.SiteId);
-                foreach (var page in sitePages)
-                {
-                    pageFolder.Items.Add(new TreeViewItem()
+                        Header = site.Name
+                    };
+                    var siteMenus = _menus.Where(x => x.SiteId == site.SiteId);
+                    foreach (var menu in siteMenus)
                     {
-                        Header = page.Name
-                    });
+                        siteItem.Items.Add(new TreeViewItem()
+                        {
+                            Header = menu.Name
+                        });
+                    }
+                    var pageFolder = new TreeViewItem()
+                    {
+                        Header = "Pages"
+                    };
+                    var sitePages = _pages.Where(x => x.SiteId == site.SiteId);
+                    foreach (var page in sitePages)
+                    {
+                        pageFolder.Items.Add(new TreeViewItem()
+                        {
+                            Header = page.Name
+                        });
+                    }
+                    siteItem.Items.Add(pageFolder);
+                    this._mainWindow.WebSiteTreeView.Items.Add(siteItem);
+                    SelectedPagePath = null;
                 }
-                siteItem.Items.Add(pageFolder);
-                this._mainWindow.WebSiteTreeView.Items.Add(siteItem);
-                SelectedPagePath = null;
-            }         
+            }
         }
 
         public void ChangeCanExecute(object obj)

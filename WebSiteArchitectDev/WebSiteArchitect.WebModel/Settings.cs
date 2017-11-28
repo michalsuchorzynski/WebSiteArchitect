@@ -9,11 +9,21 @@ using System.ComponentModel;
 using System.Windows.Markup;
 using System.Windows.Controls;
 using System.Xml;
+using WebSiteArchitect.WebModel.Base;
 
 namespace WebSiteArchitect.WebModel
 {
     public static class Settings
     {
+        public static string ConvertToJson(WebContent page)
+        {
+            var resultJson = JsonConvert.SerializeObject(page, new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto });
+            return resultJson;
+        }
+        public static WebContent ConvertFromJson(string json)
+        {
+            return JsonConvert.DeserializeObject<WebContent>(json, new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto });
+        }
         public static string XamlToSring(StackPanel xaml)
         {            
             return XamlWriter.Save(xaml);

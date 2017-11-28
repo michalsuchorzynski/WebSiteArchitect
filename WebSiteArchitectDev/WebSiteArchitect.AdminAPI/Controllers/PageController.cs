@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using WebSiteArchitect.AdminAPI.Model;
+using WebSiteArchitect.WebModel.Helpers;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -59,24 +60,38 @@ namespace WebSiteArchitect.AdminAPI.Controllers
         }
 
         [HttpPut]
-        public IActionResult Update([FromBody] Page item)
+        public IActionResult Update([FromBody] UpdatePageRequest page)
         {
-            if (item == null)
+
+            if (page == null)
             {
                 return BadRequest();
             }
 
-            var page = _context.Pages.FirstOrDefault(p => p.PageId == item.PageId);
+            var pageToUpdate = _context.Pages.FirstOrDefault(p => p.PageId == page.Id);
+            if (pageToUpdate == null)
+            {
+                return NotFound();
+            }
+            pageToUpdate.ModDate = DateTime.Now;
+            pageToUpdate.ControlsJson = page.Controls;
+            pageToUpdate.XamlPageString = page.XamlSchema;
+
+            _context.Pages.Update(pageToUpdate);
+            _context.SaveChanges();
+            return new NoContentResult();
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(long id)
+        {
+            var page = _context.Pages.FirstOrDefault(p => p.PageId == id);
             if (page == null)
             {
                 return NotFound();
             }
-            page.Name = item.Name;
-            page.ModDate = DateTime.Now;
-            page.ControlsJson = item.ControlsJson;
-            page.XamlPageString = item.XamlPageString;
 
-            _context.Pages.Update(page);
+            _context.Pages.Remove(page);
             _context.SaveChanges();
             return new NoContentResult();
         }

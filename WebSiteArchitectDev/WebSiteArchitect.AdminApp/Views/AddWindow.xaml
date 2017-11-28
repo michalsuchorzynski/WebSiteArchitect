@@ -9,7 +9,7 @@
     <Grid>
         <StackPanel HorizontalAlignment="Left" Height="259" Margin="10,10,0,0" VerticalAlignment="Top" Width="272">
             <Label Content="Podaj nazwę"/>
-            <TextBox x:Name="Name" Height="23" TextWrapping="Wrap" Text="TextBox"/>
+            <TextBox x:Name="Name" Height="23" TextWrapping="Wrap"/>
             <Button Content="Dodaj" Click="Add_Click"/>
             <Button Content="Anuluj"/>
             

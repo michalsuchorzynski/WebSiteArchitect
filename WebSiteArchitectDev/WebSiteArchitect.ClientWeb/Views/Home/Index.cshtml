@@ -1,4 +1,4 @@
-﻿@model WebSiteArchitect.WebModel.Base.WebPage
+﻿@model WebSiteArchitect.WebModel.Base.WebContent
 
 @{
     ViewBag.Title = "Index";
@@ -17,11 +17,11 @@
         <div id=@control.Id class="@control.ClassName">
             @switch (control.Type)
             {
-                case WebSiteArchitect.WebModel.Enums.WebControlType.emptySpace:
+                case WebSiteArchitect.WebModel.Enums.WebControlTypeEnum.emptySpace:
                     {
                         break;
                     }
-                case WebSiteArchitect.WebModel.Enums.WebControlType.panel:
+                case WebSiteArchitect.WebModel.Enums.WebControlTypeEnum.panel:
                     {
                         if (control.ChildrenControls != null)
                         {
@@ -32,12 +32,12 @@
                         }
                         break;
                     }
-                case WebSiteArchitect.WebModel.Enums.WebControlType.input:
+                case WebSiteArchitect.WebModel.Enums.WebControlTypeEnum.input:
                     {
                         @Html.TextBox(control.Name, control.Value);
                         break;
                     }
-                case WebSiteArchitect.WebModel.Enums.WebControlType.label:
+                case WebSiteArchitect.WebModel.Enums.WebControlTypeEnum.label:
                     {
                         @Html.Label(control.Value);
                         break;

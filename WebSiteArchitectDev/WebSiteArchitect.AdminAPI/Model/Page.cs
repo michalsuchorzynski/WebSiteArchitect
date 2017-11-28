@@ -26,25 +26,7 @@ namespace WebSiteArchitect.AdminAPI.Model
         public string ControlsJson { get; set; }
         public int SiteId { get; set; }
         public virtual Site Site { get; set; }
+              
 
-        [NotMapped]
-        public List<IWebControl> Controls
-        {
-            get
-            {
-                string json = ControlsJson;
-                if(ControlsJson == null)
-                {
-                    return null;
-                }
-                return JsonConvert.DeserializeObject<List<IWebControl>>(json, new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto });
-            }
-            set
-            {
-
-                ControlsJson = JsonConvert.SerializeObject(value, new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto });
-            }
-        }
-        
     }
 }

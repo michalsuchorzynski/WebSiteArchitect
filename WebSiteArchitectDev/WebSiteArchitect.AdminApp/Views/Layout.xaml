@@ -27,11 +27,14 @@
                 <ListBoxItem Content="Zapisz"/>
             </ListBox>
         </StackPanel>
-        <StackPanel Grid.Row="1" Name="PageLayout">
-            <layout:Row x:Name="Row1"></layout:Row>
-            <layout:Row x:Name="Row2"></layout:Row>
-        </StackPanel>
-        
+        <Grid Grid.Row="1" Name="PageLayoutParent">
+            <StackPanel Grid.Row="1" Name="PageLayout">
+                <layout:Row x:Name="Row1"></layout:Row>
+                <layout:Row x:Name="Row2"></layout:Row>
+                <layout:Row x:Name="Row3"></layout:Row>
+            </StackPanel>
+        </Grid>
+
     </Grid>
 
 </Window>

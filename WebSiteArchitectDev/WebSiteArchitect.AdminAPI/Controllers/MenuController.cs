@@ -57,5 +57,19 @@ namespace WebSiteArchitect.AdminAPI.Controllers
             return CreatedAtRoute("GetMenu", new { id = item.MenuId }, item);
         }
 
+        [HttpDelete("{id}")]
+        public IActionResult Delete(long id)
+        {
+            var menu = _context.Menus.FirstOrDefault(m => m.MenuId == id);
+            if (menu == null)
+            {
+                return NotFound();
+            }
+
+            _context.Menus.Remove(menu);
+            _context.SaveChanges();
+            return new NoContentResult();
+        }
+
     }
 }

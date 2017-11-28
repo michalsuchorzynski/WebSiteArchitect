@@ -10,6 +10,7 @@ using WebSiteArchitect.AdminApp.ViewModels;
 using WebSiteArchitect.WebModel;
 using WebSiteArchitect.WebModel.Base;
 using WebSiteArchitect.WebModel.Controls;
+using WebSiteArchitect.WebModel.Helpers;
 
 namespace WebSiteArchitect.AdminApp.Code
 {
@@ -40,7 +41,7 @@ namespace WebSiteArchitect.AdminApp.Code
             set
             {
                 _editMode = value;
-                OnEditModeChange();
+                OnEditModeChangeAsync();
                 OnPropertyChanged("EditMode");
             }
         }
@@ -48,11 +49,17 @@ namespace WebSiteArchitect.AdminApp.Code
         public LayoutControler(StackPanel xamlPage,MainWindowViewModel mainWindowVM)
         {
             this.XamlPage = xamlPage;
+            
+            if (mainWindowVM.SelectedPage != null)
+            {
+                
+                this.XamlPage = Settings.StringToXaml(mainWindowVM.SelectedPage.XamlPageString);
+            }
             this._mainWindowVM = mainWindowVM;
             this.EditMode = -1;
         }
 
-        public void OnEditModeChange()
+        public async void OnEditModeChangeAsync()
         {
             switch (_editMode)
             {
@@ -86,15 +93,25 @@ namespace WebSiteArchitect.AdminApp.Code
                 case 5:
                     _mainWindowVM.ControlsWindow.Hide();
                     _mainWindowVM.PropertWindow.Hide();
-                    StackPanel Page = (StackPanel)_mainWindowVM.LayoutWindow.FindName("PageLayout");
-                    Translator parser = new Translator(Page);
+
+                    _mainWindowVM.SelectedPage.XamlPageString = Settings.XamlToSring(this.XamlPage);
+                    Translator translator = new Translator(this.XamlPage);
+                    _mainWindowVM.SelectedPage.ControlsJson = Settings.ConvertToJson(translator.Content);
+
+                    UpdatePageRequest req = new UpdatePageRequest()
+                    {
+                        Id = _mainWindowVM.SelectedPage.PageId,
+                        XamlSchema = _mainWindowVM.SelectedPage.XamlPageString,
+                        Controls = _mainWindowVM.SelectedPage.ControlsJson
+                    };
+                    _mainWindowVM.Consumer.UpdateAsync("api/page", req);
                     break;
             }
         }
 
         public void AddRowToPage()
         {
-            AddRowToPanel(XamlPage);            
+            AddRowToPanel(this.XamlPage);            
         }
         public void DeleteRowFromPage(Row selected)
         {

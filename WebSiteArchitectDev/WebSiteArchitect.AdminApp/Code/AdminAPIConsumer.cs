@@ -38,8 +38,23 @@ namespace WebSiteArchitect.AdminApp.Code
             }
         }
         public async Task<bool> UpdateAsync(string request, object param)
-        {
+        {            
             var response = await client.PutAsJsonAsync(request, param);
+            if (response.IsSuccessStatusCode)
+            {
+                this.Error = string.Empty;
+                return true;
+
+            }
+            else
+            {
+                this.Error = "Error Code" + response.StatusCode + " : Message - " + response.ReasonPhrase;
+                return false;
+            }
+        }
+        public async Task<bool> DeleteAsync(string request, long id)
+        {
+            var response = await client.DeleteAsync(request +"/" + id);
             if (response.IsSuccessStatusCode)
             {
                 this.Error = string.Empty;

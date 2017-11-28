@@ -67,5 +67,19 @@ namespace WebSiteArchitect.AdminAPI.Controllers
 
             return CreatedAtRoute("GetSite", new { id = item.SiteId }, item);
         }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(long id)
+        {
+            var site = _context.Sites.FirstOrDefault(s => s.SiteId == id);
+            if (site == null)
+            {
+                return NotFound();
+            }
+
+            _context.Sites.Remove(site);
+            _context.SaveChanges();
+            return new NoContentResult();
+        }
     }
 }
