@@ -6,7 +6,14 @@
         xmlns:local="clr-namespace:WebSiteArchitect.AdminApp.Views"
         xmlns:layout="clr-namespace:WebSiteArchitect.AdminApp.Controls.Layout"
         mc:Ignorable="d"
-        Title="Layout" Height="1000" Width="1000">
+        Title="Layout"
+        ResizeMode="NoResize"
+        Left="200"
+        Top="25"
+        Height="703"
+        Width="1165"       
+        WindowStyle="None"
+        >
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"></RowDefinition>

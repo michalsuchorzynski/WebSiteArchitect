@@ -25,7 +25,7 @@ namespace WebSiteArchitect.AdminApp.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("asd")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:49461/")]
         public string ServerAddress {
             get {
                 return ((string)(this["ServerAddress"]));

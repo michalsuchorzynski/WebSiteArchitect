@@ -250,6 +250,8 @@ namespace WebSiteArchitect.AdminApp.ViewModels
 
         public void OpenWindows()
         {
+            if (LayoutWindow != null)
+                LayoutWindow.Close();
             LayoutWindow = new Views.Layout(this);
 
             this._layoutWindow.layoutVM.Controler.XamlPage = (StackPanel)this.LayoutWindow.FindName("PageLayout");
@@ -259,7 +261,8 @@ namespace WebSiteArchitect.AdminApp.ViewModels
 
             ControlsWindow = new Views.Controls(this);
             PropertWindow = new Views.Property(this);
-            LayoutWindow.Show();
+            if(!LayoutWindow.IsVisible)
+                LayoutWindow.Show();
             ControlsWindow.Hide();
             PropertWindow.Hide();
         }

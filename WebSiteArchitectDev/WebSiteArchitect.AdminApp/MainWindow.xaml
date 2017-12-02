@@ -6,25 +6,13 @@
         xmlns:local="clr-namespace:WebSiteArchitect.AdminApp"
         mc:Ignorable="d"
         Title="WebSiteArchitect"
+        WindowState="Maximized"
         
         >
     <Grid>
-        <DockPanel>
-            <Menu DockPanel.Dock="Top">
-                <MenuItem Header="New">
-                </MenuItem>
-                <MenuItem Header="Edit">
-                </MenuItem>
-                <MenuItem Header="View">
-                </MenuItem>
-                <MenuItem Header="Project">
-                </MenuItem>
-            </Menu>
-            <TextBox AcceptsReturn="True" />
-        </DockPanel>
-        <Grid Margin="0,20,0,0 ">
+        <Grid Margin="0,0,0,0 ">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="150"></ColumnDefinition>
+                <ColumnDefinition Width="200"></ColumnDefinition>
                 <ColumnDefinition Width="1*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="0">
@@ -51,7 +39,6 @@
             </Grid>
                 
             <Grid Grid.Column="1">
-                
             </Grid>
         </Grid>
     </Grid>
