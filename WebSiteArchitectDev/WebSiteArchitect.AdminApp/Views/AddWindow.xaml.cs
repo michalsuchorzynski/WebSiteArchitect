@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using WebSiteArchitect.AdminApp.Code;
 using WebSiteArchitect.AdminApp.ViewModels;
+using WebSiteArchitect.WebModel.Helpers;
+using Base = WebSiteArchitect.WebModel.Base;
 
 namespace WebSiteArchitect.AdminApp.Views
 {
@@ -24,28 +26,28 @@ namespace WebSiteArchitect.AdminApp.Views
         private AdminAPIConsumer consumer;
         private MainWindowViewModel mainWindowVM;
         private int type;
-        private Site site;
-        private Page page;
-        private Menu menu; 
+        private Base.Site site;
+        private Base.Page page;
+        private Base.Menu menu; 
         public AddWindow(AdminAPIConsumer consumer, MainWindowViewModel mainWindowVM)
         {
             this.mainWindowVM = mainWindowVM;
             this.consumer = consumer;
             InitializeComponent();
         }
-        public AddWindow(Site site, AdminAPIConsumer consumer, MainWindowViewModel mainWindowVM) :this(consumer,mainWindowVM)
+        public AddWindow(Base.Site site, AdminAPIConsumer consumer, MainWindowViewModel mainWindowVM) :this(consumer,mainWindowVM)
         {
             this.site = site;
             this.type = 0;
             InitializeComponent();
         }
-        public AddWindow(Page page, AdminAPIConsumer consumer, MainWindowViewModel mainWindowVM) : this(consumer,mainWindowVM)
+        public AddWindow(Base.Page page, AdminAPIConsumer consumer, MainWindowViewModel mainWindowVM) : this(consumer,mainWindowVM)
         {
             this.page = page;
             this.type = 1;
             InitializeComponent();
         }
-        public AddWindow(Menu menu, AdminAPIConsumer consumer, MainWindowViewModel mainWindowVM) : this(consumer, mainWindowVM)
+        public AddWindow(Base.Menu menu, AdminAPIConsumer consumer, MainWindowViewModel mainWindowVM) : this(consumer, mainWindowVM)
         {
             this.menu = menu;
             this.type = 2;

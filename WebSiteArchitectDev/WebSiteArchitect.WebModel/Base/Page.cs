@@ -1,12 +1,10 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using WebSiteArchitect.WebModel;
 using WebSiteArchitect.WebModel.Base;
 
-namespace WebSiteArchitect.AdminApp
+namespace WebSiteArchitect.WebModel.Base
 {
     public class Page
     {

@@ -54,7 +54,7 @@ namespace WebSiteArchitect.AdminApp
             {
                 var newPath = new PathHelper(this.WebSiteTreeView.SelectedItem as TreeViewItem);
                 if (mainWindowVM.SelectedSite == null || mainWindowVM.SelectedSite.Name != newPath.Root)
-                    mainWindowVM.SelectedSite = await mainWindowVM.Consumer.GetSiteByNameAsync(newPath.Root);
+                    mainWindowVM.SelectedSite = mainWindowVM.Consumer.GetSiteByNameAsync(newPath.Root);
                 if (!string.IsNullOrEmpty(newPath.Item))
                 {
                     if (newPath.Folder == "Pages")
@@ -75,8 +75,8 @@ namespace WebSiteArchitect.AdminApp
                 }
                 else
                 {
-                    mainWindowVM.SelectedPage = null;
-                    mainWindowVM.SelectedMenu = null;
+                   // mainWindowVM.SelectedPage = null;
+                   // mainWindowVM.SelectedMenu = null;
 
                 }
                 mainWindowVM.SelectedPagePath = newPath;

@@ -1,18 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using WebSiteArchitect.AdminApp.Code;
 using WebSiteArchitect.AdminApp.Commands;
 using WebSiteArchitect.AdminApp.Views;
 using WebSiteArchitect.WebModel;
+using Base = WebSiteArchitect.WebModel.Base;
 using WebSiteArchitect.WebModel.Helpers;
-using Views = WebSiteArchitect.AdminApp.Views;
 
 namespace WebSiteArchitect.AdminApp.ViewModels
 {
@@ -26,9 +21,9 @@ namespace WebSiteArchitect.AdminApp.ViewModels
         private Views.Controls _controlsWindow;
         private Views.Property _propertyWindow;
 
-        private IEnumerable<Site> _sites;
-        private IEnumerable<Menu> _menus;
-        private IEnumerable<Page> _pages;
+        private IEnumerable<Base.Site> _sites;
+        private IEnumerable<Base.Menu> _menus;
+        private IEnumerable<Base.Page> _pages;
 
         private ICommand _newProjectCommand;
         private ICommand _newPageCommand;
@@ -37,9 +32,9 @@ namespace WebSiteArchitect.AdminApp.ViewModels
         private bool _canExecute = true;
 
         private PathHelper _selectedPagePath;
-        private Site _selectedSite;
-        private Page _selectedPage;
-        private Menu _selectedMenu;
+        private Base.Site _selectedSite;
+        private Base.Page _selectedPage;
+        private Base.Menu _selectedMenu;
 
 
         public AdminAPIConsumer Consumer
@@ -160,7 +155,7 @@ namespace WebSiteArchitect.AdminApp.ViewModels
                 _selectedPagePath = value;
             }
         }
-        public Site SelectedSite
+        public Base.Site SelectedSite
         {
             get
             {
@@ -171,7 +166,7 @@ namespace WebSiteArchitect.AdminApp.ViewModels
                 _selectedSite = value;
             }
         }
-        public Page SelectedPage
+        public Base.Page SelectedPage
         {
             get
             {
@@ -182,7 +177,7 @@ namespace WebSiteArchitect.AdminApp.ViewModels
                 _selectedPage = value;
             }
         }
-        public Menu SelectedMenu
+        public Base.Menu SelectedMenu
         {
             get
             {
@@ -198,7 +193,7 @@ namespace WebSiteArchitect.AdminApp.ViewModels
         public MainWindowViewModel(MainWindow mainWindow)
         {
             _mainWindow = mainWindow;
-            _consumer = new AdminAPIConsumer();
+            _consumer = new AdminAPIConsumer(Properties.Settings.Default.ServerAddress);
             _newProjectCommand = new RelayCommand(AddNewProjectAsync);
             _newPageCommand = new RelayCommand(AddNewPage);
             _newMenuCommand = new RelayCommand(AddNewMenu);
@@ -208,13 +203,13 @@ namespace WebSiteArchitect.AdminApp.ViewModels
 
         public void  AddNewProjectAsync(object obj)
         {
-            Site newSite = new Site();
+            Base.Site newSite = new Base.Site();
             AddWindow add = new AddWindow(newSite, Consumer,this);
             add.Show();           
         }
         public void AddNewPage(object obj)
         {
-            Page newPage = new Page();
+            Base.Page newPage = new Base.Page();
             LayoutWindow = new Views.Layout(this);            
             newPage.SiteId = SelectedSite.SiteId;
             newPage.XamlPageString = Settings.XamlToSring((StackPanel)LayoutWindow.FindName("PageLayout"));
@@ -223,7 +218,7 @@ namespace WebSiteArchitect.AdminApp.ViewModels
         }
         public void AddNewMenu(object obj)
         {
-            Menu newMenu = new Menu();
+            Base.Menu newMenu = new Base.Menu();
             newMenu.SiteId = SelectedSite.SiteId;
             AddWindow add = new AddWindow(newMenu, Consumer,this);
             add.Show();

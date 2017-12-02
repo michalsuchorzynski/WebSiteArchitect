@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="ServerControler.ClientWeb.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="ServerAddress" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://localhost:49461</Value>
+    </Setting>
+    <Setting Name="DefaultPage" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Test</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

@@ -45,6 +45,12 @@ namespace WebSiteArchitect.AdminAPI.Controllers
             return _context.Pages.Where(p => p.Name == name).ToList();
         }
 
+        [HttpGet("{id}", Name = "GetPagesForSite")]
+        [Route("forSite/{id}")]
+        public IEnumerable<Page> GetPagesForSite(int id)
+        {
+            return _context.Pages.Where(p => p.SiteId == id).ToList();
+        }
 
         [HttpPost]
         public IActionResult Create([FromBody] Page item)
@@ -55,6 +61,8 @@ namespace WebSiteArchitect.AdminAPI.Controllers
             }
             _context.Pages.Add(item);
             _context.SaveChanges();
+            //SetStartPage(_context.Pages.FirstOrDefault(p => p.Name == item.Name && p.SiteId == item.SiteId));
+
 
             return CreatedAtRoute("GetPage", new { id = item.PageId }, item);
         }
@@ -90,10 +98,23 @@ namespace WebSiteArchitect.AdminAPI.Controllers
             {
                 return NotFound();
             }
+            //if(page.Site.StartPage == page.PageId)
+            //{
+            //    page.Site.StartPage = page.Site.Pages.FirstOrDefault(p => p.PageId != page.PageId).PageId;
+            //}
 
             _context.Pages.Remove(page);
             _context.SaveChanges();
             return new NoContentResult();
+        }
+
+        private void SetStartPage(Page page)
+        {
+            var site = _context.Sites.FirstOrDefault(s => s.SiteId == page.SiteId);
+            if (site.StartPage != 0)
+                return;
+            site.StartPage = page.PageId;
+            _context.SaveChanges();
         }
     }
 }

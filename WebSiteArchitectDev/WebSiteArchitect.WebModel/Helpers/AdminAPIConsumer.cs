@@ -5,19 +5,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using WebSiteArchitect.WebModel.Base;
 
-namespace WebSiteArchitect.AdminApp.Code
+namespace WebSiteArchitect.WebModel.Helpers
 {
     public class AdminAPIConsumer
     {
-        private string _serverAddress = Properties.Settings.Default.ServerAddress;
         private HttpClient client;
         public string Error { get; set; }
 
-        public AdminAPIConsumer()
+        public AdminAPIConsumer(string serverAddress)
         {
             client = new HttpClient();
-            client.BaseAddress = new Uri(_serverAddress);
+            client.BaseAddress = new Uri(serverAddress);
             client.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json"));
         }
@@ -84,10 +84,10 @@ namespace WebSiteArchitect.AdminApp.Code
                 return null;
             }
         }
-        public async Task<Site> GetSiteByNameAsync(string name)
+        public Site GetSiteByNameAsync(string name)
         {
-            HttpResponseMessage response = await client.GetAsync("/api/site/byname/" + name);
-            var site = await response.Content.ReadAsAsync<Site>();
+            HttpResponseMessage response = client.GetAsync("/api/site/byname/" + name).Result;
+            var site = response.Content.ReadAsAsync<Site>().Result;
             if (response.IsSuccessStatusCode)
             {
                 this.Error = string.Empty;
@@ -100,6 +100,7 @@ namespace WebSiteArchitect.AdminApp.Code
                 return null;
             }
         }
+
         public IEnumerable<Menu> GetMenu(string request, object param)
         {
             HttpResponseMessage response = client.GetAsync("api/menu").Result;
@@ -116,7 +117,6 @@ namespace WebSiteArchitect.AdminApp.Code
                 return null;
             }
         }
-
         public IEnumerable<Menu> GetMenuByName(string name, Site selectedSite)
         {
             HttpResponseMessage response = client.GetAsync("api/menu/byname/" + name).Result;
@@ -151,12 +151,28 @@ namespace WebSiteArchitect.AdminApp.Code
                 return null;
             }
         }
-
         public IEnumerable<Page> GetPageByName(string name, Site selectedSite)
         {
             HttpResponseMessage response = client.GetAsync("api/page/byname/" + name).Result;
             var pages = response.Content.ReadAsAsync<IEnumerable<Page>>().Result;
             pages = pages.Where(p => p.SiteId == selectedSite.SiteId);
+            if (response.IsSuccessStatusCode)
+            {
+                this.Error = string.Empty;
+                return pages;
+
+            }
+            else
+            {
+                this.Error = "Error Code" + response.StatusCode + " : Message - " + response.ReasonPhrase;
+                return null;
+            }
+        }
+
+        public IEnumerable<Page> GetPageForSite(int id)
+        {
+            HttpResponseMessage response = client.GetAsync("api/page/forsite/" + id).Result;
+            var pages = response.Content.ReadAsAsync<IEnumerable<Page>>().Result;
             if (response.IsSuccessStatusCode)
             {
                 this.Error = string.Empty;

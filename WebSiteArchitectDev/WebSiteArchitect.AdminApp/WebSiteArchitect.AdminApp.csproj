@@ -93,7 +93,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Code\AdminAPIConsumer.cs" />
     <Compile Include="Code\ControlCounter.cs" />
     <Compile Include="Code\LayoutControl.cs" />
     <Compile Include="Code\LayoutControler.cs" />
@@ -117,9 +116,6 @@
     <Compile Include="Controls\Layout\Select.xaml.cs">
       <DependentUpon>Select.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Mapping\Menu.cs" />
-    <Compile Include="Mapping\Page.cs" />
-    <Compile Include="Mapping\Site.cs" />
     <Compile Include="ViewModels\ControlsViewModel.cs" />
     <Compile Include="ViewModels\LayoutViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />

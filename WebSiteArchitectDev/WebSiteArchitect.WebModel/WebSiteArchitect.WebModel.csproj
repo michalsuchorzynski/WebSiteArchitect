@@ -53,15 +53,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base\IWebControl.cs" />
+    <Compile Include="Base\Menu.cs" />
+    <Compile Include="Base\Page.cs" />
+    <Compile Include="Base\Site.cs" />
     <Compile Include="Base\WebContent.cs" />
-    <Compile Include="Consumers\WebAPIConsumer.cs" />
     <Compile Include="Controls\EmptySpace.cs" />
     <Compile Include="Controls\Input.cs" />
     <Compile Include="Controls\Label.cs" />
     <Compile Include="Controls\Panel.cs" />
     <Compile Include="Controls\Select.cs" />
-    <Compile Include="Creator\Parser.cs" />
     <Compile Include="Enums\WebControlTypeEnum.cs" />
+    <Compile Include="Helpers\AdminAPIConsumer.cs" />
     <Compile Include="Helpers\PathHelper.cs" />
     <Compile Include="Helpers\UpdatePageRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

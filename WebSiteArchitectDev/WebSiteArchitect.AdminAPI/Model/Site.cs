@@ -14,6 +14,7 @@ namespace WebSiteArchitect.AdminAPI.Model
         public string Name { get; set; }
         public DateTime CreateDate { get; set; }
         public DateTime ModDate { get; set; }
+        public int StartPage { get; set; }
         public virtual ICollection<Menu> Menus { get; set; }
         public virtual ICollection<Page> Pages { get; set; }
     }
