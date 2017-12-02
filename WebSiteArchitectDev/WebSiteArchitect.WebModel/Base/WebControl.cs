@@ -15,8 +15,9 @@ namespace WebSiteArchitect.WebModel.Base
         private string _value;
         private string _className;
         private List<WebControl> _childrenControls;
-
-#region Property
+        private string _goTo;     
+        
+        #region Property
         public string Id
         {
             get
@@ -88,6 +89,11 @@ namespace WebSiteArchitect.WebModel.Base
                 }
                 _childrenControls = value;
             }
+        }
+        public string GoTo
+        {
+            get { return _goTo; }
+            set { _goTo = value; }
         }
         #endregion
         public WebControl()

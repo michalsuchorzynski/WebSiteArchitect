@@ -11,6 +11,7 @@ namespace WebSiteArchitect.AdminApp.Code
         private static int _inputCount = 0;
         private static int _labelCount = 0;
         private static int _selectCount = 0;
+        private static int _buttonCount = 0;
 
         public static int InputCount
         {
@@ -37,6 +38,15 @@ namespace WebSiteArchitect.AdminApp.Code
                 var count = _selectCount;
                 _selectCount++;
                 return count;
+            }
+        }
+        public static int ButtonCount
+        {
+            get
+            {
+                var count = _buttonCount;
+                _buttonCount++;
+                return _buttonCount;
             }
         }
     }

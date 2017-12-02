@@ -34,6 +34,10 @@
                 <RowDefinition Height="30"></RowDefinition>
                 <RowDefinition Height="30"></RowDefinition>
                 <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition Height="30"></RowDefinition>
             </Grid.RowDefinitions>
             <Label Grid.Row="0" Content="Wartość" ></Label>
             <TextBox Grid.Row="1" Text="{Binding Value, Mode=TwoWay}"></TextBox>
@@ -45,8 +49,10 @@
             <wpfTool:ColorPicker  Grid.Row="7" DisplayColorAndName="True" SelectedColor="{Binding Path=FontColor, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             <Label Grid.Row="8" Content="Tekst w poziomie" ></Label>
             <ComboBox x:Name="combox_textAlign" Grid.Row="9" SelectedItem="{Binding TextAlign, Mode=TwoWay}"></ComboBox>
-            
-            
+            <Label Grid.Row="10" Content="Przekieruj do" ></Label>
+            <TextBox Grid.Row="11" Text="{Binding GoTo, Mode=TwoWay}"></TextBox>
+
+
         </Grid>
 
     </Grid>

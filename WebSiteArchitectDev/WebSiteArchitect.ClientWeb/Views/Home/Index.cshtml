@@ -17,6 +17,23 @@
         <div id=@control.Id class="@control.ClassName">
             @switch (control.Type)
             {
+                case WebSiteArchitect.WebModel.Enums.WebControlTypeEnum.button:
+                    {
+                        string site = "test";
+                        string page = control.GoTo;
+                        @Html.ActionLink(
+                            "text",
+                            "Index",
+                            "Home",
+                            routeValues: new
+                            {
+                                siteName = site,
+                                pagename = page
+                            },
+                            htmlAttributes: null
+                        )
+                        break;
+                    }
                 case WebSiteArchitect.WebModel.Enums.WebControlTypeEnum.emptySpace:
                     {
                         break;

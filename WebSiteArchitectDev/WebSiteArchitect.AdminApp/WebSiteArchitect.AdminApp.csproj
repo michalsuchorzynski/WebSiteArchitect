@@ -98,6 +98,9 @@
     <Compile Include="Code\LayoutControler.cs" />
     <Compile Include="Code\Translator.cs" />
     <Compile Include="Commands\RelayCommand.cs" />
+    <Compile Include="Controls\Layout\Button.xaml.cs">
+      <DependentUpon>Button.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Layout\EmptySpace.xaml.cs">
       <DependentUpon>EmptySpace.xaml</DependentUpon>
     </Compile>
@@ -135,6 +138,10 @@
     <Compile Include="Views\Property.xaml.cs">
       <DependentUpon>Property.xaml</DependentUpon>
     </Compile>
+    <Page Include="Controls\Layout\Button.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\Layout\EmptySpace.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

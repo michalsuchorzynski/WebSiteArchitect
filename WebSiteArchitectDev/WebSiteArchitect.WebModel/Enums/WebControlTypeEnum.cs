@@ -9,6 +9,9 @@ namespace WebSiteArchitect.WebModel.Enums
 {
     public enum WebControlTypeEnum
     {
+        [Description("Button")]
+        button,
+
         [Description("EmptySpace")]
         emptySpace,
 

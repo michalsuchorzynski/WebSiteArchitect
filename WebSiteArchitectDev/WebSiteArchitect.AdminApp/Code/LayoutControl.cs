@@ -26,6 +26,7 @@ namespace WebSiteArchitect.AdminApp.Code
         private Color? _backgroundColor;
         private Color? _fontColor;
         private TextAlignment _textAlign;
+        private string _goTo;
 
         public UserControl Control
         {
@@ -114,6 +115,9 @@ namespace WebSiteArchitect.AdminApp.Code
             {
                 switch (this.ControlType)
                 {
+                    case WebControlTypeEnum.button:
+                        (_content as Button).Content = value;
+                        break;
                     case WebControlTypeEnum.emptySpace:
                         break;
                     case WebControlTypeEnum.input:
@@ -146,6 +150,9 @@ namespace WebSiteArchitect.AdminApp.Code
                 var converter = new System.Windows.Media.BrushConverter();
                 switch (this.ControlType)
                 {
+                    case WebControlTypeEnum.button:
+                        (_content as Button).Background = (Brush)converter.ConvertFromString(value.ToString());
+                        break;
                     case WebControlTypeEnum.emptySpace:
                         break;
                     case WebControlTypeEnum.input:
@@ -179,6 +186,9 @@ namespace WebSiteArchitect.AdminApp.Code
                 var converter = new System.Windows.Media.BrushConverter();
                 switch (this.ControlType)
                 {
+                    case WebControlTypeEnum.button:
+                        (_content as Button).Foreground = (Brush)converter.ConvertFromString(value.ToString());
+                        break;
                     case WebControlTypeEnum.emptySpace:
                         break;
                     case WebControlTypeEnum.input:
@@ -221,6 +231,26 @@ namespace WebSiteArchitect.AdminApp.Code
                 }
                 _textAlign = value;
                 OnPropertyChanged("TextAlign");
+            }
+        }
+        public string GoTo
+        {
+            get
+            {
+                return _goTo;
+            }
+            set
+            {
+                
+                switch (this.ControlType)
+                {
+                    case WebControlTypeEnum.button:
+                        (_content as Button).Name = value;
+                        break;
+                       
+                }
+                _goTo = value;
+                OnPropertyChanged("GoTo");
             }
         }
 
@@ -275,6 +305,16 @@ namespace WebSiteArchitect.AdminApp.Code
             SolidColorBrush newBrush;
             switch (_control.GetType().FullName.Replace("WebSiteArchitect.AdminApp.Controls.Layout.", "").ToLower())
             {
+                case "button":
+                    _controlType = WebControlTypeEnum.button;
+                    _content = ((_control.Content as Grid).Children[0] as Button);
+                    newBrush = (SolidColorBrush)((_content as Button).Background);
+                    _backgroundColor = newBrush.Color;
+                    newBrush = (SolidColorBrush)((_content as Button).Foreground);
+                    _fontColor = newBrush.Color;
+                    _goTo = (_content as Button).Name;
+                    this.Value = (_content as Button).Content.ToString();
+                    break;
                 case "emptySpace":
                     this._controlType = WebControlTypeEnum.emptySpace;
                     _controlType = WebControlTypeEnum.label;

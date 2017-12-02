@@ -59,6 +59,9 @@ namespace WebSiteArchitect.AdminApp.ViewModels
             string typeOfNewControl = _mainWindowVM.ControlsWindow.controlVM.SelectedButton.Content.ToString();
             switch (typeOfNewControl)
             {
+                case "Button":
+                    controlToAdd = new LayoutControls.Button();
+                    break;
                 case "Input":
                     controlToAdd = new LayoutControls.Input();
                     break;

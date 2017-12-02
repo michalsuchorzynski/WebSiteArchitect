@@ -84,6 +84,12 @@ namespace WebSiteArchitect.AdminApp.Code
             
             switch (_currentControl.ControlTypeName)
             {
+                case "button":
+                    newControl = new WebSiteArchitect.WebModel.Controls.Button();
+                    newControl.Name = _currentControl.ControlTypeName + ControlCounter.LabelCount.ToString();
+                    newControl.Value = _currentControl.Value;
+                    newControl.GoTo = _currentControl.GoTo;
+                    break;
                 case "emptyspace":
                     newControl = new WebSiteArchitect.WebModel.Controls.EmptySpace();
                     break;
@@ -137,6 +143,9 @@ namespace WebSiteArchitect.AdminApp.Code
             {
                 case "row":
                     newClass = _currentControl.ControlTypeName;
+                    break;
+                case "button":
+                    newClass += " btn btn-default";
                     break;
             }
             newControl.ClassName = newClass;

@@ -9,6 +9,7 @@
         WindowStyle="None">
     <ScrollViewer VerticalScrollBarVisibility="Auto">
         <StackPanel >
+            <Button Content="Button"  Height="35" Command="{Binding SelectButtonCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
             <Button Content="Input"  Height="35" Command="{Binding SelectButtonCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
             <Button Content="Label"  Height="35" Command="{Binding SelectButtonCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
             <Button Content="Panel"  Height="35" Command="{Binding SelectButtonCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
