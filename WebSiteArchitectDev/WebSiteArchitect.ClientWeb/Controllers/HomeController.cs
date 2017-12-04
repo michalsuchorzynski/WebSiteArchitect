@@ -17,9 +17,10 @@ namespace WebSiteArchitect.ClientWeb.Controllers
         private readonly string defaultPage = ServerControler.ClientWeb.Properties.Settings.Default.DefaultPage;
 
 
-        public Site _currentSite;
-        public Page _currentPage;
-        public AdminAPIConsumer _consumer;
+        private Site _currentSite;
+        private Page _currentPage;
+        private Menu _currentMenu;
+        private AdminAPIConsumer _consumer;    
 
 
         #region Property
@@ -32,6 +33,11 @@ namespace WebSiteArchitect.ClientWeb.Controllers
         {
             get { return _currentPage; }
             set { _currentPage = value; }
+        }
+        public Menu CurrentMenu
+        {
+            get { return _currentMenu; }
+            set { _currentMenu = value; }
         }
         public AdminAPIConsumer Consumer
         {
@@ -58,10 +64,12 @@ namespace WebSiteArchitect.ClientWeb.Controllers
             siteName = !string.IsNullOrEmpty(siteName) ? siteName : defaultPage; 
             _currentSite = _consumer.GetSiteByNameAsync(siteName);
             _currentSite.Pages = _consumer.GetPageForSite(_currentSite.SiteId).ToList();
+            _currentSite.Menus = _consumer.GetMenusForSite(_currentSite.SiteId).ToList();
 
             if (!string.IsNullOrEmpty(pageName))
             {
                 var page = _currentSite.Pages.FirstOrDefault(p => p.Name.ToLower() == pageName.ToLower());
+
                 if (page != null)
                     _currentPage = page;
             }
@@ -69,6 +77,9 @@ namespace WebSiteArchitect.ClientWeb.Controllers
             {
                 _currentPage = _currentSite.Pages.ToList()[_currentSite.StartPage];
             }
+            _currentMenu = _currentSite.Menus.ToList().First();
+
+            ViewBag.Menu = Settings.ConvertFromJson(_currentMenu.ControlsJson);
         }
     }
 }

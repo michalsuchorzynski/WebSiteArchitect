@@ -185,5 +185,21 @@ namespace WebSiteArchitect.WebModel.Helpers
                 return null;
             }
         }
+        public IEnumerable<Menu> GetMenusForSite(int id)
+        {
+            HttpResponseMessage response = client.GetAsync("api/menu/forsite/" + id).Result;
+            var pages = response.Content.ReadAsAsync<IEnumerable<Menu>>().Result;
+            if (response.IsSuccessStatusCode)
+            {
+                this.Error = string.Empty;
+                return pages;
+
+            }
+            else
+            {
+                this.Error = "Error Code" + response.StatusCode + " : Message - " + response.ReasonPhrase;
+                return null;
+            }
+        }
     }
 }

@@ -272,7 +272,7 @@ namespace WebSiteArchitect.AdminApp.Code
                 return false;
             if (newSize > this.Size)
             {
-                if (this.ChildIndex + newSize > 11)
+                if (this.ChildIndex + newSize > 12)
                     return false;
                 for (int i = this.ChildIndex + 1; i < this.ChildIndex + newSize; i++)
                 {

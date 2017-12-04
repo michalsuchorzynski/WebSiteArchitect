@@ -12,32 +12,66 @@
 
 </head>
 <body>
-    <header class="mainHeader">
-        <div class="container">
-            <a id="logo"></a>
+    <div class="mainMenu">
+        @foreach (WebSiteArchitect.WebModel.Base.WebControl control in ViewBag.Menu.Controls)
+        {
+            @CreateSimpleControl(control)
+        }
+        @helper CreateSimpleControl(WebSiteArchitect.WebModel.Base.WebControl control)
+        {
+        <div id=@control.Id class="@control.ClassName">
+            @switch (control.Type)
+            {
+                case WebSiteArchitect.WebModel.Enums.WebControlTypeEnum.button:
+                    {
+                        string site = "test";
+                        string page = control.GoTo;
+                        @Html.ActionLink(
+                            control.Value,
+                            "Index",
+                            "Home",
+                            routeValues: new
+                            {
+                                siteName = site,
+                                pagename = page
+                            },
+                            htmlAttributes: null
+                        )
+                        break;
+                    }
+                case WebSiteArchitect.WebModel.Enums.WebControlTypeEnum.emptySpace:
+                    {
+                        break;
+                    }
+                case WebSiteArchitect.WebModel.Enums.WebControlTypeEnum.panel:
+                    {
+                        if (control.ChildrenControls != null)
+                        {
+                            for (int i = 0; i < control.ChildrenControls.Count; i++)
+                            {
+                                @CreateSimpleControl(control.ChildrenControls[i]);
+                            }
+                        }
+                        break;
+                    }
+                case WebSiteArchitect.WebModel.Enums.WebControlTypeEnum.input:
+                    {
+                        @Html.TextBox(control.Name, control.Value);
+                        break;
+                    }
+                case WebSiteArchitect.WebModel.Enums.WebControlTypeEnum.label:
+                    {
+                        @Html.Label(control.Value);
+                        break;
+                    }
+            }
         </div>
-        <div class="navbar navbar-inverse">
-            <div class="container">
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li class="col-md-4">@Html.ActionLink("Home", "Index", "Home")</li>
-                        <li class="col-md-4">@Html.ActionLink("About", "About", "Home")</li>
-                        <li class="col-md-4">@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </header>
+}
+    </div>
     <div class="container body-content mainContainer">
-
         @RenderBody()
     </div>
 
-    <footer class="mainFooter">
-        <div class="container">
-            <span>Praca Inżynierska Michał Suchorzyński</span>
-        </div>
-    </footer>
 
     @Scripts.Render("~/js")
 

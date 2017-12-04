@@ -14,6 +14,10 @@ namespace WebSiteArchitect.AdminAPI.Model
         public string Name { get; set; }
         public DateTime CreateDate { get; set; }
         public DateTime ModDate { get; set; }
+        [Column("XamlPage")]
+        public string XamlPageString { get; set; }
+        [Column("Controls")]
+        public string ControlsJson { get; set; }
         public int SiteId { get; set; }
         public virtual Site Site { get; set; }
     }

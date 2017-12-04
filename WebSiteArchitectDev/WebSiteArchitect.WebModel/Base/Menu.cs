@@ -10,6 +10,8 @@ namespace WebSiteArchitect.WebModel.Base
         public string Name { get; set; }
         public DateTime CreateDate { get; set; }
         public DateTime ModDate { get; set; }
+        public string XamlPageString { get; set; }
+        public string ControlsJson { get; set; }
         public int SiteId { get; set; }
         public virtual Site Site { get; set; }
 

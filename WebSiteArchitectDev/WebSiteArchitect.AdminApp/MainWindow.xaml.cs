@@ -70,13 +70,23 @@ namespace WebSiteArchitect.AdminApp
                     {
                         mainWindowVM.SelectedPage = null;
                         if (mainWindowVM.SelectedMenu == null || mainWindowVM.SelectedMenu.Name != newPath.Item)
+                        {
                             mainWindowVM.SelectedMenu = mainWindowVM.Consumer.GetMenuByName(newPath.Item, mainWindowVM.SelectedSite).First();
+                            mainWindowVM.OpenWindows();
+                        }
                     }
                 }
                 else
                 {
-                   // mainWindowVM.SelectedPage = null;
-                   // mainWindowVM.SelectedMenu = null;
+                    if (newPath.Folder != "Pages" && newPath.Folder != "")
+                    {
+                        mainWindowVM.SelectedPage = null;
+                        if (mainWindowVM.SelectedMenu == null || mainWindowVM.SelectedMenu.Name != newPath.Folder)
+                        {
+                            mainWindowVM.SelectedMenu = mainWindowVM.Consumer.GetMenuByName(newPath.Folder, mainWindowVM.SelectedSite).First();
+                            mainWindowVM.OpenWindows();
+                        }
+                    }
 
                 }
                 mainWindowVM.SelectedPagePath = newPath;

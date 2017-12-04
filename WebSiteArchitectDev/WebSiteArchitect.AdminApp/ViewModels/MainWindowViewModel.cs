@@ -219,7 +219,9 @@ namespace WebSiteArchitect.AdminApp.ViewModels
         public void AddNewMenu(object obj)
         {
             Base.Menu newMenu = new Base.Menu();
+            LayoutWindow = new Views.Layout(this);
             newMenu.SiteId = SelectedSite.SiteId;
+            newMenu.XamlPageString = Settings.XamlToSring((StackPanel)LayoutWindow.FindName("PageLayout"));
             AddWindow add = new AddWindow(newMenu, Consumer,this);
             add.Show();
         }
@@ -250,7 +252,15 @@ namespace WebSiteArchitect.AdminApp.ViewModels
             LayoutWindow = new Views.Layout(this);
 
             this._layoutWindow.layoutVM.Controler.XamlPage = (StackPanel)this.LayoutWindow.FindName("PageLayout");
-            this._layoutWindow.layoutVM.Controler.XamlPage = Settings.StringToXaml(this.SelectedPage.XamlPageString);
+
+            if (SelectedPage != null)
+            {
+                this._layoutWindow.layoutVM.Controler.XamlPage = Settings.StringToXaml(this.SelectedPage.XamlPageString);
+            }
+            else if(SelectedMenu!=null)
+            {
+                this._layoutWindow.layoutVM.Controler.XamlPage = Settings.StringToXaml(this.SelectedMenu.XamlPageString);
+            }
             (this._layoutWindow.FindName("PageLayoutParent") as Grid).Children.Clear();
             (this._layoutWindow.FindName("PageLayoutParent") as Grid).Children.Add(this._layoutWindow.layoutVM.Controler.XamlPage);
 

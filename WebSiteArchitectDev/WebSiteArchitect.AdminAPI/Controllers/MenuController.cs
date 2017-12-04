@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using WebSiteArchitect.AdminAPI.Model;
+using WebSiteArchitect.WebModel.Helpers;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -43,6 +44,13 @@ namespace WebSiteArchitect.AdminAPI.Controllers
             return _context.Menus.Where(m => m.Name == name).ToList();
         }
 
+        [HttpGet("{id}", Name = "GetMenusForSite")]
+        [Route("forSite/{id}")]
+        public IEnumerable<Menu> GetMenusForSite(int id)
+        {
+            return _context.Menus.Where(m => m.SiteId == id).ToList();
+        }
+
         [HttpPost]
         public IActionResult Create([FromBody] Menu item)
         {
@@ -56,6 +64,30 @@ namespace WebSiteArchitect.AdminAPI.Controllers
 
             return CreatedAtRoute("GetMenu", new { id = item.MenuId }, item);
         }
+
+        [HttpPut]
+        public IActionResult Update([FromBody] UpdatePageRequest menu)
+        {
+
+            if (menu == null)
+            {
+                return BadRequest();
+            }
+
+            var menuToUpdate = _context.Menus.FirstOrDefault(m => m.MenuId == menu.Id);
+            if (menuToUpdate == null)
+            {
+                return NotFound();
+            }
+            menuToUpdate.ModDate = DateTime.Now;
+            menuToUpdate.ControlsJson = menu.Controls;
+            menuToUpdate.XamlPageString = menu.XamlSchema;
+
+            _context.Menus.Update(menuToUpdate);
+            _context.SaveChanges();
+            return new NoContentResult();
+        }
+
 
         [HttpDelete("{id}")]
         public IActionResult Delete(long id)

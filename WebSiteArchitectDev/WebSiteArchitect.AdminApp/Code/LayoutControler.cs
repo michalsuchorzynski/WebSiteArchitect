@@ -93,18 +93,34 @@ namespace WebSiteArchitect.AdminApp.Code
                 case 5:
                     _mainWindowVM.ControlsWindow.Hide();
                     _mainWindowVM.PropertWindow.Hide();
-
-                    _mainWindowVM.SelectedPage.XamlPageString = Settings.XamlToSring(this.XamlPage);
-                    Translator translator = new Translator(this.XamlPage);
-                    _mainWindowVM.SelectedPage.ControlsJson = Settings.ConvertToJson(translator.Content);
-
-                    UpdatePageRequest req = new UpdatePageRequest()
+                    if (_mainWindowVM.SelectedPage != null)
                     {
-                        Id = _mainWindowVM.SelectedPage.PageId,
-                        XamlSchema = _mainWindowVM.SelectedPage.XamlPageString,
-                        Controls = _mainWindowVM.SelectedPage.ControlsJson
-                    };
-                    _mainWindowVM.Consumer.UpdateAsync("api/page", req);
+                        _mainWindowVM.SelectedPage.XamlPageString = Settings.XamlToSring(this.XamlPage);
+                        Translator translator = new Translator(this.XamlPage);
+                        _mainWindowVM.SelectedPage.ControlsJson = Settings.ConvertToJson(translator.Content);
+
+                        UpdatePageRequest req = new UpdatePageRequest()
+                        {
+                            Id = _mainWindowVM.SelectedPage.PageId,
+                            XamlSchema = _mainWindowVM.SelectedPage.XamlPageString,
+                            Controls = _mainWindowVM.SelectedPage.ControlsJson
+                        };
+                        _mainWindowVM.Consumer.UpdateAsync("api/page", req);
+                    }
+                    else if (_mainWindowVM.SelectedMenu != null)
+                    {
+                        _mainWindowVM.SelectedMenu.XamlPageString = Settings.XamlToSring(this.XamlPage);
+                        Translator translator = new Translator(this.XamlPage);
+                        _mainWindowVM.SelectedMenu.ControlsJson = Settings.ConvertToJson(translator.Content);
+
+                        UpdatePageRequest req = new UpdatePageRequest()
+                        {
+                            Id = _mainWindowVM.SelectedMenu.MenuId,
+                            XamlSchema = _mainWindowVM.SelectedMenu.XamlPageString,
+                            Controls = _mainWindowVM.SelectedMenu.ControlsJson
+                        };
+                        _mainWindowVM.Consumer.UpdateAsync("api/menu", req);
+                    }
                     break;
             }
         }

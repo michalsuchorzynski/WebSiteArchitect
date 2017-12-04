@@ -96,3 +96,7 @@
 }
 
 /*ActionMenu END*/
+
+.col-md-0{
+    display:none!important;
+}
