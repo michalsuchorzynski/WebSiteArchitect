@@ -27,7 +27,9 @@ namespace WebSiteArchitect.AdminApp.Code
         private Color? _fontColor;
         private TextAlignment _textAlign;
         private string _goTo;
-
+        private double _fontSize;
+        private double _height;
+        
         public UserControl Control
         {
             get
@@ -253,6 +255,42 @@ namespace WebSiteArchitect.AdminApp.Code
                 OnPropertyChanged("GoTo");
             }
         }
+        public double FontSize
+        {
+            get
+            {
+                return _fontSize;
+            }
+            set
+            {
+                switch (this.ControlType)
+                {
+
+                    case WebControlTypeEnum.input:
+                        (_content as TextBox).FontSize = value;
+                        break;
+                    case WebControlTypeEnum.label:
+                        (_content as AccessText).FontSize = value;
+                        break;
+                }
+                _fontSize = value;
+                OnPropertyChanged("FontSize");
+            }
+
+        }
+        public double Height
+        {
+            get
+            {
+                return _height;
+            }
+            set
+            {
+                _parentControl.Height = value;
+                _height = value;
+                OnPropertyChanged("Height");
+            }
+        }
 
         public LayoutControl()
         {
@@ -339,6 +377,7 @@ namespace WebSiteArchitect.AdminApp.Code
                     _fontColor = newBrush.Color;
                     this.Value = (_content as AccessText).Text.ToString();
                     _textAlign = (_content as AccessText).TextAlignment;
+                    _fontSize = (_content as AccessText).FontSize;
                     break;
                 case "panel":
                     _controlType = WebControlTypeEnum.panel;                    
@@ -367,8 +406,10 @@ namespace WebSiteArchitect.AdminApp.Code
             {
                 _childIndex = _parentControl.Children.IndexOf(_control);
                 _size = Convert.ToInt32(_parentControl.ColumnDefinitions[_childIndex].Width.Value);
-            }           
-            
+                _height = _parentControl.ActualHeight;
+
+            }
+
 
         }
 

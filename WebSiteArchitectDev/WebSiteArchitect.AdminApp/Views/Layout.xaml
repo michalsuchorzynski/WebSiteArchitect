@@ -12,8 +12,6 @@
         Top="25"
         Height="703"
         Width="1165"     
-        Topmost="True"
-        WindowStyle="None"
         >
     <Grid>
         <Grid.RowDefinitions>

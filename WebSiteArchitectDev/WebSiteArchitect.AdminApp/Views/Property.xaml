@@ -7,53 +7,26 @@
         xmlns:local="clr-namespace:WebSiteArchitect.AdminApp.Views"
         xmlns:wpfTool="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
         mc:Ignorable="d"
-        Title="Property" Height="600" Width="600">
+        Title="Property" ResizeMode="NoResize" Height="710" Width="210" Left="-6" Top="25" Topmost="True">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width ="1*"></ColumnDefinition>
-            <ColumnDefinition Width ="2*"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <Grid Grid.Column="0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="300"></RowDefinition>
-                <RowDefinition Height="1*"></RowDefinition>
-            </Grid.RowDefinitions>
-            <Grid Grid.Row="0" Background="AliceBlue"></Grid>
-            <Grid Grid.Row="1" Background="Aqua">
-                <ListBox  ItemsSource="{Binding ControlsType}"></ListBox>
-            </Grid>
-        </Grid>
-
-        <Grid Grid.Column="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="30"></RowDefinition>
-                <RowDefinition Height="20"></RowDefinition>
-                <RowDefinition Height="30"></RowDefinition>
-                <RowDefinition Height="20"></RowDefinition>
-                <RowDefinition Height="30"></RowDefinition>
-                <RowDefinition Height="30"></RowDefinition>
-                <RowDefinition Height="30"></RowDefinition>
-                <RowDefinition Height="30"></RowDefinition>
-                <RowDefinition Height="30"></RowDefinition>
-                <RowDefinition Height="30"></RowDefinition>
-                <RowDefinition Height="30"></RowDefinition>
-                <RowDefinition Height="30"></RowDefinition>
-            </Grid.RowDefinitions>
-            <Label Grid.Row="0" Content="Wartość" ></Label>
-            <TextBox Grid.Row="1" Text="{Binding Value, Mode=TwoWay}"></TextBox>
-            <Label Grid.Row="2" Content="Rozmiar" ></Label>
-            <TextBox Grid.Row="3" Text="{Binding Size, Mode=TwoWay}"></TextBox>
-            <Label Grid.Row="4" Content="Kolor tła" ></Label>
-            <wpfTool:ColorPicker  Grid.Row="5" DisplayColorAndName="True" SelectedColor="{Binding Path=BackgroundColor, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-            <Label Grid.Row="6" Content="Kolor czcionki" ></Label>
-            <wpfTool:ColorPicker  Grid.Row="7" DisplayColorAndName="True" SelectedColor="{Binding Path=FontColor, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-            <Label Grid.Row="8" Content="Tekst w poziomie" ></Label>
-            <ComboBox x:Name="combox_textAlign" Grid.Row="9" SelectedItem="{Binding TextAlign, Mode=TwoWay}"></ComboBox>
-            <Label Grid.Row="10" Content="Przekieruj do" ></Label>
-            <TextBox Grid.Row="11" Text="{Binding GoTo, Mode=TwoWay}"></TextBox>
-
-
-        </Grid>
+        <StackPanel>
+            <Label  Content="Wartość" ></Label>
+            <TextBox Text="{Binding Value, Mode=TwoWay}"></TextBox>
+            <Label Content="Rozmiar" ></Label>
+            <TextBox Text="{Binding Size, Mode=TwoWay}"></TextBox>
+            <Label Content="Kolor tła" ></Label>
+            <wpfTool:ColorPicker  DisplayColorAndName="True" SelectedColor="{Binding Path=BackgroundColor, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <Label Content="Kolor czcionki" ></Label>
+            <wpfTool:ColorPicker  DisplayColorAndName="True" SelectedColor="{Binding Path=FontColor, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <Label Content="Tekst w poziomie" ></Label>
+            <ComboBox x:Name="combox_textAlign" SelectedItem="{Binding TextAlign, Mode=TwoWay}"></ComboBox>
+            <Label Content="Przekieruj do" ></Label>
+            <TextBox Text="{Binding GoTo, Mode=TwoWay}"></TextBox>
+            <Label Content="Rozmiar czcionki" ></Label>
+            <TextBox Text="{Binding FontSize, Mode=TwoWay}"></TextBox>
+            <Label Content="Wyskość" ></Label>
+            <TextBox Text="{Binding Height, Mode=TwoWay}"></TextBox>
+        </StackPanel>
 
     </Grid>
 </Window>

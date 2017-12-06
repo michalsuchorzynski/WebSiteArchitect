@@ -118,6 +118,7 @@
     <Content Include="Content\Images\sort_desc.png" />
     <Content Include="Content\Images\sort_desc_disabled.png" />
     <Content Include="Content\Style\Architect.css" />
+    <Content Include="Content\Style\Layout.css" />
     <Content Include="Content\Style\Main.css" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="Global.asax" />

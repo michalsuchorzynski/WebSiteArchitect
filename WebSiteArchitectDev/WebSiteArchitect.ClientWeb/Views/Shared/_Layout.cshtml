@@ -24,19 +24,23 @@
             {
                 case WebSiteArchitect.WebModel.Enums.WebControlTypeEnum.button:
                     {
-                        string site = "test";
-                        string page = control.GoTo;
-                        @Html.ActionLink(
-                            control.Value,
-                            "Index",
-                            "Home",
-                            routeValues: new
-                            {
-                                siteName = site,
-                                pagename = page
-                            },
-                            htmlAttributes: null
-                        )
+                        <div class="btn btn-default">
+                            @{ 
+                                string site = "test";
+                                string page = control.GoTo;
+                            @Html.ActionLink(
+                                         control.Value,
+                                         "Index",
+                                         "Home",
+                                         routeValues: new
+                                         {
+                                             siteName = site,
+                                             pagename = page
+                                         },
+                                         htmlAttributes: null
+                                     )
+                                }
+                        </div>
                         break;
                     }
                 case WebSiteArchitect.WebModel.Enums.WebControlTypeEnum.emptySpace:

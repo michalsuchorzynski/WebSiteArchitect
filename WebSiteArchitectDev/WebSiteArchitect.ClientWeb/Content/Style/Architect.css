@@ -1,7 +1,36 @@
-﻿col-md-0{
+﻿.col-md-0{
     display:none!important;
-} 
-
-.wsaEmptySpace {
+}
+.wsaEmptySpace,
+.wsaButton,
+.wsaLabel {
     height: 50px;
 }
+
+
+.wsaButton .btn {
+    width: 100%;
+    margin-top:7px;
+    padding:0px;
+    min-height:35px;
+}
+.wsaButton a {
+    width: 100%;
+    height: 35px;
+    display: block;
+    padding-top:5px;
+}
+
+
+
+/*Text-Align Start*/
+.wsaTextCenter {
+    text-align: center;
+}
+.wsaTextJustify{
+    text-align:justify;
+}
+.wsaTextRight{
+    text-align:right;
+}
+/*Text-Align End*/

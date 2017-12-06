@@ -96,6 +96,7 @@
     <Compile Include="Code\ControlCounter.cs" />
     <Compile Include="Code\LayoutControl.cs" />
     <Compile Include="Code\LayoutControler.cs" />
+    <Compile Include="Code\StyleBuilder.cs" />
     <Compile Include="Code\Translator.cs" />
     <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="Controls\Layout\Button.xaml.cs">

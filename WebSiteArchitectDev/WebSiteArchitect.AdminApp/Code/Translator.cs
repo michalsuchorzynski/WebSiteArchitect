@@ -17,7 +17,15 @@ namespace WebSiteArchitect.AdminApp.Code
         private List<IWebControl> _controls;
         private LayoutControl _currentControl;
         private WebContent _content;
-              
+        private StyleBuilder _styleBuilder;
+
+        public StyleBuilder StyleBuilder
+        {
+            get { return _styleBuilder; }
+            set { _styleBuilder = value; }
+        }
+
+
 
         public StackPanel XamlPage
         {
@@ -64,8 +72,11 @@ namespace WebSiteArchitect.AdminApp.Code
             var mainPanel = xamlPage.Children[0];
             _controls = new List<IWebControl>();
             _content = new WebContent();
+            _styleBuilder = new StyleBuilder("C:\\Users\\Michał\\Desktop\\Praca Inzynierska\\WebSiteArchitect\\WebSiteArchitectDev\\WebSiteArchitect.ClientWeb\\Content\\Style");
 
             _content.Controls = ConvertToWebPage();
+
+            _styleBuilder.SaveFile();
         }
         public List<IWebControl> ConvertToWebPage()
         {
@@ -144,10 +155,29 @@ namespace WebSiteArchitect.AdminApp.Code
                 case "row":
                     newClass = _currentControl.ControlTypeName;
                     break;
-                case "button":
-                    newClass += " btn btn-default";
-                    break;
+              
             }
+
+            switch (_currentControl.TextAlign)
+            {
+                case System.Windows.TextAlignment.Center:
+                    {
+                        newClass += " wsaTextCenter";
+                        break;
+                    }
+                case System.Windows.TextAlignment.Justify:
+                    {
+                        newClass += " wsaTextJustify";
+                        break;
+                    }
+                case System.Windows.TextAlignment.Right:
+                    {
+                        newClass += " wsaTextRight";
+                        break;
+                    }
+            }
+            newClass +=_styleBuilder.GenerateCSS(_currentControl, newControl);
+
             newControl.ClassName = newClass;
             
         }
