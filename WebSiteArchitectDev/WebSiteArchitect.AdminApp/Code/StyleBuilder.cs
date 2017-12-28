@@ -42,6 +42,7 @@ namespace WebSiteArchitect.AdminApp.Code
                 _styles += "." + newControl.Name + "Custom input,\n";
                 _styles += "." + newControl.Name + "Custom select,\n";
                 _styles += "." + newControl.Name + "Custom label,\n";
+                _styles += "." + newControl.Name + "Custom a,\n";
                 _styles += "." + newControl.Name + "Custom span{\n";
 
 
@@ -60,7 +61,15 @@ namespace WebSiteArchitect.AdminApp.Code
 
                 _styles += "}\n";
             }
-            return cssClass;
+            if (control.ControlType == WebModel.Enums.WebControlTypeEnum.button)
+            {
+                _styles += "." + newControl.Name + "Custom a{\n";
+                _styles += "background-color:" + "rgb(" + control.ContentColor.Value.R + "," + control.ContentColor.Value.G + "," + control.ContentColor.Value.B + ");\n";
+                _styles += "border-color:" + "rgb(" + control.ContentColor.Value.R + "," + control.ContentColor.Value.G + "," + control.ContentColor.Value.B + ");\n";
+                _styles += "}\n";
+            }
+
+                return cssClass;
         }
 
         public void SaveFile()

@@ -25,6 +25,7 @@ namespace WebSiteArchitect.AdminApp.Code
         private string _value;
         private Color? _backgroundColor;
         private Color? _fontColor;
+        public Color? _contentColor;
         private TextAlignment _textAlign;
         private string _goTo;
         private double _fontSize;
@@ -213,6 +214,25 @@ namespace WebSiteArchitect.AdminApp.Code
                 OnPropertyChanged("FontColor");
             }
         }
+        public Color? ContentColor
+        {
+            get
+            {
+                return _contentColor;
+            }
+            set
+            {
+                var converter = new System.Windows.Media.BrushConverter();
+                switch (this.ControlType)
+                {
+                    case WebControlTypeEnum.button:
+                        (_content as Button).BorderBrush = (Brush)converter.ConvertFromString(value.ToString());
+                        break;
+                }
+                _contentColor = value;
+                OnPropertyChanged("ContentColor");
+            }
+        }
         public TextAlignment TextAlign
         {
             get
@@ -265,7 +285,9 @@ namespace WebSiteArchitect.AdminApp.Code
             {
                 switch (this.ControlType)
                 {
-
+                    case WebControlTypeEnum.button:
+                        (_content as Button).FontSize = value;
+                        break;
                     case WebControlTypeEnum.input:
                         (_content as TextBox).FontSize = value;
                         break;
@@ -346,12 +368,19 @@ namespace WebSiteArchitect.AdminApp.Code
                 case "button":
                     _controlType = WebControlTypeEnum.button;
                     _content = ((_control.Content as Grid).Children[0] as Button);
+
                     newBrush = (SolidColorBrush)((_content as Button).Background);
                     _backgroundColor = newBrush.Color;
                     newBrush = (SolidColorBrush)((_content as Button).Foreground);
                     _fontColor = newBrush.Color;
-                    _goTo = (_content as Button).Name;
+                    newBrush = (SolidColorBrush)((_content as Button).BorderBrush);
+                    _contentColor = newBrush.Color;
+
                     this.Value = (_content as Button).Content.ToString();
+
+                    _fontSize = (_content as Button).FontSize;
+
+                    _goTo = (_content as Button).Name;
                     break;
                 case "emptySpace":
                     this._controlType = WebControlTypeEnum.emptySpace;
@@ -361,21 +390,28 @@ namespace WebSiteArchitect.AdminApp.Code
                 case "input":
                     _controlType = WebControlTypeEnum.input;
                     _content = ((_control.Content as Grid).Children[0] as TextBox);
+
                     newBrush = (SolidColorBrush)((_content as TextBox).Background);
                     _backgroundColor = newBrush.Color;
                     newBrush = (SolidColorBrush)((_content as TextBox).Foreground);
                     _fontColor = newBrush.Color;
+
                     this.Value = (_content as TextBox).Text.ToString();
+
                     _textAlign = (_content as TextBox).TextAlignment;
+                    _fontSize = (_content as TextBox).FontSize;
                     break;
                 case "label":
                     _controlType = WebControlTypeEnum.label;
                     _content = ((_control.Content as Grid).Children[0] as Label).Content;
+
                     newBrush = (SolidColorBrush)((_control.Content as Grid).Background);
                     _backgroundColor = newBrush.Color;
                     newBrush = (SolidColorBrush)((_content as AccessText).Foreground);
                     _fontColor = newBrush.Color;
+
                     this.Value = (_content as AccessText).Text.ToString();
+
                     _textAlign = (_content as AccessText).TextAlignment;
                     _fontSize = (_content as AccessText).FontSize;
                     break;
@@ -385,10 +421,12 @@ namespace WebSiteArchitect.AdminApp.Code
                 case "select":
                     _controlType = WebControlTypeEnum.select;
                     _content = ((_control.Content as Grid).Children[0] as ComboBox);
+
                     newBrush = (SolidColorBrush)((_content as ComboBox).Background);
                     _backgroundColor = newBrush.Color;
                     newBrush = (SolidColorBrush)((_content as ComboBox).Foreground);
                     _fontColor = newBrush.Color;
+
                     break;
                 case "row":
                     _controlType = WebControlTypeEnum.row;
