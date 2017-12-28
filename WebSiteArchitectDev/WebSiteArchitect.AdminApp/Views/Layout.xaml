@@ -28,6 +28,7 @@
                 </ListBox.ItemsPanel>
                 <ListBoxItem Content="Dodaj element"/>
                 <ListBoxItem Content="Usuń element"/>
+                <ListBoxItem Content="Przenieś element"/>
                 <ListBoxItem Content="Dodaj wiersz"/>
                 <ListBoxItem Content="Usuń wiersz"/>
                 <ListBoxItem Content="Tryb edycji"/>

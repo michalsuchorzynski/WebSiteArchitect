@@ -81,17 +81,21 @@ namespace WebSiteArchitect.AdminApp.Code
                 case 2:
                     _mainWindowVM.ControlsWindow.Hide();
                     _mainWindowVM.PropertWindow.Hide();
-                    AddRowToPage();
                     break;
                 case 3:
                     _mainWindowVM.ControlsWindow.Hide();
                     _mainWindowVM.PropertWindow.Hide();
+                    AddRowToPage();
                     break;
                 case 4:
                     _mainWindowVM.ControlsWindow.Hide();
-                    _mainWindowVM.PropertWindow.Show();
+                    _mainWindowVM.PropertWindow.Hide();
                     break;
                 case 5:
+                    _mainWindowVM.ControlsWindow.Hide();
+                    _mainWindowVM.PropertWindow.Show();
+                    break;
+                case 6:
                     _mainWindowVM.ControlsWindow.Hide();
                     _mainWindowVM.PropertWindow.Hide();
 
@@ -211,10 +215,15 @@ namespace WebSiteArchitect.AdminApp.Code
             return true;
         }
 
-        public void MoveControl(UserControl oldPosition, UserControl newPosition)
+        public void MoveControl(UserControl newPosition, UserControl oldPosition)
         {
-            AddControl(newPosition, oldPosition);
+            var parent = newPosition.Parent as Grid;
+            var controlIndexOf = parent.Children.IndexOf(newPosition);
+            parent.Children.Remove(newPosition);
             DeleteControl(oldPosition);
+            parent.Children.Insert(controlIndexOf, oldPosition);
+            Grid.SetColumn(oldPosition, controlIndexOf);
+            
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

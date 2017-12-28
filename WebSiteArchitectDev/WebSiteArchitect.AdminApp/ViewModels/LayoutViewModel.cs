@@ -14,7 +14,7 @@ namespace WebSiteArchitect.AdminApp.ViewModels
     {
         private LayoutControler _controler;
         private MainWindowViewModel _mainWindowVM;
-
+        private object _controlToMove;
         public LayoutControler Controler
         {
             get
@@ -43,7 +43,22 @@ namespace WebSiteArchitect.AdminApp.ViewModels
                 case 1:
                     DeleteControl(sender);
                     break;
-                case 4:
+                case 2:
+                    if (_controlToMove == null || _controlToMove is LayoutControls.EmptySpace)
+                    {
+                        _controlToMove = sender;
+                    }
+                    else
+                    {
+                        if (sender is LayoutControls.EmptySpace)
+                        {
+                            MoveControl(sender, _controlToMove);
+                            _controlToMove = null;
+                        }
+                    }
+                    
+                    break;
+                case 5:
                     _mainWindowVM.PropertWindow.propertyVM.SelectedControl = new LayoutControl(sender as UserControl);
                     break;
             }
@@ -83,6 +98,10 @@ namespace WebSiteArchitect.AdminApp.ViewModels
         public void DeleteControl(object sender)
         {
             _controler.DeleteControl(sender as UserControl);
+        }
+        public void MoveControl(object sender, object toMove)
+        {
+            _controler.MoveControl(sender as UserControl,toMove as UserControl);
         }
     }
 }
