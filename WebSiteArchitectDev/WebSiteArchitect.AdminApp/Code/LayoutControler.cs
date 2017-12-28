@@ -85,7 +85,6 @@ namespace WebSiteArchitect.AdminApp.Code
                 case 3:
                     _mainWindowVM.ControlsWindow.Hide();
                     _mainWindowVM.PropertWindow.Hide();
-                    AddRowToPage();
                     break;
                 case 4:
                     _mainWindowVM.ControlsWindow.Hide();
@@ -165,13 +164,21 @@ namespace WebSiteArchitect.AdminApp.Code
             }
         }
 
-        public void AddRowToPage()
+        public void AddRowToPage(Row selected)
         {
-            AddRowToPanel(this.XamlPage);            
+            var parent = (selected.Parent) as StackPanel;
+            var controlIndexOf = parent.Children.IndexOf(selected);
+            parent.Children.Insert(controlIndexOf + 1, new Row());
         }
         public void DeleteRowFromPage(Row selected)
         {
-            DeleteControl(selected);
+            var parent = (selected.Parent) as StackPanel;
+            if (parent.Children.Count > 1)
+            {
+                var controlIndexOf = parent.Children.IndexOf(selected);
+                parent.Children.Remove(selected);
+            }
+
         }
         private void AddRowToPanel(StackPanel panel)
         {

@@ -60,7 +60,7 @@
                     }
                 case WebSiteArchitect.WebModel.Enums.WebControlTypeEnum.input:
                     {
-                        @Html.TextBox(control.Name, control.Value);
+                        @Html.TextBox(control.Name, control.Value,new { @class = "form-control" })  
                         break;
                     }
                 case WebSiteArchitect.WebModel.Enums.WebControlTypeEnum.label:

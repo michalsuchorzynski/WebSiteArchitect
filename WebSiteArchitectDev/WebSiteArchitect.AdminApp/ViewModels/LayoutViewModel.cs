@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using WebSiteArchitect.AdminApp.Code;
+using WebSiteArchitect.AdminApp.Controls.Layout;
 using WebSiteArchitect.WebModel.Enums;
 using LayoutControls = WebSiteArchitect.AdminApp.Controls.Layout;
 
@@ -56,6 +57,20 @@ namespace WebSiteArchitect.AdminApp.ViewModels
                             _controlToMove = null;
                         }
                     }
+                    break;
+                case 3:
+                    if (sender != null)
+                    {
+                        AddRow(sender);
+                        sender = null;
+                    }
+                    break;
+                case 4:
+                    if (sender != null)
+                    {
+                        DeleteRow(sender);
+                        sender = null;
+                    }
                     
                     break;
                 case 5:
@@ -102,6 +117,16 @@ namespace WebSiteArchitect.AdminApp.ViewModels
         public void MoveControl(object sender, object toMove)
         {
             _controler.MoveControl(sender as UserControl,toMove as UserControl);
+        }
+        public void AddRow(object sender)
+        {
+            var row = ((sender as UserControl).Parent as Grid).Parent;
+            _controler.AddRowToPage(row as Row);
+        }
+        public void DeleteRow(object sender)
+        {
+            var row = ((sender as UserControl).Parent as Grid).Parent;
+            _controler.DeleteRowFromPage(row as Row);
         }
     }
 }
