@@ -35,5 +35,24 @@ namespace WebSiteArchitect.AdminApp.Views
             this.mainWindowVM = mainWindowVM;
             this.DataContext = layoutVM.Controler;
         }
+
+        private void Layout_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (this.mainWindowVM.PropertWindow.propertyVM.SelectedControl != null)
+            {
+                if (e.Key == Key.NumPad4)
+                {
+                    this.mainWindowVM.PropertWindow.propertyVM.SelectedControl.Size = this.mainWindowVM.PropertWindow.propertyVM.SelectedControl.Size - 1;
+                }
+                else if (e.Key == Key.NumPad6)
+                {
+                    this.mainWindowVM.PropertWindow.propertyVM.SelectedControl.Size = this.mainWindowVM.PropertWindow.propertyVM.SelectedControl.Size + 1;
+                }
+            }
+            if (e.Key == Key.D)
+            {
+
+            }
+        }
     }
 }

@@ -43,18 +43,16 @@ namespace WebSiteArchitect.AdminApp
             this.mainWindowVM = new MainWindowViewModel(this);
             this.DataContext = mainWindowVM;
         }
-
+        
         private void TreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
-        {
-            TreeView_SelectedItemChangedAsync(sender, e);
-        }
-        private async void TreeView_SelectedItemChangedAsync(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
             if (this.WebSiteTreeView.SelectedItem != null)
             {
                 var newPath = new PathHelper(this.WebSiteTreeView.SelectedItem as TreeViewItem);
                 if (mainWindowVM.SelectedSite == null || mainWindowVM.SelectedSite.Name != newPath.Root)
+                {
                     mainWindowVM.SelectedSite = mainWindowVM.Consumer.GetSiteByNameAsync(newPath.Root);
+                }
                 if (!string.IsNullOrEmpty(newPath.Item))
                 {
                     if (newPath.Folder == "Pages")
@@ -97,6 +95,10 @@ namespace WebSiteArchitect.AdminApp
                 mainWindowVM.SelectedPage = null;
                 mainWindowVM.SelectedMenu = null;
                 mainWindowVM.SelectedPagePath = null;
+            }
+            if (mainWindowVM.LayoutWindow !=null )
+            {
+                mainWindowVM.LayoutWindow.Activate();
             }
         }
     }

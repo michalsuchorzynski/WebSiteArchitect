@@ -1,11 +1,12 @@
+
  .label0Custom,
 .label0Custom input,
 .label0Custom select,
 .label0Custom label,
 .label0Custom span{
-color:rgb(0,0,0);
-background-color:rgb(173,255,47);
-font-size:32px;
+color:rgb(255,99,71);
+background-color:rgb(127,255,0);
+font-size:25px;
 }
  .label1Custom,
 .label1Custom input,
@@ -13,43 +14,131 @@ font-size:32px;
 .label1Custom label,
 .label1Custom span{
 color:rgb(0,0,0);
+background-color:rgb(255,255,255);
+font-size:12px;
+}
+ .input0Custom,
+.input0Custom input,
+.input0Custom select,
+.input0Custom label,
+.input0Custom span{
+color:rgb(0,0,0);
+background-color:rgb(255,255,255);
+}
+ .label2Custom,
+.label2Custom input,
+.label2Custom select,
+.label2Custom label,
+.label2Custom span{
+color:rgb(0,0,0);
+background-color:rgb(255,255,255);
+font-size:12px;
+}
+ .input1Custom,
+.input1Custom input,
+.input1Custom select,
+.input1Custom label,
+.input1Custom span{
+color:rgb(0,0,0);
+background-color:rgb(255,255,255);
+}
+ .label3Custom,
+.label3Custom input,
+.label3Custom select,
+.label3Custom label,
+.label3Custom span{
+color:rgb(0,0,0);
+background-color:rgb(255,255,255);
+font-size:12px;
+}
+ .label4Custom,
+.label4Custom input,
+.label4Custom select,
+.label4Custom label,
+.label4Custom span{
+color:rgb(0,0,0);
+background-color:rgb(255,255,255);
+font-size:12px;
+}
+
+ .label5Custom,
+.label5Custom input,
+.label5Custom select,
+.label5Custom label,
+.label5Custom span{
+color:rgb(0,0,0);
+background-color:rgb(255,255,255);
+font-size:25px;
+}
+
+ .label6Custom,
+.label6Custom input,
+.label6Custom select,
+.label6Custom label,
+.label6Custom span{
+color:rgb(0,0,0);
+background-color:rgb(255,255,255);
+font-size:25px;
+}
+
+ .label7Custom,
+.label7Custom input,
+.label7Custom select,
+.label7Custom label,
+.label7Custom span{
+color:rgb(0,0,0);
+background-color:rgb(255,255,255);
+font-size:25px;
+}
+
+ .label8Custom,
+.label8Custom input,
+.label8Custom select,
+.label8Custom label,
+.label8Custom span{
+color:rgb(0,0,0);
+background-color:rgb(173,255,47);
+font-size:32px;
+}
+ .label9Custom,
+.label9Custom input,
+.label9Custom select,
+.label9Custom label,
+.label9Custom span{
+color:rgb(0,0,0);
 background-color:rgb(173,255,47);
 font-size:12px;
 }
- .button2Custom,
-.button2Custom input,
-.button2Custom select,
-.button2Custom label,
-.button2Custom span{
+ .button10Custom,
+.button10Custom input,
+.button10Custom select,
+.button10Custom label,
+.button10Custom span{
 color:rgb(0,0,0);
 background-color:rgb(221,221,221);
-font-size:0px;
 }
- .button3Custom,
-.button3Custom input,
-.button3Custom select,
-.button3Custom label,
-.button3Custom span{
+ .button11Custom,
+.button11Custom input,
+.button11Custom select,
+.button11Custom label,
+.button11Custom span{
 color:rgb(0,0,0);
 background-color:rgb(221,221,221);
-font-size:0px;
 }
- .button4Custom,
-.button4Custom input,
-.button4Custom select,
-.button4Custom label,
-.button4Custom span{
+ .button12Custom,
+.button12Custom input,
+.button12Custom select,
+.button12Custom label,
+.button12Custom span{
 color:rgb(0,0,0);
 background-color:rgb(221,221,221);
-font-size:0px;
 }
- .button5Custom,
-.button5Custom input,
-.button5Custom select,
-.button5Custom label,
-.button5Custom span{
+ .button13Custom,
+.button13Custom input,
+.button13Custom select,
+.button13Custom label,
+.button13Custom span{
 color:rgb(0,0,0);
 background-color:rgb(221,221,221);
-font-size:0px;
 }
 

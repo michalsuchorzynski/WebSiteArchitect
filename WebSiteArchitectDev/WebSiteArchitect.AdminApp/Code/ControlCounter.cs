@@ -49,5 +49,13 @@ namespace WebSiteArchitect.AdminApp.Code
                 return _buttonCount;
             }
         }
+        public static void Clear()
+        {
+            _inputCount = 0;
+            _labelCount = 0;
+            _selectCount = 0;
+            _buttonCount = 0;
+
+        }
     }
 }

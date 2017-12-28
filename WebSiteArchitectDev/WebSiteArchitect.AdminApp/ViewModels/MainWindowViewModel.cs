@@ -13,7 +13,7 @@ namespace WebSiteArchitect.AdminApp.ViewModels
 {
     public class MainWindowViewModel
     {
-        #region Property
+        
         private AdminAPIConsumer _consumer;
 
         private MainWindow _mainWindow;
@@ -36,7 +36,7 @@ namespace WebSiteArchitect.AdminApp.ViewModels
         private Base.Page _selectedPage;
         private Base.Menu _selectedMenu;
 
-
+        #region Property
         public AdminAPIConsumer Consumer
         {
             get
@@ -188,7 +188,7 @@ namespace WebSiteArchitect.AdminApp.ViewModels
                 _selectedMenu = value;
             }
         }
-
+        
         #endregion
         public MainWindowViewModel(MainWindow mainWindow)
         {
@@ -266,10 +266,16 @@ namespace WebSiteArchitect.AdminApp.ViewModels
 
             ControlsWindow = new Views.Controls(this);
             PropertWindow = new Views.Property(this);
-            if(!LayoutWindow.IsVisible)
-                LayoutWindow.Show();
+            if (!LayoutWindow.IsVisible)
+            {
+                LayoutWindow.Show();                
+            }
             ControlsWindow.Hide();
             PropertWindow.Hide();
+            if (LayoutWindow.IsVisible)
+            {
+                LayoutWindow.Activate();
+            }
         }
 
         public void ConstructTreeView()

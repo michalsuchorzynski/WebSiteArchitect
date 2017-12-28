@@ -53,7 +53,7 @@ namespace WebSiteArchitect.AdminApp.Code
                 {
                     _styles += "background-color:" + "rgb(" + control.BackgroundColor.Value.R + "," + control.BackgroundColor.Value.G + "," + control.BackgroundColor.Value.B + ");\n";
                 }
-                if (!string.IsNullOrEmpty(control.FontSize.ToString()))
+                if (!string.IsNullOrEmpty(control.FontSize.ToString()) && control.FontSize != 0)
                 {
                     _styles += "font-size:" + control.FontSize + "px;\n";
                 }
@@ -65,11 +65,23 @@ namespace WebSiteArchitect.AdminApp.Code
 
         public void SaveFile()
         {
+            var result = "";
+            using (StreamReader sr = new StreamReader(_path))
+            {
+                result = sr.ReadToEnd();
+            }
             using (StreamWriter sw = new StreamWriter(_path))
             {
-                sw.WriteLine(_styles);
+                sw.WriteLine(result + _styles);
             }
 
+        }
+        public void ClearFile()
+        {
+            using (StreamWriter sw = new StreamWriter(_path))
+            {
+                sw.WriteLine("");
+            }
         }
     }
 }
