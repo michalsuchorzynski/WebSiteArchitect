@@ -33,6 +33,8 @@ namespace WebSiteArchitect.AdminApp.ViewModels
                     case WebControlTypeEnum.emptySpace:
                         break;
                     case WebControlTypeEnum.input:
+                        _mainWindowVM.PropertWindow.labelContentColor.Visibility = System.Windows.Visibility.Visible;
+                        _mainWindowVM.PropertWindow.txtContentColor.Visibility = System.Windows.Visibility.Visible;
                         break;
                     case WebControlTypeEnum.label:
                         break;

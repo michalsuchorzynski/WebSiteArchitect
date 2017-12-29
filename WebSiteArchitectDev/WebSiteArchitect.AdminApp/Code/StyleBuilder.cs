@@ -61,15 +61,22 @@ namespace WebSiteArchitect.AdminApp.Code
 
                 _styles += "}\n";
             }
-            if (control.ControlType == WebModel.Enums.WebControlTypeEnum.button)
+            if (control.ControlType == WebModel.Enums.WebControlTypeEnum.button || control.ControlType == WebModel.Enums.WebControlTypeEnum.input)
             {
-                _styles += "." + newControl.Name + "Custom a{\n";
+                if (control.ControlType == WebModel.Enums.WebControlTypeEnum.button)
+                {
+                    _styles += "." + newControl.Name + "Custom a{\n";
+                }
+                else if (control.ControlType == WebModel.Enums.WebControlTypeEnum.input)
+                {
+                    _styles += "." + newControl.Name + "Custom input{\n";
+                }
                 _styles += "background-color:" + "rgb(" + control.ContentColor.Value.R + "," + control.ContentColor.Value.G + "," + control.ContentColor.Value.B + ");\n";
                 _styles += "border-color:" + "rgb(" + control.ContentColor.Value.R + "," + control.ContentColor.Value.G + "," + control.ContentColor.Value.B + ");\n";
                 _styles += "}\n";
             }
 
-                return cssClass;
+            return cssClass;
         }
 
         public void SaveFile()

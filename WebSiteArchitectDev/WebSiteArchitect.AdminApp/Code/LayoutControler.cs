@@ -62,6 +62,15 @@ namespace WebSiteArchitect.AdminApp.Code
 
         public async void OnEditModeChangeAsync()
         {
+            if (_mainWindowVM.ControlsWindow == null)
+            {
+                _mainWindowVM.ControlsWindow = new Views.Controls();
+            }
+            if (_mainWindowVM.PropertWindow == null)
+            {
+                _mainWindowVM.PropertWindow = new Views.Property();
+            }
+
             switch (_editMode)
             {
                 case -1:

@@ -30,7 +30,7 @@ namespace WebSiteArchitect.AdminApp.Code
         private string _goTo;
         private double _fontSize;
         private double _height;
-        
+        #region property
         public UserControl Control
         {
             get
@@ -159,7 +159,7 @@ namespace WebSiteArchitect.AdminApp.Code
                     case WebControlTypeEnum.emptySpace:
                         break;
                     case WebControlTypeEnum.input:
-                        (_content as TextBox).Background = (Brush)converter.ConvertFromString(value.ToString());
+                        (_content as TextBox).BorderBrush = (Brush)converter.ConvertFromString(value.ToString());
                         break;
                     case WebControlTypeEnum.label:
                         (_control.Content as Grid).Background = (Brush)converter.ConvertFromString(value.ToString());
@@ -227,6 +227,9 @@ namespace WebSiteArchitect.AdminApp.Code
                 {
                     case WebControlTypeEnum.button:
                         (_content as Button).BorderBrush = (Brush)converter.ConvertFromString(value.ToString());
+                        break;
+                    case WebControlTypeEnum.input:
+                        (_content as TextBox).Background = (Brush)converter.ConvertFromString(value.ToString());
                         break;
                 }
                 _contentColor = value;
@@ -314,6 +317,7 @@ namespace WebSiteArchitect.AdminApp.Code
             }
         }
 
+#endregion
         public LayoutControl()
         {
            
@@ -395,7 +399,10 @@ namespace WebSiteArchitect.AdminApp.Code
                     _backgroundColor = newBrush.Color;
                     newBrush = (SolidColorBrush)((_content as TextBox).Foreground);
                     _fontColor = newBrush.Color;
-
+                    newBrush = (SolidColorBrush)((_content as TextBox).BorderBrush);
+                    _backgroundColor = newBrush.Color;
+                    newBrush = (SolidColorBrush)((_content as TextBox).Background);
+                    _contentColor = newBrush.Color;
                     this.Value = (_content as TextBox).Text.ToString();
 
                     _textAlign = (_content as TextBox).TextAlignment;
