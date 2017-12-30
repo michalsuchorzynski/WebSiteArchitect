@@ -65,7 +65,13 @@
                         </p>
                         break;
                     }
-            }
+                case WebSiteArchitect.WebModel.Enums.WebControlTypeEnum.image:
+                    {
+                        var source ="/Content/Images" +   control.Value.Substring(control.Value.LastIndexOf("/"));
+                        <img src="@source" />
+                        break;
+                    }
+             }
         </div>
     }
 </div>

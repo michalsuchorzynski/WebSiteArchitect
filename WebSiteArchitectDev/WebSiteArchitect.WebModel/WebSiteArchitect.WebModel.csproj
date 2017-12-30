@@ -61,6 +61,7 @@
     <Compile Include="Base\WebContent.cs" />
     <Compile Include="Controls\Button.cs" />
     <Compile Include="Controls\EmptySpace.cs" />
+    <Compile Include="Controls\Image.cs" />
     <Compile Include="Controls\Input.cs" />
     <Compile Include="Controls\Label.cs" />
     <Compile Include="Controls\Panel.cs" />

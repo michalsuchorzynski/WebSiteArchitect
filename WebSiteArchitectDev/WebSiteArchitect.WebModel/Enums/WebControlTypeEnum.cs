@@ -28,7 +28,11 @@ namespace WebSiteArchitect.WebModel.Enums
         panel,
 
         [Description("Row")]
-        row
+        row,
+
+        [Description("Image")]
+        image
+
 
     }
 }

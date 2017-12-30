@@ -132,6 +132,11 @@ namespace WebSiteArchitect.AdminApp.Code
                     newControl.Name = _currentControl.ControlTypeName + ControlCounter.SelectCount.ToString();
                     newControl.Value = _currentControl.Value;
                     break;
+                case "image":
+                    newControl = new WebSiteArchitect.WebModel.Controls.Image();
+                    newControl.Name = _currentControl.ControlTypeName + ControlCounter.ImageCount.ToString();
+                    newControl.Value = _currentControl.Value;
+                    break;
                 default:
                     return null;
             }
@@ -147,7 +152,7 @@ namespace WebSiteArchitect.AdminApp.Code
                 var columnSize = _currentControl.Size;
                 if (columnSize <= 12)
                 {
-                    newClass += "col-md-" + columnSize.ToString() + " ";
+                    newClass += "col-md-" + columnSize.ToString() + " " + "col-sm-" + columnSize.ToString() + " " + "col-xs-" + columnSize.ToString() + " ";
                 }
             }
             newClass += GenerateCustomClass(newControl.Type.Description());

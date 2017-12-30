@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using WebSiteArchitect.WebModel.Enums;
 
@@ -136,6 +137,9 @@ namespace WebSiteArchitect.AdminApp.Code
                         break;
                     case WebControlTypeEnum.row:
                         break;
+                    case WebControlTypeEnum.image:
+                        (_content as Image).Source = new BitmapImage(new Uri(value));;
+                        break;
                     default:
                         break;
                 }
@@ -172,6 +176,9 @@ namespace WebSiteArchitect.AdminApp.Code
                         (_content as ComboBox).Background = (Brush)converter.ConvertFromString(value.ToString());
                         break;
                     case WebControlTypeEnum.row:
+                        break;
+                    case WebControlTypeEnum.image:
+                        _control.Background = (Brush)converter.ConvertFromString(value.ToString());
                         break;
                     default:
                         break;
@@ -441,6 +448,17 @@ namespace WebSiteArchitect.AdminApp.Code
                     break;
                 case "row":
                     _controlType = WebControlTypeEnum.row;
+                    break;
+                case "image":
+                    _controlType = WebControlTypeEnum.image;
+                    _content = ((_control.Content as Grid).Children[0] as Image);
+
+                    newBrush = (SolidColorBrush)(_control.Background);
+                    if(newBrush!=null)
+                        _backgroundColor = newBrush.Color;
+
+                    this.Value = (_content as Image).Source.ToString();
+
                     break;
                 default:
                     _controlType = WebControlTypeEnum.emptySpace;

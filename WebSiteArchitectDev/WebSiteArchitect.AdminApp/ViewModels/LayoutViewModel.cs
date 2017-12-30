@@ -104,6 +104,9 @@ namespace WebSiteArchitect.AdminApp.ViewModels
                 case "Select":
                     controlToAdd = new LayoutControls.Select();
                     break;
+                case "Image":
+                    controlToAdd = new LayoutControls.Image();
+                    break;
                 default:
                     controlToAdd = new LayoutControls.EmptySpace();
                     break;

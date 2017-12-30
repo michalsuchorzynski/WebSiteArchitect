@@ -105,6 +105,9 @@
     <Compile Include="Controls\Layout\EmptySpace.xaml.cs">
       <DependentUpon>EmptySpace.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Layout\Image.xaml.cs">
+      <DependentUpon>Image.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Layout\Input.xaml.cs">
       <DependentUpon>Input.xaml</DependentUpon>
     </Compile>
@@ -144,6 +147,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\Layout\EmptySpace.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Layout\Image.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -234,13 +241,19 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Style\Images\" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\WebSiteArchitect.WebModel\WebSiteArchitect.WebModel.csproj">
       <Project>{5C01F526-DD07-4D01-A76A-763E4ADD704E}</Project>
       <Name>WebSiteArchitect.WebModel</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Style\Images\sort_asc.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Style\Images\logoadwokata.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Style\Images\adwokat.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
