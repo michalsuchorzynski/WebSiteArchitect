@@ -60,7 +60,9 @@
                     }
                 case WebSiteArchitect.WebModel.Enums.WebControlTypeEnum.label:
                     {
-                        @Html.Label(control.Value);
+                        <p>
+                            @control.Value
+                        </p>
                         break;
                     }
             }

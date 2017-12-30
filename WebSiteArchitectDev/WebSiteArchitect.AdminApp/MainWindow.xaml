@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WebSiteArchitect.AdminApp"
         mc:Ignorable="d"
-        Title="WebSiteArchitect"
+        Title="Web Site Architect"
         WindowState="Maximized"
         
         >
@@ -33,7 +33,6 @@
                         <Button Command="{Binding NewPageCommand}" Content="Dodaj nową stronę"></Button>
                         <Button Command="{Binding NewMenuCommand}" Content="Dodaj nowe menu"></Button>
                         <Button Command="{Binding DeleteCommand}" Content="Usuń"></Button>
-                        <Button Content="Zmień nazwe"></Button>
                     </StackPanel>
                 </Grid>
             </Grid>

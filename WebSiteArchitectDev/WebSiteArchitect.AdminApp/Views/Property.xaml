@@ -10,26 +10,24 @@
         Title="Property" ResizeMode="NoResize" Height="710" Width="210" Left="-6" Top="25" Topmost="True">
     <Grid>
         <StackPanel>
-            <Label  Content="Wartość" ></Label>
-            <TextBox Text="{Binding Value, Mode=TwoWay}"></TextBox>
-            <Label Content="Rozmiar" ></Label>
-            <TextBox Text="{Binding Size, Mode=TwoWay}"></TextBox>
-            <Label Content="Wysokość" ></Label>
-            <TextBox Text="{Binding Height, Mode=TwoWay}"></TextBox>
-            <Label Content="Rozmiar czcionki" ></Label>
-            <TextBox Text="{Binding FontSize, Mode=TwoWay}"></TextBox>
-            <Label Content="Tekst w poziomie" ></Label>
-            <ComboBox x:Name="combox_textAlign" SelectedItem="{Binding TextAlign, Mode=TwoWay}"></ComboBox>
-            <Label Content="Kolor czcionki" ></Label>
-            <wpfTool:ColorPicker  DisplayColorAndName="True" SelectedColor="{Binding Path=FontColor, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-            <Label Content="Kolor tła" ></Label>
-            <wpfTool:ColorPicker  DisplayColorAndName="True" SelectedColor="{Binding Path=BackgroundColor, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <Label x:Name="labelValue" Content="Wartość" ></Label>
+            <TextBox x:Name="txtValue" Text="{Binding Value, Mode=TwoWay}"></TextBox>
+            <Label x:Name="labelWidth" Content="Rozmiar" ></Label>
+            <TextBox x:Name="txtWidth" Text="{Binding Size, Mode=TwoWay}"></TextBox>
+            <Label x:Name="labelHeight" Content="Wysokość" ></Label>
+            <TextBox x:Name="txtHeight" Text="{Binding Height, Mode=TwoWay}"></TextBox>
+            <Label x:Name="labelFontSize" Content="Rozmiar czcionki" ></Label>
+            <TextBox x:Name="txtFontSize" Text="{Binding FontSize, Mode=TwoWay}"></TextBox>
+            <Label x:Name="labelTextAlign" Content="Tekst w poziomie" ></Label>
+            <ComboBox x:Name="comboxTextAlign" SelectedItem="{Binding TextAlign, Mode=TwoWay}"></ComboBox>
+            <Label x:Name="labelFontColor" Content="Kolor czcionki" ></Label>
+            <wpfTool:ColorPicker x:Name="colorFontColor"  DisplayColorAndName="True" SelectedColor="{Binding Path=FontColor, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <Label x:Name="labelBackColor" Content="Kolor tła" ></Label>
+            <wpfTool:ColorPicker  x:Name="colorBackColor" DisplayColorAndName="True" SelectedColor="{Binding Path=BackgroundColor, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             <Label  x:Name="labelContentColor" Content="Kolor elementu"  Visibility="Hidden" ></Label>
             <wpfTool:ColorPicker x:Name="txtContentColor"  DisplayColorAndName="True" SelectedColor="{Binding Path=ContentColor, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Visibility="Hidden"/>
             <Label x:Name="labelGoto" Content="Przekieruj do" Visibility="Hidden"></Label>
             <TextBox x:Name="txtGoto" Text="{Binding GoTo, Mode=TwoWay}" Visibility="Hidden"></TextBox>
-            
-            
         </StackPanel>
 
     </Grid>

@@ -89,5 +89,10 @@ namespace WebSiteArchitect.AdminApp.Views
             this.mainWindowVM.ConstructTreeView();
             this.Close();
         }
+
+        private void Close_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

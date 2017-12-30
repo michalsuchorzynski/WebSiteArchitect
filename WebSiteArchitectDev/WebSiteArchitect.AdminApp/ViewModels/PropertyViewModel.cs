@@ -25,24 +25,117 @@ namespace WebSiteArchitect.AdminApp.ViewModels
                 switch (_selectedControl.ControlType)
                 {
                     case WebControlTypeEnum.button:
-                        _mainWindowVM.PropertWindow.labelGoto.Visibility =System.Windows.Visibility.Visible;
-                        _mainWindowVM.PropertWindow.txtGoto.Visibility = System.Windows.Visibility.Visible;
+                        _mainWindowVM.PropertWindow.labelBackColor.Visibility =System.Windows.Visibility.Visible;
+                        _mainWindowVM.PropertWindow.colorBackColor.Visibility = System.Windows.Visibility.Visible;
+
                         _mainWindowVM.PropertWindow.labelContentColor.Visibility = System.Windows.Visibility.Visible;
                         _mainWindowVM.PropertWindow.txtContentColor.Visibility = System.Windows.Visibility.Visible;
+
+                        _mainWindowVM.PropertWindow.labelFontColor.Visibility = System.Windows.Visibility.Visible;
+                        _mainWindowVM.PropertWindow.colorFontColor.Visibility = System.Windows.Visibility.Visible;
+
+                        _mainWindowVM.PropertWindow.labelFontSize.Visibility = System.Windows.Visibility.Visible;
+                        _mainWindowVM.PropertWindow.txtFontSize.Visibility = System.Windows.Visibility.Visible;
+
+                        _mainWindowVM.PropertWindow.labelGoto.Visibility = System.Windows.Visibility.Visible;
+                        _mainWindowVM.PropertWindow.txtGoto.Visibility = System.Windows.Visibility.Visible;
+
+                        _mainWindowVM.PropertWindow.labelHeight.Visibility = System.Windows.Visibility.Visible;
+                        _mainWindowVM.PropertWindow.txtHeight.Visibility = System.Windows.Visibility.Visible;
+
+                        _mainWindowVM.PropertWindow.labelTextAlign.Visibility = System.Windows.Visibility.Hidden;
+                        _mainWindowVM.PropertWindow.comboxTextAlign.Visibility = System.Windows.Visibility.Hidden;
+
+                        _mainWindowVM.PropertWindow.labelValue.Visibility = System.Windows.Visibility.Visible;
+                        _mainWindowVM.PropertWindow.txtValue.Visibility = System.Windows.Visibility.Visible;
+
+                        _mainWindowVM.PropertWindow.labelWidth.Visibility = System.Windows.Visibility.Visible;
+                        _mainWindowVM.PropertWindow.txtWidth.Visibility = System.Windows.Visibility.Visible;
                         break;
                     case WebControlTypeEnum.emptySpace:
+                        _mainWindowVM.PropertWindow.labelBackColor.Visibility = System.Windows.Visibility.Visible;
+                        _mainWindowVM.PropertWindow.colorBackColor.Visibility = System.Windows.Visibility.Visible;
+
+                        _mainWindowVM.PropertWindow.labelContentColor.Visibility = System.Windows.Visibility.Hidden;
+                        _mainWindowVM.PropertWindow.txtContentColor.Visibility = System.Windows.Visibility.Hidden;
+
+                        _mainWindowVM.PropertWindow.labelFontColor.Visibility = System.Windows.Visibility.Hidden;
+                        _mainWindowVM.PropertWindow.colorFontColor.Visibility = System.Windows.Visibility.Hidden;
+
+                        _mainWindowVM.PropertWindow.labelFontSize.Visibility = System.Windows.Visibility.Hidden;
+                        _mainWindowVM.PropertWindow.txtFontSize.Visibility = System.Windows.Visibility.Hidden;
+
+                        _mainWindowVM.PropertWindow.labelGoto.Visibility = System.Windows.Visibility.Hidden;
+                        _mainWindowVM.PropertWindow.txtGoto.Visibility = System.Windows.Visibility.Hidden;
+
+                        _mainWindowVM.PropertWindow.labelHeight.Visibility = System.Windows.Visibility.Visible;
+                        _mainWindowVM.PropertWindow.txtHeight.Visibility = System.Windows.Visibility.Visible;
+
+                        _mainWindowVM.PropertWindow.labelTextAlign.Visibility = System.Windows.Visibility.Hidden;
+                        _mainWindowVM.PropertWindow.comboxTextAlign.Visibility = System.Windows.Visibility.Hidden;
+
+                        _mainWindowVM.PropertWindow.labelValue.Visibility = System.Windows.Visibility.Hidden;
+                        _mainWindowVM.PropertWindow.txtValue.Visibility = System.Windows.Visibility.Hidden;
+
+                        _mainWindowVM.PropertWindow.labelWidth.Visibility = System.Windows.Visibility.Visible;
+                        _mainWindowVM.PropertWindow.txtWidth.Visibility = System.Windows.Visibility.Visible;
+
                         break;
                     case WebControlTypeEnum.input:
+                        _mainWindowVM.PropertWindow.labelBackColor.Visibility = System.Windows.Visibility.Visible;
+                        _mainWindowVM.PropertWindow.colorBackColor.Visibility = System.Windows.Visibility.Visible;
+
                         _mainWindowVM.PropertWindow.labelContentColor.Visibility = System.Windows.Visibility.Visible;
                         _mainWindowVM.PropertWindow.txtContentColor.Visibility = System.Windows.Visibility.Visible;
+
+                        _mainWindowVM.PropertWindow.labelFontColor.Visibility = System.Windows.Visibility.Visible;
+                        _mainWindowVM.PropertWindow.colorFontColor.Visibility = System.Windows.Visibility.Visible;
+
+                        _mainWindowVM.PropertWindow.labelFontSize.Visibility = System.Windows.Visibility.Visible;
+                        _mainWindowVM.PropertWindow.txtFontSize.Visibility = System.Windows.Visibility.Visible;
+
+                        _mainWindowVM.PropertWindow.labelGoto.Visibility = System.Windows.Visibility.Hidden;
+                        _mainWindowVM.PropertWindow.txtGoto.Visibility = System.Windows.Visibility.Hidden;
+
+                        _mainWindowVM.PropertWindow.labelHeight.Visibility = System.Windows.Visibility.Visible;
+                        _mainWindowVM.PropertWindow.txtHeight.Visibility = System.Windows.Visibility.Visible;
+
+                        _mainWindowVM.PropertWindow.labelTextAlign.Visibility = System.Windows.Visibility.Visible;
+                        _mainWindowVM.PropertWindow.comboxTextAlign.Visibility = System.Windows.Visibility.Visible;
+
+                        _mainWindowVM.PropertWindow.labelValue.Visibility = System.Windows.Visibility.Visible;
+                        _mainWindowVM.PropertWindow.txtValue.Visibility = System.Windows.Visibility.Visible;
+
+                        _mainWindowVM.PropertWindow.labelWidth.Visibility = System.Windows.Visibility.Visible;
+                        _mainWindowVM.PropertWindow.txtWidth.Visibility = System.Windows.Visibility.Visible;
                         break;
                     case WebControlTypeEnum.label:
-                        break;
-                    case WebControlTypeEnum.panel:
-                        break;
-                    case WebControlTypeEnum.select:
-                        break;
-                    case WebControlTypeEnum.row:
+                        _mainWindowVM.PropertWindow.labelBackColor.Visibility = System.Windows.Visibility.Visible;
+                        _mainWindowVM.PropertWindow.colorBackColor.Visibility = System.Windows.Visibility.Visible;
+
+                        _mainWindowVM.PropertWindow.labelContentColor.Visibility = System.Windows.Visibility.Hidden;
+                        _mainWindowVM.PropertWindow.txtContentColor.Visibility = System.Windows.Visibility.Hidden;
+
+                        _mainWindowVM.PropertWindow.labelFontColor.Visibility = System.Windows.Visibility.Visible;
+                        _mainWindowVM.PropertWindow.colorFontColor.Visibility = System.Windows.Visibility.Visible;
+
+                        _mainWindowVM.PropertWindow.labelFontSize.Visibility = System.Windows.Visibility.Visible;
+                        _mainWindowVM.PropertWindow.txtFontSize.Visibility = System.Windows.Visibility.Visible;
+
+                        _mainWindowVM.PropertWindow.labelGoto.Visibility = System.Windows.Visibility.Hidden;
+                        _mainWindowVM.PropertWindow.txtGoto.Visibility = System.Windows.Visibility.Hidden;
+
+                        _mainWindowVM.PropertWindow.labelHeight.Visibility = System.Windows.Visibility.Visible;
+                        _mainWindowVM.PropertWindow.txtHeight.Visibility = System.Windows.Visibility.Visible;
+
+                        _mainWindowVM.PropertWindow.labelTextAlign.Visibility = System.Windows.Visibility.Visible;
+                        _mainWindowVM.PropertWindow.comboxTextAlign.Visibility = System.Windows.Visibility.Visible;
+
+                        _mainWindowVM.PropertWindow.labelValue.Visibility = System.Windows.Visibility.Visible;
+                        _mainWindowVM.PropertWindow.txtValue.Visibility = System.Windows.Visibility.Visible;
+
+                        _mainWindowVM.PropertWindow.labelWidth.Visibility = System.Windows.Visibility.Visible;
+                        _mainWindowVM.PropertWindow.txtWidth.Visibility = System.Windows.Visibility.Visible;
                         break;
                     default:
                         break;

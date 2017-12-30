@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WebSiteArchitect.AdminApp.Views"
         mc:Ignorable="d"
-        Title="AddWindow" Height="300" Width="300">
+        Title="Nowy Element" Height="300" Width="300">
     <Grid>
         <StackPanel HorizontalAlignment="Left" Height="259" Margin="10,10,0,0" VerticalAlignment="Top" Width="272">
             <Label Content="Podaj nazwę"/>
             <TextBox x:Name="Name" Height="23" TextWrapping="Wrap"/>
-            <Button Content="Dodaj" Click="Add_Click"/>
-            <Button Content="Anuluj"/>
+            <Button Content="Dodaj" Click="Add_Click" Margin="5,5,5,5"/>
+            <Button Content="Anuluj" Click="Close_Click" Margin="5,5,5,5"/>
             
         </StackPanel>
 

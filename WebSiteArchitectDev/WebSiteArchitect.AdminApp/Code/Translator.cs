@@ -97,12 +97,13 @@ namespace WebSiteArchitect.AdminApp.Code
             {
                 case "button":
                     newControl = new WebSiteArchitect.WebModel.Controls.Button();
-                    newControl.Name = _currentControl.ControlTypeName + ControlCounter.LabelCount.ToString();
+                    newControl.Name = _currentControl.ControlTypeName + ControlCounter.ButtonCount.ToString();
                     newControl.Value = _currentControl.Value;
                     newControl.GoTo = _currentControl.GoTo;
                     break;
                 case "emptyspace":
                     newControl = new WebSiteArchitect.WebModel.Controls.EmptySpace();
+                    newControl.Name = _currentControl.ControlTypeName + ControlCounter.EmptySpaceCount.ToString();
                     break;
                 case "label":
                     newControl = new WebSiteArchitect.WebModel.Controls.Label();

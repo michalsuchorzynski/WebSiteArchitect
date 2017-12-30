@@ -25,7 +25,7 @@ namespace WebSiteArchitect.AdminApp.Views
         public Property()
         {
             InitializeComponent();
-            this.combox_textAlign.ItemsSource = Enum.GetValues(typeof(TextAlignment));
+            this.comboxTextAlign.ItemsSource = Enum.GetValues(typeof(TextAlignment));
         }
         public Property(MainWindowViewModel mainWindowVM) : this()
         {

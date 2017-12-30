@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows.Shapes;
 using WebSiteArchitect.WebModel.Enums;
 
 
@@ -157,6 +158,7 @@ namespace WebSiteArchitect.AdminApp.Code
                         (_content as Button).Background = (Brush)converter.ConvertFromString(value.ToString());
                         break;
                     case WebControlTypeEnum.emptySpace:
+                        (_control.Content as Rectangle).Fill = (Brush)converter.ConvertFromString(value.ToString());
                         break;
                     case WebControlTypeEnum.input:
                         (_content as TextBox).BorderBrush = (Brush)converter.ConvertFromString(value.ToString());
@@ -386,10 +388,12 @@ namespace WebSiteArchitect.AdminApp.Code
 
                     _goTo = (_content as Button).Name;
                     break;
-                case "emptySpace":
+                case "emptyspace":
                     this._controlType = WebControlTypeEnum.emptySpace;
-                    _controlType = WebControlTypeEnum.label;
-                    _content = ((_control.Content as Grid).Children[0] as Label).Content;                    
+                    _controlType = WebControlTypeEnum.emptySpace;
+                    _content = _control.Content;
+                    newBrush = (SolidColorBrush)((_control.Content as Rectangle).Fill);
+                    _backgroundColor = newBrush.Color;
                     break;
                 case "input":
                     _controlType = WebControlTypeEnum.input;
