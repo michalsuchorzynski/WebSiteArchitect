@@ -45,3 +45,19 @@
     text-align:right;
 }
 /*Text-Align End*/
+
+/*Item-Align Start*/
+.wsaItemAlignLeft {
+    justify-content: flex-start;
+}
+
+.wsaItemAlignRight {
+    justify-content: flex-end;
+}
+.wsaItemAlignBottom{
+    align-items:flex-end;
+}
+.wsaItemAlignTop {
+    align-items: flex-start
+}
+/*Item-Align End*/

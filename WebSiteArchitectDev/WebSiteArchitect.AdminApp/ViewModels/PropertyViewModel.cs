@@ -46,6 +46,12 @@ namespace WebSiteArchitect.AdminApp.ViewModels
                         _mainWindowVM.PropertWindow.labelTextAlign.Visibility = System.Windows.Visibility.Hidden;
                         _mainWindowVM.PropertWindow.comboxTextAlign.Visibility = System.Windows.Visibility.Hidden;
 
+                        _mainWindowVM.PropertWindow.labelItemAlign.Visibility = System.Windows.Visibility.Hidden;
+                        _mainWindowVM.PropertWindow.comboItemAlign.Visibility = System.Windows.Visibility.Hidden;
+
+                        _mainWindowVM.PropertWindow.labelVerticalAlign.Visibility = System.Windows.Visibility.Hidden;
+                        _mainWindowVM.PropertWindow.comboVerticalAlign.Visibility = System.Windows.Visibility.Hidden;
+
                         _mainWindowVM.PropertWindow.labelValue.Visibility = System.Windows.Visibility.Visible;
                         _mainWindowVM.PropertWindow.txtValue.Visibility = System.Windows.Visibility.Visible;
 
@@ -73,6 +79,12 @@ namespace WebSiteArchitect.AdminApp.ViewModels
 
                         _mainWindowVM.PropertWindow.labelTextAlign.Visibility = System.Windows.Visibility.Hidden;
                         _mainWindowVM.PropertWindow.comboxTextAlign.Visibility = System.Windows.Visibility.Hidden;
+
+                        _mainWindowVM.PropertWindow.labelItemAlign.Visibility = System.Windows.Visibility.Hidden;
+                        _mainWindowVM.PropertWindow.comboItemAlign.Visibility = System.Windows.Visibility.Hidden;
+
+                        _mainWindowVM.PropertWindow.labelVerticalAlign.Visibility = System.Windows.Visibility.Hidden;
+                        _mainWindowVM.PropertWindow.comboVerticalAlign.Visibility = System.Windows.Visibility.Hidden;
 
                         _mainWindowVM.PropertWindow.labelValue.Visibility = System.Windows.Visibility.Hidden;
                         _mainWindowVM.PropertWindow.txtValue.Visibility = System.Windows.Visibility.Hidden;
@@ -103,6 +115,12 @@ namespace WebSiteArchitect.AdminApp.ViewModels
                         _mainWindowVM.PropertWindow.labelTextAlign.Visibility = System.Windows.Visibility.Visible;
                         _mainWindowVM.PropertWindow.comboxTextAlign.Visibility = System.Windows.Visibility.Visible;
 
+                        _mainWindowVM.PropertWindow.labelItemAlign.Visibility = System.Windows.Visibility.Hidden;
+                        _mainWindowVM.PropertWindow.comboItemAlign.Visibility = System.Windows.Visibility.Hidden;
+
+                        _mainWindowVM.PropertWindow.labelVerticalAlign.Visibility = System.Windows.Visibility.Hidden;
+                        _mainWindowVM.PropertWindow.comboVerticalAlign.Visibility = System.Windows.Visibility.Hidden;
+
                         _mainWindowVM.PropertWindow.labelValue.Visibility = System.Windows.Visibility.Visible;
                         _mainWindowVM.PropertWindow.txtValue.Visibility = System.Windows.Visibility.Visible;
 
@@ -131,6 +149,12 @@ namespace WebSiteArchitect.AdminApp.ViewModels
                         _mainWindowVM.PropertWindow.labelTextAlign.Visibility = System.Windows.Visibility.Visible;
                         _mainWindowVM.PropertWindow.comboxTextAlign.Visibility = System.Windows.Visibility.Visible;
 
+                        _mainWindowVM.PropertWindow.labelItemAlign.Visibility = System.Windows.Visibility.Hidden;
+                        _mainWindowVM.PropertWindow.comboItemAlign.Visibility = System.Windows.Visibility.Hidden;
+
+                        _mainWindowVM.PropertWindow.labelVerticalAlign.Visibility = System.Windows.Visibility.Hidden;
+                        _mainWindowVM.PropertWindow.comboVerticalAlign.Visibility = System.Windows.Visibility.Hidden;
+
                         _mainWindowVM.PropertWindow.labelValue.Visibility = System.Windows.Visibility.Visible;
                         _mainWindowVM.PropertWindow.txtValue.Visibility = System.Windows.Visibility.Visible;
 
@@ -158,6 +182,12 @@ namespace WebSiteArchitect.AdminApp.ViewModels
 
                         _mainWindowVM.PropertWindow.labelTextAlign.Visibility = System.Windows.Visibility.Hidden;
                         _mainWindowVM.PropertWindow.comboxTextAlign.Visibility = System.Windows.Visibility.Hidden;
+
+                        _mainWindowVM.PropertWindow.labelItemAlign.Visibility = System.Windows.Visibility.Visible;
+                        _mainWindowVM.PropertWindow.comboItemAlign.Visibility = System.Windows.Visibility.Visible;
+
+                        _mainWindowVM.PropertWindow.labelVerticalAlign.Visibility = System.Windows.Visibility.Visible;
+                        _mainWindowVM.PropertWindow.comboVerticalAlign.Visibility = System.Windows.Visibility.Visible;
 
                         _mainWindowVM.PropertWindow.labelValue.Visibility = System.Windows.Visibility.Visible;
                         _mainWindowVM.PropertWindow.txtValue.Visibility = System.Windows.Visibility.Visible;

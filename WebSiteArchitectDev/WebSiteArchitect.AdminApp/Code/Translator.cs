@@ -163,29 +163,61 @@ namespace WebSiteArchitect.AdminApp.Code
                     break;
               
             }
+            ApplyAlignment(ref newClass);
 
-            switch (_currentControl.TextAlign)
-            {
-                case System.Windows.TextAlignment.Center:
-                    {
-                        newClass += " wsaTextCenter";
-                        break;
-                    }
-                case System.Windows.TextAlignment.Justify:
-                    {
-                        newClass += " wsaTextJustify";
-                        break;
-                    }
-                case System.Windows.TextAlignment.Right:
-                    {
-                        newClass += " wsaTextRight";
-                        break;
-                    }
-            }
+
             newClass +=_styleBuilder.GenerateCSS(_currentControl, newControl);
 
             newControl.ClassName = newClass;
             
+        }
+
+        private void ApplyAlignment(ref string className)
+        {
+            switch (_currentControl.TextAlign)
+            {
+                case System.Windows.TextAlignment.Center:
+                    {
+                        className += " wsaTextCenter";
+                        break;
+                    }
+                case System.Windows.TextAlignment.Justify:
+                    {
+                        className += " wsaTextJustify";
+                        break;
+                    }
+                case System.Windows.TextAlignment.Right:
+                    {
+                        className += " wsaTextRight";
+                        break;
+                    }
+            }
+            switch (_currentControl.ItemAlign)
+            {
+                case System.Windows.HorizontalAlignment.Right:
+                    {
+                        className += " wsaItemAlignRight";
+                        break;
+                    }
+                case System.Windows.HorizontalAlignment.Left:
+                    {
+                        className += " wsaItemAlignLeft";
+                        break;
+                    }
+            }
+            switch (_currentControl.VerticalAlign)
+            {
+                case System.Windows.VerticalAlignment.Top:
+                    {
+                        className += " wsaItemAlignTop";
+                        break;
+                    }
+                case System.Windows.VerticalAlignment.Bottom:
+                    {
+                        className += " wsaItemAlignBottom";
+                        break;
+                    }
+            }
         }
 
         private string GenerateCustomClass(string className)

@@ -20,6 +20,10 @@
             <TextBox x:Name="txtFontSize" Text="{Binding FontSize, Mode=TwoWay}"></TextBox>
             <Label x:Name="labelTextAlign" Content="Tekst w poziomie" ></Label>
             <ComboBox x:Name="comboxTextAlign" SelectedItem="{Binding TextAlign, Mode=TwoWay}"></ComboBox>
+            <Label x:Name="labelItemAlign" Content="Pozycja w poziomie" ></Label>
+            <ComboBox x:Name="comboItemAlign" SelectedItem="{Binding ItemAlign, Mode=TwoWay}"></ComboBox>
+            <Label x:Name="labelVerticalAlign" Content="Pozycja w pionie" ></Label>
+            <ComboBox x:Name="comboVerticalAlign" SelectedItem="{Binding VerticalAlign, Mode=TwoWay}"></ComboBox>
             <Label x:Name="labelFontColor" Content="Kolor czcionki" ></Label>
             <wpfTool:ColorPicker x:Name="colorFontColor"  DisplayColorAndName="True" SelectedColor="{Binding Path=FontColor, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             <Label x:Name="labelBackColor" Content="Kolor tła" ></Label>

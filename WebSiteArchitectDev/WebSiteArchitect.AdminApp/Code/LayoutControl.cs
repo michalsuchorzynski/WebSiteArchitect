@@ -29,6 +29,8 @@ namespace WebSiteArchitect.AdminApp.Code
         private Color? _fontColor;
         public Color? _contentColor;
         private TextAlignment _textAlign;
+        private HorizontalAlignment _itemAlign;
+        private VerticalAlignment _verticalAlign;
         private string _goTo;
         private double _fontSize;
         private double _height;
@@ -267,6 +269,47 @@ namespace WebSiteArchitect.AdminApp.Code
                 OnPropertyChanged("TextAlign");
             }
         }
+
+        public HorizontalAlignment ItemAlign
+        {
+            get
+            {
+                return _itemAlign;
+            }
+            set
+            {
+                switch (this.ControlType)
+                {
+
+                    case WebControlTypeEnum.image:
+                        (_content as Image).HorizontalAlignment = value;
+                        break;
+                }
+                _itemAlign = value;
+                OnPropertyChanged("ItemAlign");
+            }
+        }
+
+        public VerticalAlignment VerticalAlign
+        {
+            get
+            {
+                return _verticalAlign;
+            }
+            set
+            {
+                switch (this.ControlType)
+                {
+
+                    case WebControlTypeEnum.image:
+                        (_content as Image).VerticalAlignment = value;
+                        break;
+                }
+                _verticalAlign = value;
+                OnPropertyChanged("VerticalAlign");
+            }
+        }
+
         public string GoTo
         {
             get
@@ -457,6 +500,8 @@ namespace WebSiteArchitect.AdminApp.Code
                     if(newBrush!=null)
                         _backgroundColor = newBrush.Color;
 
+                    _itemAlign = (_content as Image).HorizontalAlignment;
+                    _verticalAlign = (_content as Image).VerticalAlignment;
                     this.Value = (_content as Image).Source.ToString();
 
                     break;
