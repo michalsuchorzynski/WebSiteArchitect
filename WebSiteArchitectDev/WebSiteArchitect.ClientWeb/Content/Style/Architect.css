@@ -3,11 +3,22 @@
 .col-md-0 {
     display: none !important;
 }
+
+.row{
+    min-height:50px;
+}
+
 .wsaEmptySpace,
 .wsaButton,
 .wsaLabel,
 .wsaImage {
-    height: 50px;
+    height: 100%;
+    display:flex;
+}
+.col-md-12.wsaEmptySpace,
+.col-sm-12.wsaEmptySpace,
+.col-xs-12.wsaEmptySpace{
+    min-height:50px!important;
 }
 .wsaImage{
     display:flex;
@@ -19,11 +30,18 @@
     z-index:1;
 }
 
+.form-control,
+.wsaButton .btn,
+.wsaLabel p,
+.wsaImage img{
+    margin-top: 7px;
+    margin-bottom: 7px;
+}
 .wsaButton .btn {
     width: 100%;
-    margin-top:7px;
-    padding:0px;
-    min-height:35px;
+    margin-top: 7px;
+    padding: 0px;
+    min-height: 35px;
 }
 .wsaButton a {
     width: 100%;
@@ -34,17 +52,7 @@
 
 
 
-/*Text-Align Start*/
-.wsaTextCenter {
-    text-align: center;
-}
-.wsaTextJustify{
-    text-align:justify;
-}
-.wsaTextRight{
-    text-align:right;
-}
-/*Text-Align End*/
+
 
 /*Item-Align Start*/
 .wsaItemAlignLeft {
@@ -57,7 +65,23 @@
 .wsaItemAlignBottom{
     align-items:flex-end;
 }
+.wsaItemAlignCenter {
+    align-items: center
+}
 .wsaItemAlignTop {
     align-items: flex-start
 }
 /*Item-Align End*/
+/*Text-Align Start*/
+.wsaTextCenter {
+    justify-content: center
+}
+
+.wsaTextJustify {
+    justify-content: flex-start;
+}
+
+.wsaTextRight {
+    justify-content: flex-end
+}
+/*Text-Align End*/

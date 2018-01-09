@@ -174,23 +174,26 @@ namespace WebSiteArchitect.AdminApp.Code
 
         private void ApplyAlignment(ref string className)
         {
-            switch (_currentControl.TextAlign)
+            if (_currentControl.ControlType == WebModel.Enums.WebControlTypeEnum.input || _currentControl.ControlType == WebModel.Enums.WebControlTypeEnum.label)
             {
-                case System.Windows.TextAlignment.Center:
-                    {
-                        className += " wsaTextCenter";
-                        break;
-                    }
-                case System.Windows.TextAlignment.Justify:
-                    {
-                        className += " wsaTextJustify";
-                        break;
-                    }
-                case System.Windows.TextAlignment.Right:
-                    {
-                        className += " wsaTextRight";
-                        break;
-                    }
+                switch (_currentControl.TextAlign)
+                {
+                    case System.Windows.TextAlignment.Center:
+                        {
+                            className += " wsaTextCenter";
+                            break;
+                        }
+                    case System.Windows.TextAlignment.Justify:
+                        {
+                            className += " wsaTextJustify";
+                            break;
+                        }
+                    case System.Windows.TextAlignment.Right:
+                        {
+                            className += " wsaTextRight";
+                            break;
+                        }
+                }
             }
             switch (_currentControl.ItemAlign)
             {
@@ -215,6 +218,11 @@ namespace WebSiteArchitect.AdminApp.Code
                 case System.Windows.VerticalAlignment.Bottom:
                     {
                         className += " wsaItemAlignBottom";
+                        break;
+                    }
+                case System.Windows.VerticalAlignment.Center:
+                    {
+                        className += " wsaItemAlignCenter";
                         break;
                     }
             }

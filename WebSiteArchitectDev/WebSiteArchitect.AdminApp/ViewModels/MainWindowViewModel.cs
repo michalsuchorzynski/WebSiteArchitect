@@ -81,6 +81,17 @@ namespace WebSiteArchitect.AdminApp.ViewModels
                 _propertyWindow = value;
             }
         }
+        public IEnumerable<Base.Page> PageSites
+        {
+            get
+            {
+                return _pages;
+            }
+            set
+            {
+                value = _pages;
+            }
+        }
 
         public bool CanExecute
         {

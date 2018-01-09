@@ -31,7 +31,7 @@
             <Label  x:Name="labelContentColor" Content="Kolor elementu"  Visibility="Hidden" ></Label>
             <wpfTool:ColorPicker x:Name="txtContentColor"  DisplayColorAndName="True" SelectedColor="{Binding Path=ContentColor, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Visibility="Hidden"/>
             <Label x:Name="labelGoto" Content="Przekieruj do" Visibility="Hidden"></Label>
-            <TextBox x:Name="txtGoto" Text="{Binding GoTo, Mode=TwoWay}" Visibility="Hidden"></TextBox>
+            <ComboBox x:Name="txtGoto" Text="{Binding GoTo, Mode=TwoWay}" Visibility="Hidden"></ComboBox>
         </StackPanel>
 
     </Grid>

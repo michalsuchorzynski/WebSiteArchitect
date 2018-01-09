@@ -26,7 +26,7 @@
                     {
                         <div class="btn btn-default">
                             @{ 
-                                string site = "test";
+                                string site = "Adwokat";
                                 string page = control.GoTo;
                             @Html.ActionLink(
                                          control.Value,
@@ -81,7 +81,9 @@
 
 
     @Scripts.Render("~/js")
-
+    <script>
+        SetRowElementsHeight();
+    </script>
 
 
 </body>

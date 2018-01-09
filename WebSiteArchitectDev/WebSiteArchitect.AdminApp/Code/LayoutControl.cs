@@ -301,9 +301,19 @@ namespace WebSiteArchitect.AdminApp.Code
                 switch (this.ControlType)
                 {
 
+                    case WebControlTypeEnum.button:
+                        (_content as Button).VerticalAlignment = value;
+                        break;
+                    case WebControlTypeEnum.input:
+                        (_content as TextBox).VerticalAlignment = value;
+                        break;
+                    case WebControlTypeEnum.label:
+                        (_content as AccessText).VerticalAlignment = value;
+                        break;
                     case WebControlTypeEnum.image:
                         (_content as Image).VerticalAlignment = value;
                         break;
+
                 }
                 _verticalAlign = value;
                 OnPropertyChanged("VerticalAlign");
@@ -434,6 +444,7 @@ namespace WebSiteArchitect.AdminApp.Code
 
                     this.Value = (_content as Button).Content.ToString();
 
+                    _verticalAlign = (_content as Button).VerticalAlignment;
                     _fontSize = (_content as Button).FontSize;
 
                     _goTo = (_content as Button).Name;
@@ -459,6 +470,7 @@ namespace WebSiteArchitect.AdminApp.Code
                     _contentColor = newBrush.Color;
                     this.Value = (_content as TextBox).Text.ToString();
 
+                    _verticalAlign = (_content as TextBox).VerticalAlignment;
                     _textAlign = (_content as TextBox).TextAlignment;
                     _fontSize = (_content as TextBox).FontSize;
                     break;
@@ -473,6 +485,7 @@ namespace WebSiteArchitect.AdminApp.Code
 
                     this.Value = (_content as AccessText).Text.ToString();
 
+                    _verticalAlign = (_content as AccessText).VerticalAlignment;
                     _textAlign = (_content as AccessText).TextAlignment;
                     _fontSize = (_content as AccessText).FontSize;
                     break;

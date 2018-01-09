@@ -39,6 +39,7 @@ namespace WebSiteArchitect.AdminApp.ViewModels
 
                         _mainWindowVM.PropertWindow.labelGoto.Visibility = System.Windows.Visibility.Visible;
                         _mainWindowVM.PropertWindow.txtGoto.Visibility = System.Windows.Visibility.Visible;
+                        _mainWindowVM.PropertWindow.txtGoto.ItemsSource = _mainWindowVM.PageSites.Select(s => s.Name).ToList();
 
                         _mainWindowVM.PropertWindow.labelHeight.Visibility = System.Windows.Visibility.Visible;
                         _mainWindowVM.PropertWindow.txtHeight.Visibility = System.Windows.Visibility.Visible;
@@ -49,8 +50,8 @@ namespace WebSiteArchitect.AdminApp.ViewModels
                         _mainWindowVM.PropertWindow.labelItemAlign.Visibility = System.Windows.Visibility.Hidden;
                         _mainWindowVM.PropertWindow.comboItemAlign.Visibility = System.Windows.Visibility.Hidden;
 
-                        _mainWindowVM.PropertWindow.labelVerticalAlign.Visibility = System.Windows.Visibility.Hidden;
-                        _mainWindowVM.PropertWindow.comboVerticalAlign.Visibility = System.Windows.Visibility.Hidden;
+                        _mainWindowVM.PropertWindow.labelVerticalAlign.Visibility = System.Windows.Visibility.Visible;
+                        _mainWindowVM.PropertWindow.comboVerticalAlign.Visibility = System.Windows.Visibility.Visible;
 
                         _mainWindowVM.PropertWindow.labelValue.Visibility = System.Windows.Visibility.Visible;
                         _mainWindowVM.PropertWindow.txtValue.Visibility = System.Windows.Visibility.Visible;
@@ -118,8 +119,8 @@ namespace WebSiteArchitect.AdminApp.ViewModels
                         _mainWindowVM.PropertWindow.labelItemAlign.Visibility = System.Windows.Visibility.Hidden;
                         _mainWindowVM.PropertWindow.comboItemAlign.Visibility = System.Windows.Visibility.Hidden;
 
-                        _mainWindowVM.PropertWindow.labelVerticalAlign.Visibility = System.Windows.Visibility.Hidden;
-                        _mainWindowVM.PropertWindow.comboVerticalAlign.Visibility = System.Windows.Visibility.Hidden;
+                        _mainWindowVM.PropertWindow.labelVerticalAlign.Visibility = System.Windows.Visibility.Visible;
+                        _mainWindowVM.PropertWindow.comboVerticalAlign.Visibility = System.Windows.Visibility.Visible;
 
                         _mainWindowVM.PropertWindow.labelValue.Visibility = System.Windows.Visibility.Visible;
                         _mainWindowVM.PropertWindow.txtValue.Visibility = System.Windows.Visibility.Visible;
@@ -152,8 +153,8 @@ namespace WebSiteArchitect.AdminApp.ViewModels
                         _mainWindowVM.PropertWindow.labelItemAlign.Visibility = System.Windows.Visibility.Hidden;
                         _mainWindowVM.PropertWindow.comboItemAlign.Visibility = System.Windows.Visibility.Hidden;
 
-                        _mainWindowVM.PropertWindow.labelVerticalAlign.Visibility = System.Windows.Visibility.Hidden;
-                        _mainWindowVM.PropertWindow.comboVerticalAlign.Visibility = System.Windows.Visibility.Hidden;
+                        _mainWindowVM.PropertWindow.labelVerticalAlign.Visibility = System.Windows.Visibility.Visible;
+                        _mainWindowVM.PropertWindow.comboVerticalAlign.Visibility = System.Windows.Visibility.Visible;
 
                         _mainWindowVM.PropertWindow.labelValue.Visibility = System.Windows.Visibility.Visible;
                         _mainWindowVM.PropertWindow.txtValue.Visibility = System.Windows.Visibility.Visible;
