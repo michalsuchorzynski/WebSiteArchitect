@@ -81,5 +81,9 @@ namespace WebSiteArchitect.ClientWeb.Controllers
 
             ViewBag.Menu = Settings.ConvertFromJson(_currentMenu.ControlsJson);
         }
+        private void GetPageUrl()
+        {
+
+        }
     }
 }

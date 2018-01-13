@@ -255,5 +255,9 @@
   <ItemGroup>
     <Resource Include="Style\Images\adwokat.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Style\Images\kontakt.jpg" />
+    <Resource Include="Style\Images\oferta.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
