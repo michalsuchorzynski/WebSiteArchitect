@@ -14,8 +14,6 @@
             <TextBox x:Name="txtValue" Text="{Binding Value, Mode=TwoWay}"></TextBox>
             <Label x:Name="labelWidth" Content="Rozmiar" ></Label>
             <TextBox x:Name="txtWidth" Text="{Binding Size, Mode=TwoWay}"></TextBox>
-            <Label x:Name="labelHeight" Content="Wysokość" ></Label>
-            <TextBox x:Name="txtHeight" Text="{Binding Height, Mode=TwoWay}"></TextBox>
             <Label x:Name="labelFontSize" Content="Rozmiar czcionki" ></Label>
             <TextBox x:Name="txtFontSize" Text="{Binding FontSize, Mode=TwoWay}"></TextBox>
             <Label x:Name="labelTextAlign" Content="Tekst w poziomie" ></Label>

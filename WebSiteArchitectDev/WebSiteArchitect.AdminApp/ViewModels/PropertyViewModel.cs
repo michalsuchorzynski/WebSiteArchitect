@@ -41,9 +41,7 @@ namespace WebSiteArchitect.AdminApp.ViewModels
                         _mainWindowVM.PropertWindow.txtGoto.Visibility = System.Windows.Visibility.Visible;
                         _mainWindowVM.PropertWindow.txtGoto.ItemsSource = _mainWindowVM.PageSites.Select(s => s.Name).ToList();
 
-                        _mainWindowVM.PropertWindow.labelHeight.Visibility = System.Windows.Visibility.Visible;
-                        _mainWindowVM.PropertWindow.txtHeight.Visibility = System.Windows.Visibility.Visible;
-
+                        
                         _mainWindowVM.PropertWindow.labelTextAlign.Visibility = System.Windows.Visibility.Hidden;
                         _mainWindowVM.PropertWindow.comboxTextAlign.Visibility = System.Windows.Visibility.Hidden;
 
@@ -75,9 +73,7 @@ namespace WebSiteArchitect.AdminApp.ViewModels
                         _mainWindowVM.PropertWindow.labelGoto.Visibility = System.Windows.Visibility.Hidden;
                         _mainWindowVM.PropertWindow.txtGoto.Visibility = System.Windows.Visibility.Hidden;
 
-                        _mainWindowVM.PropertWindow.labelHeight.Visibility = System.Windows.Visibility.Visible;
-                        _mainWindowVM.PropertWindow.txtHeight.Visibility = System.Windows.Visibility.Visible;
-
+                        
                         _mainWindowVM.PropertWindow.labelTextAlign.Visibility = System.Windows.Visibility.Hidden;
                         _mainWindowVM.PropertWindow.comboxTextAlign.Visibility = System.Windows.Visibility.Hidden;
 
@@ -110,9 +106,7 @@ namespace WebSiteArchitect.AdminApp.ViewModels
                         _mainWindowVM.PropertWindow.labelGoto.Visibility = System.Windows.Visibility.Hidden;
                         _mainWindowVM.PropertWindow.txtGoto.Visibility = System.Windows.Visibility.Hidden;
 
-                        _mainWindowVM.PropertWindow.labelHeight.Visibility = System.Windows.Visibility.Visible;
-                        _mainWindowVM.PropertWindow.txtHeight.Visibility = System.Windows.Visibility.Visible;
-
+                        
                         _mainWindowVM.PropertWindow.labelTextAlign.Visibility = System.Windows.Visibility.Visible;
                         _mainWindowVM.PropertWindow.comboxTextAlign.Visibility = System.Windows.Visibility.Visible;
 
@@ -144,9 +138,7 @@ namespace WebSiteArchitect.AdminApp.ViewModels
                         _mainWindowVM.PropertWindow.labelGoto.Visibility = System.Windows.Visibility.Hidden;
                         _mainWindowVM.PropertWindow.txtGoto.Visibility = System.Windows.Visibility.Hidden;
 
-                        _mainWindowVM.PropertWindow.labelHeight.Visibility = System.Windows.Visibility.Visible;
-                        _mainWindowVM.PropertWindow.txtHeight.Visibility = System.Windows.Visibility.Visible;
-
+                        
                         _mainWindowVM.PropertWindow.labelTextAlign.Visibility = System.Windows.Visibility.Visible;
                         _mainWindowVM.PropertWindow.comboxTextAlign.Visibility = System.Windows.Visibility.Visible;
 
@@ -178,8 +170,7 @@ namespace WebSiteArchitect.AdminApp.ViewModels
                         _mainWindowVM.PropertWindow.labelGoto.Visibility = System.Windows.Visibility.Hidden;
                         _mainWindowVM.PropertWindow.txtGoto.Visibility = System.Windows.Visibility.Hidden;
 
-                        _mainWindowVM.PropertWindow.labelHeight.Visibility = System.Windows.Visibility.Hidden;
-                        _mainWindowVM.PropertWindow.txtHeight.Visibility = System.Windows.Visibility.Hidden;
+                        
 
                         _mainWindowVM.PropertWindow.labelTextAlign.Visibility = System.Windows.Visibility.Hidden;
                         _mainWindowVM.PropertWindow.comboxTextAlign.Visibility = System.Windows.Visibility.Hidden;
