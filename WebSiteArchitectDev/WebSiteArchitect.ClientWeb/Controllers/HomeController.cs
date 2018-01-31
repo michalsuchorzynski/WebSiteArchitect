@@ -50,19 +50,32 @@ namespace WebSiteArchitect.ClientWeb.Controllers
         // GET: Home
         public ActionResult Index(string siteName = null, string pageName = null)
         {
-            CostructSite(siteName, pageName);
+            if(siteName == null)
+                siteName = Request.QueryString["site"];
+            if(pageName == null)
+                pageName = Request.QueryString["page"];
+            if(!CostructSite(siteName, pageName))
+            {
+                return View("IndexError");
+            }
 
+            
             WebContent content = Settings.ConvertFromJson(_currentPage.ControlsJson);
             content.Controls = content.Controls;
             return View(content);
         }
 
-        public void CostructSite(string siteName, string pageName)
+        public bool CostructSite(string siteName, string pageName)
         {
             _consumer = new AdminAPIConsumer(serverAddress);
 
             siteName = !string.IsNullOrEmpty(siteName) ? siteName : defaultPage; 
             _currentSite = _consumer.GetSiteByNameAsync(siteName);
+            if(_currentSite == null)
+            {
+                return false;
+            }
+            ViewBag.SiteName = _currentSite.Name;
             _currentSite.Pages = _consumer.GetPageForSite(_currentSite.SiteId).ToList();
             _currentSite.Menus = _consumer.GetMenusForSite(_currentSite.SiteId).ToList();
 
@@ -75,11 +88,16 @@ namespace WebSiteArchitect.ClientWeb.Controllers
             }
             if (_currentPage == null)
             {
+                if (_currentSite.Pages.Count == 0)
+                    return false;
                 _currentPage = _currentSite.Pages.ToList()[_currentSite.StartPage];
             }
-            _currentMenu = _currentSite.Menus.ToList().First();
-
-            ViewBag.Menu = Settings.ConvertFromJson(_currentMenu.ControlsJson);
+            if(_currentSite.Menus.Count>0)
+                _currentMenu = _currentSite.Menus.ToList().First();
+            if(_currentMenu!=null)
+                ViewBag.Menu = Settings.ConvertFromJson(_currentMenu.ControlsJson);
+                   
+            return true;
         }
         private void GetPageUrl()
         {

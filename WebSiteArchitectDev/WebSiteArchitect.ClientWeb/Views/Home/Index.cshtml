@@ -6,73 +6,80 @@
 }
 
 <div class="col-md-12 col-lg-12 col-sm-12 mainContentPan">
+    <div class="@ViewBag.SiteName">
 
     @foreach (WebSiteArchitect.WebModel.Base.WebControl control in Model.Controls)
     {
         @CreateSimpleControl(control)
     }
-    
+
     @helper CreateSimpleControl(WebSiteArchitect.WebModel.Base.WebControl control)
-    {
-        <div id=@control.Id class="@control.ClassName">
-            @switch (control.Type)
-            {
-                case WebSiteArchitect.WebModel.Enums.WebControlTypeEnum.button:
-                    {
-                        <div class="btn btn-default">
-                            @{ 
-                                string site = "test";
-                                string page = control.GoTo;
-                            @Html.ActionLink(
-                                         control.Value,
-                                         "Index",
-                                         "Home",
-                                         routeValues: new
-                                         {
-                                             siteName = site,
-                                             pagename = page
-                                         },
-                                         htmlAttributes: null
-                                     )
-                                }
-                        </div>
-                        break;
-                    }
-                case WebSiteArchitect.WebModel.Enums.WebControlTypeEnum.emptySpace:
-                    {
-                        break;
-                    }
-                case WebSiteArchitect.WebModel.Enums.WebControlTypeEnum.panel:
-                    {
-                        if (control.ChildrenControls != null)
+        {
+            <div id=@control.Id class="@control.ClassName">
+                @switch (control.Type)
+                {
+                    case WebSiteArchitect.WebModel.Enums.WebControlTypeEnum.button:
                         {
-                            for (int i = 0; i < control.ChildrenControls.Count; i++)
-                            {
-                                @CreateSimpleControl(control.ChildrenControls[i]);
-                            }
+                            <div class="btn btn-default">
+                                @{
+                                    string site = "";
+                                    string page = "";
+                                    if (control.GoTo.IndexOf("_") > -1)
+                                    {
+                                        site = control.GoTo.Substring(0, control.GoTo.IndexOf("_"));
+                                        page = control.GoTo.Substring(control.GoTo.IndexOf("_") + 1);
+                                    }
+                                    @Html.ActionLink(
+                                                           control.Value,
+                                                           "Index",
+                                                           "Home",
+                                                           routeValues: new
+                                                           {
+                                                               site = site,
+                                                               page = page
+                                                           },
+                                                       htmlAttributes: null
+                                                   )
+                                }
+                            </div>
+                            break;
                         }
-                        break;
-                    }
-                case WebSiteArchitect.WebModel.Enums.WebControlTypeEnum.input:
-                    {
-                        @Html.TextBox(control.Name, control.Value, new { @class = "form-control" })
-                        break;
-                    }
-                case WebSiteArchitect.WebModel.Enums.WebControlTypeEnum.label:
-                    {
-                        <p>
-                            @control.Value
-                        </p>
-                        break;
-                    }
-                case WebSiteArchitect.WebModel.Enums.WebControlTypeEnum.image:
-                    {
-                        var source ="/Content/Images" +   control.Value.Substring(control.Value.LastIndexOf("/"));
-                        <img src="@source" />
-                        break;
-                    }
-             }
-        </div>
-    }
+                    case WebSiteArchitect.WebModel.Enums.WebControlTypeEnum.emptySpace:
+                        {
+                            break;
+                        }
+                    case WebSiteArchitect.WebModel.Enums.WebControlTypeEnum.panel:
+                        {
+                            if (control.ChildrenControls != null)
+                            {
+                                for (int i = 0; i < control.ChildrenControls.Count; i++)
+                                {
+                                    @CreateSimpleControl(control.ChildrenControls[i]);
+                                }
+                            }
+                            break;
+                        }
+                    case WebSiteArchitect.WebModel.Enums.WebControlTypeEnum.input:
+                        {
+                            @Html.TextBox(control.Name, control.Value, new { @class = "form-control" })
+                            break;
+                        }
+                    case WebSiteArchitect.WebModel.Enums.WebControlTypeEnum.label:
+                        {
+                            <p>
+                                @control.Value
+                            </p>
+                            break;
+                        }
+                    case WebSiteArchitect.WebModel.Enums.WebControlTypeEnum.image:
+                        {
+                            var source = "/Content/Images" + control.Value.Substring(control.Value.LastIndexOf("/"));
+                            <img src="@source" />
+                            break;
+                        }
+                }
+            </div>
+}
+    </div>
 </div>
 

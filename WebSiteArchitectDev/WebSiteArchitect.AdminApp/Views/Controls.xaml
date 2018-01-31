@@ -9,12 +9,12 @@
         WindowStyle="None">
     <ScrollViewer VerticalScrollBarVisibility="Auto">
         <StackPanel >
-            <Button Content="Przycisk"  Height="35" Command="{Binding SelectButtonCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
-            <Button Content="Pole wprowadzania"  Height="35" Command="{Binding SelectButtonCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
-            <Button Content="Napis"  Height="35" Command="{Binding SelectButtonCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
-            <Button Content="Obraz"  Height="35" Command="{Binding SelectButtonCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
-            <Button Content="Link"  Height="35" Command="{Binding SelectButtonCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
-            <Button Content="Panel" Visibility="Hidden" Height="35" Command="{Binding SelectButtonCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Content="Przycisk" ToolTip="Button"  Height="35" Command="{Binding SelectButtonCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Content="Pole wprowadzania" ToolTip="Input" Height="35" Command="{Binding SelectButtonCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Content="Napis"  Height="35" ToolTip ="Label" Command="{Binding SelectButtonCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Content="Obraz"  Height="35" ToolTip="Image" Command="{Binding SelectButtonCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Content="Link"  Height="35" ToolTip="Link" Command="{Binding SelectButtonCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Content="Panel" Visibility="Hidden"  Height="35" Command="{Binding SelectButtonCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
             <Button Content="Select" Visibility="Hidden" Height="35" Command="{Binding SelectButtonCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
         </StackPanel>
     </ScrollViewer>

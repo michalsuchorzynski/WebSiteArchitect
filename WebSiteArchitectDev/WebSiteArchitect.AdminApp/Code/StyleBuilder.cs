@@ -32,18 +32,19 @@ namespace WebSiteArchitect.AdminApp.Code
             _path = directory + "\\Layout.css";
         }
 
-        public string GenerateCSS(LayoutControl control, WebControl newControl)
+        public string GenerateCSS(LayoutControl control, WebControl newControl, string siteName)
         {
             string cssClass = "";
+            siteName = "." + siteName;
             if (!string.IsNullOrEmpty(control.FontColor.ToString()) || !string.IsNullOrEmpty(control.BackgroundColor.ToString()))
             {
-                cssClass = " " + newControl.Name + "Custom";
-                _styles += " ." + newControl.Name + "Custom,\n";
-                _styles += "." + newControl.Name + "Custom input,\n";
-                _styles += "." + newControl.Name + "Custom select,\n";
-                _styles += "." + newControl.Name + "Custom label,\n";
-                _styles += "." + newControl.Name + "Custom a,\n";
-                _styles += "." + newControl.Name + "Custom span{\n";
+                cssClass = siteName + " " + newControl.Name + "Custom";
+                _styles += siteName + " ." + newControl.Name + "Custom,\n";
+                _styles += siteName + " ." + newControl.Name + "Custom input,\n";
+                _styles += siteName + " ." + newControl.Name + "Custom select,\n";
+                _styles += siteName + " ." + newControl.Name + "Custom label,\n";
+                _styles += siteName + " ." + newControl.Name + "Custom a,\n";
+                _styles += siteName + " ." + newControl.Name + "Custom span{\n";
 
 
                 if (!string.IsNullOrEmpty(control.FontColor.ToString()))
@@ -65,11 +66,11 @@ namespace WebSiteArchitect.AdminApp.Code
             {
                 if (control.ControlType == WebModel.Enums.WebControlTypeEnum.button)
                 {
-                    _styles += "." + newControl.Name + "Custom a{\n";
+                    _styles += siteName + " ." + newControl.Name + "Custom a{\n";
                 }
                 else if (control.ControlType == WebModel.Enums.WebControlTypeEnum.input)
                 {
-                    _styles += "." + newControl.Name + "Custom input{\n";
+                    _styles += siteName + " ." + newControl.Name + "Custom input{\n";
                 }
                 _styles += "background-color:" + "rgb(" + control.ContentColor.Value.R + "," + control.ContentColor.Value.G + "," + control.ContentColor.Value.B + ");\n";
                 _styles += "border-color:" + "rgb(" + control.ContentColor.Value.R + "," + control.ContentColor.Value.G + "," + control.ContentColor.Value.B + ");\n";
@@ -79,7 +80,7 @@ namespace WebSiteArchitect.AdminApp.Code
             return cssClass;
         }
 
-        public void SaveFile()
+        public void SaveFile(string siteName = null)
         {
             var result = "";
             using (StreamReader sr = new StreamReader(_path))
@@ -88,15 +89,28 @@ namespace WebSiteArchitect.AdminApp.Code
             }
             using (StreamWriter sw = new StreamWriter(_path))
             {
-                sw.WriteLine(result + _styles);
+                sw.WriteLine(result + _styles + (siteName != null ? "/*End " + siteName + "*/" : ""));
             }
 
         }
-        public void ClearFile()
+        public void ClearFile(string siteName)
         {
+            var styles = ""; 
+            using (StreamReader sr = new StreamReader(_path))
+            {
+                styles = sr.ReadToEnd();
+            }
+            var startIndex = styles.IndexOf("/*Start "+siteName +"*/");
+            var endIndex = styles.IndexOf("/*End " + siteName + "*/") + 9 + siteName.Length;
+            var result = "";
+            if (startIndex > -1 && endIndex > -1) 
+                result = styles.Substring(0, startIndex) + styles.Substring(endIndex+1) + "/*Start " + siteName + "*/";
+            else
+                result = styles  +"/*Start " + siteName + "*/"; ;
+
             using (StreamWriter sw = new StreamWriter(_path))
             {
-                sw.WriteLine("");
+                sw.WriteLine(result);
             }
         }
     }

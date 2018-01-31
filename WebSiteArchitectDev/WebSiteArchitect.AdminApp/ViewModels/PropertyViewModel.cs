@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WebSiteArchitect.AdminApp.Code;
+using WebSiteArchitect.WebModel.Base;
 using WebSiteArchitect.WebModel.Enums;
 
 namespace WebSiteArchitect.AdminApp.ViewModels
@@ -39,9 +40,17 @@ namespace WebSiteArchitect.AdminApp.ViewModels
 
                         _mainWindowVM.PropertWindow.labelGoto.Visibility = System.Windows.Visibility.Visible;
                         _mainWindowVM.PropertWindow.txtGoto.Visibility = System.Windows.Visibility.Visible;
-                        _mainWindowVM.PropertWindow.txtGoto.ItemsSource = _mainWindowVM.PageSites.Select(s => s.Name).ToList();
+                        List<string> gotoList = new List<string>();
+                        foreach (Page p in _mainWindowVM.PageSites)
+                        {
+                            if (p.SiteId == _mainWindowVM.SelectedSite.SiteId)
+                                gotoList.Add(_mainWindowVM.SelectedSite.Name + "_" + p.Name);
 
-                        
+                        }
+                        _mainWindowVM.PropertWindow.txtGoto.ItemsSource = gotoList;
+
+
+
                         _mainWindowVM.PropertWindow.labelTextAlign.Visibility = System.Windows.Visibility.Hidden;
                         _mainWindowVM.PropertWindow.comboxTextAlign.Visibility = System.Windows.Visibility.Hidden;
 

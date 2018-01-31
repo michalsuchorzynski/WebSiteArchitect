@@ -18,7 +18,7 @@ namespace WebSiteArchitect.AdminApp.Code
         private LayoutControl _currentControl;
         private WebContent _content;
         private StyleBuilder _styleBuilder;
-
+        private string _siteName;
         public StyleBuilder StyleBuilder
         {
             get { return _styleBuilder; }
@@ -65,10 +65,15 @@ namespace WebSiteArchitect.AdminApp.Code
             get { return _content; }
             set { _content = value; }
         }
+        
+        
 
-        public Translator(StackPanel xamlPage)
+       
+
+        public Translator(StackPanel xamlPage, string siteName, bool lastpage)
         {
             this.XamlPage = xamlPage;
+            this._siteName = siteName;
             var mainPanel = xamlPage.Children[0];
             _controls = new List<IWebControl>();
             _content = new WebContent();
@@ -76,7 +81,10 @@ namespace WebSiteArchitect.AdminApp.Code
 
             _content.Controls = ConvertToWebPage();
 
-            _styleBuilder.SaveFile();
+            if(lastpage)
+                _styleBuilder.SaveFile(siteName);
+            else
+                _styleBuilder.SaveFile();
         }
         public List<IWebControl> ConvertToWebPage()
         {
@@ -166,7 +174,7 @@ namespace WebSiteArchitect.AdminApp.Code
             ApplyAlignment(ref newClass);
 
 
-            newClass +=_styleBuilder.GenerateCSS(_currentControl, newControl);
+            newClass +=_styleBuilder.GenerateCSS(_currentControl, newControl, _siteName);
 
             newControl.ClassName = newClass;
             

@@ -13,9 +13,13 @@
 </head>
 <body>
     <div class="mainMenu">
-        @foreach (WebSiteArchitect.WebModel.Base.WebControl control in ViewBag.Menu.Controls)
+        <div class="@ViewBag.SiteName">
+        @if (ViewBag.Menu != null)
         {
-            @CreateSimpleControl(control)
+            foreach (WebSiteArchitect.WebModel.Base.WebControl control in ViewBag.Menu.Controls)
+            {
+                @CreateSimpleControl(control)
+            }
         }
         @helper CreateSimpleControl(WebSiteArchitect.WebModel.Base.WebControl control)
         {
@@ -26,16 +30,21 @@
                     {
                         <div class="btn btn-default">
                             @{ 
-                                string site = "Adwokat";
-                                string page = control.GoTo;
+                                string site = "";
+                                string page = "";
+                                if (control.GoTo.IndexOf("_") > -1)
+                                {
+                                    site = control.GoTo.Substring(0, control.GoTo.IndexOf("_"));
+                                    page = control.GoTo.Substring(control.GoTo.IndexOf("_") + 1);
+                                }
                             @Html.ActionLink(
                                          control.Value,
                                          "Index",
                                          "Home",
                                          routeValues: new
                                          {
-                                             siteName = site,
-                                             pagename = page
+                                             site = site,
+                                             page = page
                                          },
                                          htmlAttributes: null
                                      )
@@ -74,6 +83,7 @@
             }
         </div>
 }
+       </div>
     </div>
     <div class="container body-content mainContainer">
         @RenderBody()

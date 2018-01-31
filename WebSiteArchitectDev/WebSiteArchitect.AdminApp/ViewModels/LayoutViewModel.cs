@@ -86,7 +86,7 @@ namespace WebSiteArchitect.AdminApp.ViewModels
                 return;
             }
             object controlToAdd = new LayoutControls.EmptySpace();
-            string typeOfNewControl = _mainWindowVM.ControlsWindow.controlVM.SelectedButton.Content.ToString();
+            string typeOfNewControl = _mainWindowVM.ControlsWindow.controlVM.SelectedButton.ToolTip.ToString();
             switch (typeOfNewControl)
             {
                 case "Button":

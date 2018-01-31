@@ -332,7 +332,7 @@ namespace WebSiteArchitect.AdminApp.Code
                 switch (this.ControlType)
                 {
                     case WebControlTypeEnum.button:
-                        (_content as Button).Name = value;
+                        (_content as Button).ToolTip = value;
                         break;
                        
                 }
@@ -446,8 +446,8 @@ namespace WebSiteArchitect.AdminApp.Code
 
                     _verticalAlign = (_content as Button).VerticalAlignment;
                     _fontSize = (_content as Button).FontSize;
-
-                    _goTo = (_content as Button).Name;
+                    if((_content as Button).ToolTip != null)
+                        _goTo = (_content as Button).ToolTip.ToString();
                     break;
                 case "emptyspace":
                     this._controlType = WebControlTypeEnum.emptySpace;

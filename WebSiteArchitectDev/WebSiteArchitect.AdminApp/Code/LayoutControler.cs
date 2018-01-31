@@ -108,7 +108,7 @@ namespace WebSiteArchitect.AdminApp.Code
                     _mainWindowVM.PropertWindow.Hide();
 
                     StyleBuilder _styleBuilder = new StyleBuilder("C:\\Users\\Michał\\Desktop\\Praca Inzynierska\\WebSiteArchitect\\WebSiteArchitectDev\\WebSiteArchitect.ClientWeb\\Content\\Style");
-                    _styleBuilder.ClearFile();
+                    _styleBuilder.ClearFile(_mainWindowVM.SelectedSite.Name);
 
                     if (_mainWindowVM.SelectedPage != null)
                     {
@@ -140,10 +140,22 @@ namespace WebSiteArchitect.AdminApp.Code
                         var pages = _mainWindowVM.Consumer.GetPageForSite(_mainWindowVM.SelectedSite.SiteId).ToList();
                         var menus = _mainWindowVM.Consumer.GetMenusForSite(_mainWindowVM.SelectedSite.SiteId).ToList();
                         ControlCounter.Clear();
+                        foreach (Base.Menu menu in menus)
+                        {
+                            Translator translator = new Translator(Settings.StringToXaml(menu.XamlPageString), _mainWindowVM.SelectedSite.Name, false);
+                            UpdatePageRequest req = new UpdatePageRequest()
+                            {
+                                Id = menu.MenuId,
+                                XamlSchema = menu.XamlPageString,
+                                Controls = Settings.ConvertToJson(translator.Content)
+                            };
+                            _mainWindowVM.Consumer.UpdateAsync("api/menu", req);
+                        }
 
                         foreach (Base.Page page in pages)
                         {
-                            Translator translator = new Translator(Settings.StringToXaml(page.XamlPageString));
+                            var islast = pages.IndexOf(page) == pages.Count() - 1 ? true : false; 
+                            Translator translator = new Translator(Settings.StringToXaml(page.XamlPageString), _mainWindowVM.SelectedSite.Name, islast);
                             UpdatePageRequest req = new UpdatePageRequest()
                             {
                                 Id = page.PageId,
@@ -153,17 +165,7 @@ namespace WebSiteArchitect.AdminApp.Code
                             _mainWindowVM.Consumer.UpdateAsync("api/page", req);
                         }
 
-                        foreach (Base.Menu menu in menus)
-                        {
-                            Translator translator = new Translator(Settings.StringToXaml(menu.XamlPageString));
-                            UpdatePageRequest req = new UpdatePageRequest()
-                            {
-                                Id = menu.MenuId,
-                                XamlSchema = menu.XamlPageString,
-                                Controls = Settings.ConvertToJson(translator.Content)
-                            };
-                            _mainWindowVM.Consumer.UpdateAsync("api/menu", req);
-                        }
+                        
 
                         ControlCounter.Clear();
 
